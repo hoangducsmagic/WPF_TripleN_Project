@@ -24,5 +24,90 @@ namespace _18120017_TripleNApp
         {
             InitializeComponent();
         }
+
+        private void ButtonClose_Click(object sender, RoutedEventArgs e)
+        {
+            Application.Current.Shutdown();
+        }
+
+        private void ButtonMinimize_Click(object sender, RoutedEventArgs e)
+        {
+            this.WindowState = WindowState.Minimized;
+        }
+
+        private void TitleBar_MouseDown(object sender, MouseButtonEventArgs e)
+        {
+            DragMove();
+        }
+
+        private void ButtonOpenMenu_Click(object sender, RoutedEventArgs e)
+        {
+            ButtonOpenMenu.Visibility = Visibility.Collapsed;
+            ButtonCloseMenu.Visibility = Visibility.Visible;
+            MainFrame.IsEnabled = false;
+        }
+
+        private void ButtonCloseMenu_Click(object sender, RoutedEventArgs e)
+        {
+            ButtonOpenMenu.Visibility = Visibility.Visible;
+            ButtonCloseMenu.Visibility = Visibility.Collapsed;
+            MainFrame.IsEnabled = true;
+        }
+
+        private void MoveCursorMenu(int index)
+        {
+            TrainsitionigContentSlide.OnApplyTemplate();
+            GridCursor.Margin = new Thickness(0, (60 * index), 0, 0);
+        }
+
+        private void ProductButton_MouseLeftButtonUp(object sender, MouseButtonEventArgs e)
+        {
+            ButtonOpenMenu.Visibility = Visibility.Visible;
+            ButtonCloseMenu.Visibility = Visibility.Collapsed;
+            MainFrame.IsEnabled = true;
+            MoveCursorMenu(0);
+            //MainFrame.NavigationService.Navigate(new ProductPage());
+        }
+
+        private void BillButton_MouseLeftButtonUp(object sender, MouseButtonEventArgs e)
+        {
+            ButtonOpenMenu.Visibility = Visibility.Visible;
+            ButtonCloseMenu.Visibility = Visibility.Collapsed;
+            MainFrame.IsEnabled = true;
+            MoveCursorMenu(1);
+            //MainFrame.NavigationService.Navigate(new BillPage());
+        }
+
+        private void ImportButton_MouseLeftButtonUp(object sender, MouseButtonEventArgs e)
+        {
+            ButtonOpenMenu.Visibility = Visibility.Visible;
+            ButtonCloseMenu.Visibility = Visibility.Collapsed;
+            MainFrame.IsEnabled = true;
+            MoveCursorMenu(2);
+            //MainFrame.NavigationService.Navigate(new BillPage());
+        }
+
+        private void StatisticButton_MouseLeftButtonUp(object sender, MouseButtonEventArgs e)
+        {
+            ButtonOpenMenu.Visibility = Visibility.Visible;
+            ButtonCloseMenu.Visibility = Visibility.Collapsed;
+            MainFrame.IsEnabled = true;
+            MoveCursorMenu(3);
+            //MainFrame.NavigationService.Navigate(new BillPage());
+        }
+
+        private void SettingButton_MouseLeftButtonUp(object sender, MouseButtonEventArgs e)
+        {
+            ButtonOpenMenu.Visibility = Visibility.Visible;
+            ButtonCloseMenu.Visibility = Visibility.Collapsed;
+            MainFrame.IsEnabled = true;
+            MoveCursorMenu(54);
+            //MainFrame.NavigationService.Navigate(new BillPage());
+        }
+
+        private void ButtonInfo_Click(object sender, RoutedEventArgs e)
+        {
+            // Hiễn thị dialog information
+        }
     }
 }

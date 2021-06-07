@@ -4,9 +4,158 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:_18120017_TripleNApp"
+        xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
         mc:Ignorable="d"
-        Title="MainWindow" Height="450" Width="800">
+        WindowStartupLocation="CenterScreen" AllowsTransparency="True" WindowStyle="None"
+        Title="MainWindow" Height="700" Width="1245">
+    <Window.Icon>
+        <BitmapImage UriSource="ImagesResource/icon.png"
+                     RenderOptions.BitmapScalingMode="HighQuality"/>
+    </Window.Icon>
+    <WindowChrome.WindowChrome>
+        <WindowChrome ResizeBorderThickness="0" CaptionHeight="0"/>
+    </WindowChrome.WindowChrome>
+    <Window.Clip>
+        <RectangleGeometry RadiusX="25" RadiusY="25" Rect="0,0,1245,700"/>
+    </Window.Clip>
+    <Window.Resources>
+        <Storyboard x:Key="OpenMenu">
+
+            <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[3].(TranslateTransform.X)" Storyboard.TargetName="StackPanelMenu">
+                <EasingDoubleKeyFrame KeyTime="0" Value="0"/>
+                <EasingDoubleKeyFrame KeyTime="0:0:0.5" Value="250"/>
+            </DoubleAnimationUsingKeyFrames>
+            <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.Opacity)" Storyboard.TargetName="MainFrame">
+                <EasingDoubleKeyFrame KeyTime="0" Value="1"/>
+                <EasingDoubleKeyFrame KeyTime="0:0:0.5" Value="0.3"/>
+            </DoubleAnimationUsingKeyFrames>
+        </Storyboard>
+
+        <Storyboard x:Key="CloseMenu">
+
+            <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[3].(TranslateTransform.X)" Storyboard.TargetName="StackPanelMenu">
+                <EasingDoubleKeyFrame KeyTime="0" Value="250"/>
+                <EasingDoubleKeyFrame KeyTime="0:0:0.5" Value="0"/>
+            </DoubleAnimationUsingKeyFrames>
+            <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.Opacity)" Storyboard.TargetName="MainFrame">
+                <EasingDoubleKeyFrame KeyTime="0" Value="0.3"/>
+                <EasingDoubleKeyFrame KeyTime="0:0:0.5" Value="1"/>
+            </DoubleAnimationUsingKeyFrames>
+        </Storyboard>
+    </Window.Resources>
+
+    <Window.Triggers>
+        <EventTrigger RoutedEvent="ButtonBase.Click" SourceName="ButtonOpenMenu">
+            <BeginStoryboard Storyboard="{StaticResource OpenMenu}"/>
+        </EventTrigger>
+        <EventTrigger RoutedEvent="ButtonBase.Click" SourceName="ButtonCloseMenu">
+            <BeginStoryboard x:Name="CloseMenu_BeginStoryboard" Storyboard="{StaticResource CloseMenu}"/>
+        </EventTrigger>
+        <EventTrigger RoutedEvent="UIElement.MouseLeftButtonUp" SourceName="ProductButton">
+            <BeginStoryboard x:Name="ProductButton_BeginStoryboard" Storyboard="{StaticResource CloseMenu}"/>
+        </EventTrigger>
+        <EventTrigger RoutedEvent="UIElement.MouseLeftButtonUp" SourceName="BillButton">
+            <BeginStoryboard x:Name="BillButton_BeginStoryboard" Storyboard="{StaticResource CloseMenu}"/>
+        </EventTrigger>
+        <EventTrigger RoutedEvent="UIElement.MouseLeftButtonUp" SourceName="ImportButton">
+            <BeginStoryboard x:Name="ImportButton_BeginStoryboard" Storyboard="{StaticResource CloseMenu}"/>
+        </EventTrigger>
+        <EventTrigger RoutedEvent="UIElement.MouseLeftButtonUp" SourceName="StatisticButton">
+            <BeginStoryboard x:Name="StatisticButton_BeginStoryboard" Storyboard="{StaticResource CloseMenu}"/>
+        </EventTrigger>
+        <EventTrigger RoutedEvent="UIElement.MouseLeftButtonUp" SourceName="SettingButton">
+            <BeginStoryboard x:Name="SettingButton_BeginStoryboard" Storyboard="{StaticResource CloseMenu}"/>
+        </EventTrigger>
+    </Window.Triggers>
+
     <Grid>
-        
+
+        <StackPanel Name="StackPanelMenu" Margin="-250 50 0 0" HorizontalAlignment="Left" Width="250" RenderTransformOrigin="0.5,0.5" Background="#96d979"  Panel.ZIndex="1" >
+            <StackPanel.RenderTransform>
+                <TransformGroup>
+                    <ScaleTransform/>
+                    <SkewTransform/>
+                    <RotateTransform/>
+                    <TranslateTransform/>
+                </TransformGroup>
+            </StackPanel.RenderTransform>
+            <Image Source="ImagesResource/icon.png" Height="150" Width="150" HorizontalAlignment="Center" RenderOptions.BitmapScalingMode="HighQuality" Margin="20 40 20 40"/>
+            <Grid>
+                <materialDesign:TransitioningContent x:Name="TrainsitionigContentSlide" OpeningEffect="{materialDesign:TransitionEffect SlideInFromLeft, Duration=0:0:0.2}">
+                    <Grid x:Name="GridCursor"  Background="#FF0069C0" Width="10" HorizontalAlignment="Left" Height="60" VerticalAlignment="Top"/>
+                </materialDesign:TransitioningContent>
+                <ListView Name="MenuListview" >
+                    <ListViewItem Height="60" Name="ProductButton" MouseLeftButtonUp="ProductButton_MouseLeftButtonUp">
+                        <StackPanel Orientation="Horizontal" Margin="10 0">
+                            <materialDesign:PackIcon Kind="Cake" Width="30" Height="30" VerticalAlignment="Center" Margin="5"/>
+                            <TextBlock Text="Sản phẩm" Margin="10" VerticalAlignment="Center"></TextBlock>
+                        </StackPanel>
+                    </ListViewItem>
+
+                    <ListViewItem Height="60" Name="BillButton" MouseLeftButtonUp="BillButton_MouseLeftButtonUp">
+                        <StackPanel Orientation="Horizontal" Margin="10 0">
+                            <materialDesign:PackIcon Kind="Payment" Width="30" Height="30" VerticalAlignment="Center" Margin="5"/>
+                            <TextBlock Text="Hóa đơn" Margin="10" VerticalAlignment="Center"></TextBlock>
+                        </StackPanel>
+                    </ListViewItem>
+
+                    <ListViewItem Height="60" Name="ImportButton" MouseLeftButtonUp="ImportButton_MouseLeftButtonUp">
+                        <StackPanel Orientation="Horizontal" Margin="10 0">
+                            <materialDesign:PackIcon Kind="ChartArc" Width="30" Height="30" VerticalAlignment="Center" Margin="5"/>
+                            <TextBlock Text="Nguồn nhập" Margin="10" VerticalAlignment="Center"></TextBlock>
+                        </StackPanel>
+                    </ListViewItem>
+
+                    <ListViewItem Height="60" Name="StatisticButton" MouseLeftButtonUp="StatisticButton_MouseLeftButtonUp">
+                        <StackPanel Orientation="Horizontal" Margin="10 0">
+                            <materialDesign:PackIcon Kind="InfoCircle" Width="30" Height="30" VerticalAlignment="Center" Margin="5"/>
+                            <TextBlock Text="Thống kê" Margin="10" VerticalAlignment="Center"></TextBlock>
+                        </StackPanel>
+                    </ListViewItem>
+
+                    <ListViewItem Height="60" Name="SettingButton" MouseLeftButtonUp="SettingButton_MouseLeftButtonUp">
+                        <StackPanel Orientation="Horizontal" Margin="10 0">
+                            <materialDesign:PackIcon Kind="Settings" Width="30" Height="30" VerticalAlignment="Center" Margin="5"/>
+                            <TextBlock Text="Cài đặt" Margin="10" VerticalAlignment="Center"></TextBlock>
+                        </StackPanel>
+                    </ListViewItem>
+                </ListView>
+            </Grid>
+
+        </StackPanel>
+
+        <Grid Name="TitleBar" Background="Black" VerticalAlignment="Top" MouseDown="TitleBar_MouseDown">
+            
+            <Button x:Name="ButtonCloseMenu" Style="{StaticResource MaterialDesignFloatingActionMiniAccentButton}" Width="30" Height="30" Padding="0" Background="{x:Null}" BorderBrush="{x:Null}" VerticalAlignment="Center" HorizontalAlignment="Left" Margin="10" Visibility="Collapsed" Click="ButtonCloseMenu_Click">
+                <materialDesign:PackIcon Kind="Menu" Foreground="LightGreen" />
+            </Button>
+            <Button x:Name="ButtonOpenMenu"  Style="{StaticResource MaterialDesignFloatingActionMiniAccentButton}" Width="30" Height="30" Padding="0" Background="{x:Null}" BorderBrush="{x:Null}" VerticalAlignment="Top" HorizontalAlignment="Left" Margin="10" Click="ButtonOpenMenu_Click">
+                <materialDesign:PackIcon Kind="Menu" Foreground="LightGreen" />
+            </Button>
+            <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" VerticalAlignment="Center">
+                <Image Source="ImagesResource/icon.png" Margin="0 0 20 0" Height="40" Width="40" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                <TextBlock Text="TRIPLEN ONLINE SHOP MANAGEMENT" FontFamily="Amatic SC" FontWeight="Bold" FontSize="20 pt" Foreground="LightGreen" HorizontalAlignment="Center" VerticalAlignment="Center" />
+                <Image Source="ImagesResource/icon.png" Margin="20 0 0 0" Height="40" Width="40" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+            </StackPanel>
+
+            <StackPanel Orientation="Horizontal" VerticalAlignment="Center" HorizontalAlignment="Right" FlowDirection="RightToLeft" Margin="10">
+                <Button x:Name="ButtonClose" Width="30" Height="30" Background="{x:Null}" BorderBrush="{x:Null}" Padding="0" Click="ButtonClose_Click">
+                    <materialDesign:PackIcon Kind="Power" Foreground="LightGreen"/>
+                </Button>
+                <Button Name="ButtonMinimize"  Width="30" Height="30" Background="{x:Null}" BorderBrush="{x:Null}" Padding="0" Click="ButtonMinimize_Click">
+                    <materialDesign:PackIcon Kind="WindowMinimize" Foreground="LightGreen"/>
+                </Button>
+                <Button Name="ButtonInfo"  Width="30" Height="30" Background="{x:Null}" BorderBrush="{x:Null}" Padding="0" Click="ButtonInfo_Click">
+                    <materialDesign:PackIcon Kind="InfoCircleOutline" Foreground="LightGreen"/>
+                </Button>
+            </StackPanel>
+
+        </Grid>
+
+        <Frame Name="MainFrame" NavigationUIVisibility="Hidden" Margin="0 50 0 0"/>
+
+
+
     </Grid>
+
 </Window>
