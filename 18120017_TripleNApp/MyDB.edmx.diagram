@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="e1374febc9a64621abc73be62e7159ac" Name="Diagram1">
+        <EntityTypeShape EntityType="TripleNDatabaseModel.CHITIETDATHANG" Width="1.5" PointX="5.25" PointY="4.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="TripleNDatabaseModel.DONHANG" Width="1.5" PointX="3" PointY="1.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="TripleNDatabaseModel.HINHANHSANPHAM" Width="1.5" PointX="5.25" PointY="8.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="TripleNDatabaseModel.KHACHHANG" Width="1.5" PointX="0.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="TripleNDatabaseModel.KICHTHUOCSANPHAM" Width="1.5" PointX="5.25" PointY="10.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="TripleNDatabaseModel.LOAISANPHAM" Width="1.5" PointX="0.75" PointY="4.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="TripleNDatabaseModel.MAUSACSANPHAM" Width="1.5" PointX="5.25" PointY="12.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="TripleNDatabaseModel.NGUONNHAP" Width="1.5" PointX="0.75" PointY="7.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="TripleNDatabaseModel.SANPHAM" Width="1.5" PointX="3" PointY="6.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="TripleNDatabaseModel.THONGBAONHAPHANG" Width="1.5" PointX="3" PointY="14.75" IsExpanded="true" />
+        <AssociationConnector Association="TripleNDatabaseModel.FK_CHITIETDATHANG_DONHANG" ManuallyRouted="false" />
+        <AssociationConnector Association="TripleNDatabaseModel.FK_CHITIETDATHANG_SANPHAM" ManuallyRouted="false" />
+        <AssociationConnector Association="TripleNDatabaseModel.FK_DONHANG_KHACHHANG" ManuallyRouted="false" />
+        <AssociationConnector Association="TripleNDatabaseModel.FK_HINHANHSANPHAM_SANPHAM" ManuallyRouted="false" />
+        <AssociationConnector Association="TripleNDatabaseModel.FK_KICHTHUOCSANPHAM_SANPHAM" ManuallyRouted="false" />
+        <AssociationConnector Association="TripleNDatabaseModel.FK_SANPHAM_LOAISANPHAM" ManuallyRouted="false" />
+        <AssociationConnector Association="TripleNDatabaseModel.FK_MAUSACSANPHAM_SANPHAM" ManuallyRouted="false" />
+        <AssociationConnector Association="TripleNDatabaseModel.FK_SANPHAM_NGUONNHAP" ManuallyRouted="false" />
+        <AssociationConnector Association="TripleNDatabaseModel.FK_THONGBAONHAPHANG_NGUONNHAP" ManuallyRouted="false" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

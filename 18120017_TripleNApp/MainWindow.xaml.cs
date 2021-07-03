@@ -23,6 +23,7 @@ namespace _18120017_TripleNApp
         public MainWindow()
         {
             InitializeComponent();
+            MainFrame.NavigationService.Navigate(new ProductListPage());
         }
 
         private void ButtonClose_Click(object sender, RoutedEventArgs e)
@@ -101,7 +102,7 @@ namespace _18120017_TripleNApp
             ButtonOpenMenu.Visibility = Visibility.Visible;
             ButtonCloseMenu.Visibility = Visibility.Collapsed;
             MainFrame.IsEnabled = true;
-            MoveCursorMenu(54);
+            MoveCursorMenu(4);
             //MainFrame.NavigationService.Navigate(new BillPage());
         }
 

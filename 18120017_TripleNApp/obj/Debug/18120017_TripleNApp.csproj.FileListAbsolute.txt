@@ -1,7 +1,3 @@
-D:\WPF_TripleN_Project-main\18120017_TripleNApp\obj\Debug\MainWindow.g.cs
-D:\WPF_TripleN_Project-main\18120017_TripleNApp\obj\Debug\App.g.cs
-D:\WPF_TripleN_Project-main\18120017_TripleNApp\obj\Debug\18120017_TripleNApp_MarkupCompile.cache
-D:\WPF_TripleN_Project-main\18120017_TripleNApp\obj\Debug\18120017_TripleNApp_MarkupCompile.lref
 D:\WPF_TripleN_Project-main\18120017_TripleNApp\bin\Debug\18120017_TripleNApp.exe.config
 D:\WPF_TripleN_Project-main\18120017_TripleNApp\bin\Debug\18120017_TripleNApp.exe
 D:\WPF_TripleN_Project-main\18120017_TripleNApp\bin\Debug\18120017_TripleNApp.pdb
@@ -28,8 +24,16 @@ D:\WPF_TripleN_Project-main\18120017_TripleNApp\bin\Debug\System.Configuration.C
 D:\WPF_TripleN_Project-main\18120017_TripleNApp\bin\Debug\System.Security.AccessControl.xml
 D:\WPF_TripleN_Project-main\18120017_TripleNApp\bin\Debug\System.Security.Permissions.xml
 D:\WPF_TripleN_Project-main\18120017_TripleNApp\bin\Debug\System.Security.Principal.Windows.xml
+D:\WPF_TripleN_Project-main\18120017_TripleNApp\obj\Debug\MainWindow.g.cs
+D:\WPF_TripleN_Project-main\18120017_TripleNApp\obj\Debug\ProductListPage.g.cs
+D:\WPF_TripleN_Project-main\18120017_TripleNApp\obj\Debug\App.g.cs
+D:\WPF_TripleN_Project-main\18120017_TripleNApp\obj\Debug\18120017_TripleNApp_Content.g.cs
+D:\WPF_TripleN_Project-main\18120017_TripleNApp\obj\Debug\GeneratedInternalTypeHelper.g.cs
+D:\WPF_TripleN_Project-main\18120017_TripleNApp\obj\Debug\18120017_TripleNApp_MarkupCompile.cache
+D:\WPF_TripleN_Project-main\18120017_TripleNApp\obj\Debug\18120017_TripleNApp_MarkupCompile.lref
 D:\WPF_TripleN_Project-main\18120017_TripleNApp\obj\Debug\App.baml
 D:\WPF_TripleN_Project-main\18120017_TripleNApp\obj\Debug\MainWindow.baml
+D:\WPF_TripleN_Project-main\18120017_TripleNApp\obj\Debug\ProductListPage.baml
 D:\WPF_TripleN_Project-main\18120017_TripleNApp\obj\Debug\18120017_TripleNApp.g.resources
 D:\WPF_TripleN_Project-main\18120017_TripleNApp\obj\Debug\_18120017_TripleNApp.Properties.Resources.resources
 D:\WPF_TripleN_Project-main\18120017_TripleNApp\obj\Debug\18120017_TripleNApp.csproj.GenerateResource.cache
