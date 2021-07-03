@@ -25,8 +25,8 @@ namespace _18120017_TripleNApp
         {
             InitializeComponent();
             ProductListview.ItemsSource = ProductDAO.GetProductData();
-         
             TypeTreeview.ItemsSource = ProductDAO.GetTypeData();
+
             
         }
 
@@ -79,7 +79,9 @@ namespace _18120017_TripleNApp
 
         private void ProductListview_MouseLeftButtonUp(object sender, MouseButtonEventArgs e)
         {
-
+            var selection = (sender as ListView).SelectedItem as Product;
+            if (selection == null) return;
+            this.NavigationService.Navigate(new ProductDetailPage(selection));
         }
 
         private void ProductUpdateButton_Click(object sender, RoutedEventArgs e)

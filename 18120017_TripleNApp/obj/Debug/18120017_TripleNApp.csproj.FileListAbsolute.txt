@@ -41,3 +41,6 @@ D:\WPF_TripleN_Project-main\18120017_TripleNApp\obj\Debug\18120017_TripleNApp.cs
 D:\WPF_TripleN_Project-main\18120017_TripleNApp\obj\Debug\18120017_TripleNApp.csproj.CopyComplete
 D:\WPF_TripleN_Project-main\18120017_TripleNApp\obj\Debug\18120017_TripleNApp.exe
 D:\WPF_TripleN_Project-main\18120017_TripleNApp\obj\Debug\18120017_TripleNApp.pdb
+D:\WPF_TripleN_Project-main\18120017_TripleNApp\obj\Debug\18120017_TripleNApp.csprojAssemblyReference.cache
+D:\WPF_TripleN_Project-main\18120017_TripleNApp\obj\Debug\ProductDetailPage.g.cs
+D:\WPF_TripleN_Project-main\18120017_TripleNApp\obj\Debug\ProductDetailPage.baml

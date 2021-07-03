@@ -101,12 +101,14 @@
     <Compile Include="CHITIETDATHANG.cs">
       <DependentUpon>MyDB.tt</DependentUpon>
     </Compile>
+    <Compile Include="Color.cs" />
     <Compile Include="DONHANG.cs">
       <DependentUpon>MyDB.tt</DependentUpon>
     </Compile>
     <Compile Include="HINHANHSANPHAM.cs">
       <DependentUpon>MyDB.tt</DependentUpon>
     </Compile>
+    <Compile Include="Image.cs" />
     <Compile Include="KHACHHANG.cs">
       <DependentUpon>MyDB.tt</DependentUpon>
     </Compile>
@@ -141,6 +143,9 @@
     </Compile>
     <Compile Include="Product.cs" />
     <Compile Include="ProductDAO.cs" />
+    <Compile Include="ProductDetailPage.xaml.cs">
+      <DependentUpon>ProductDetailPage.xaml</DependentUpon>
+    </Compile>
     <Compile Include="ProductListPage.xaml.cs">
       <DependentUpon>ProductListPage.xaml</DependentUpon>
     </Compile>
@@ -148,6 +153,7 @@
     <Compile Include="SANPHAM.cs">
       <DependentUpon>MyDB.tt</DependentUpon>
     </Compile>
+    <Compile Include="Size.cs" />
     <Compile Include="THONGBAONHAPHANG.cs">
       <DependentUpon>MyDB.tt</DependentUpon>
     </Compile>
@@ -163,6 +169,10 @@
       <DependentUpon>MainWindow.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
+    <Page Include="ProductDetailPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="ProductListPage.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
