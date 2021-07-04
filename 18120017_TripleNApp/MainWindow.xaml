@@ -79,7 +79,7 @@
                     <TranslateTransform/>
                 </TransformGroup>
             </StackPanel.RenderTransform>
-            <Image Source="ImagesResource/CHU SHOP.jpg" Height="150" Width="150" HorizontalAlignment="Center" RenderOptions.BitmapScalingMode="HighQuality" Margin="20 40 20 40"/>
+            <Image Source="ImagesResource/icon.png" Height="150" Width="150" HorizontalAlignment="Center" RenderOptions.BitmapScalingMode="HighQuality" Margin="20 40 20 40"/>
             <Grid>
                 <materialDesign:TransitioningContent x:Name="TrainsitionigContentSlide" OpeningEffect="{materialDesign:TransitionEffect SlideInFromLeft, Duration=0:0:0.2}">
                     <Grid x:Name="GridCursor"  Background="#FF0069C0" Width="10" HorizontalAlignment="Left" Height="60" VerticalAlignment="Top"/>

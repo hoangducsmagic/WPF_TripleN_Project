@@ -123,7 +123,9 @@
     <Compile Include="HINHANHSANPHAM.cs">
       <DependentUpon>MyDB.tt</DependentUpon>
     </Compile>
-    <Compile Include="IDGeneration.cs" />
+    <Compile Include="InfoPage.xaml.cs">
+      <DependentUpon>InfoPage.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Pic.cs" />
     <Compile Include="KHACHHANG.cs">
       <DependentUpon>MyDB.tt</DependentUpon>
@@ -161,6 +163,7 @@
     <Compile Include="ProductAddPage.xaml.cs">
       <DependentUpon>ProductAddPage.xaml</DependentUpon>
     </Compile>
+    <Compile Include="ProductBUS.cs" />
     <Compile Include="ProductDAO.cs" />
     <Compile Include="ProductDetailPage.xaml.cs">
       <DependentUpon>ProductDetailPage.xaml</DependentUpon>
@@ -170,6 +173,9 @@
     </Compile>
     <Compile Include="ProductSource.cs" />
     <Compile Include="ProductType.cs" />
+    <Compile Include="ProductUpdatePage.xaml.cs">
+      <DependentUpon>ProductUpdatePage.xaml</DependentUpon>
+    </Compile>
     <Compile Include="SANPHAM.cs">
       <DependentUpon>MyDB.tt</DependentUpon>
     </Compile>
@@ -177,6 +183,13 @@
     <Compile Include="THONGBAONHAPHANG.cs">
       <DependentUpon>MyDB.tt</DependentUpon>
     </Compile>
+    <Compile Include="TypeAddDialog.xaml.cs">
+      <DependentUpon>TypeAddDialog.xaml</DependentUpon>
+    </Compile>
+    <Page Include="InfoPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="MainWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
@@ -198,6 +211,14 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="ProductListPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="ProductUpdatePage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="TypeAddDialog.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -240,9 +261,7 @@
     <Resource Include="ImagesResource\icon.png" />
   </ItemGroup>
   <ItemGroup>
-    <Resource Include="ImagesResource\CHU SHOP.jpg" />
-  </ItemGroup>
-  <ItemGroup>
+    <Resource Include="ImagesResource\avatar.jpg" />
     <Content Include="MyDB.Context.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
       <DependentUpon>MyDB.edmx</DependentUpon>

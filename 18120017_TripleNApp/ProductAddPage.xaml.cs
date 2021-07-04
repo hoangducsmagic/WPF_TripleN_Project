@@ -29,12 +29,13 @@ namespace _18120017_TripleNApp
         List<ProductSource> SourceList = new List<ProductSource>();
 
         ProductDAO ProductDAO = new ProductDAO();
-        IDGeneration IDGeneration = new IDGeneration();
+        ProductBUS ProductBUS = new ProductBUS();
+        
         public ProductAddPage()
         {
             InitializeComponent();
 
-            ProductIDTextbox.Text = IDGeneration.RandomID();
+            ProductIDTextbox.Text = ProductBUS.RandomID();
 
             TypeList = ProductDAO.GetTypeData2();
             SourceList = ProductDAO.GetSourceData();
@@ -47,17 +48,37 @@ namespace _18120017_TripleNApp
 
         }
 
-        private bool DataCheck()
-        {
+        
 
+        private bool InputCheck()
+        {
+            if (PicList.Count() == 0) { MessageBox.Show("Vui lòng thêm hình ảnh sản phẩm!");return false; }
+            if (ProductNameTextbox.Text == "") { MessageBox.Show("Vui lòng nhập tên sản phẩm!");return false; }
+            if (ProductDescriptionTextbox.Text == "") { MessageBox.Show("Vui lòng nhập mô tả sản phẩm!"); return false; }
+            if (TypeCombobox.SelectedIndex == -1) { MessageBox.Show("Vui lòng chọn loại sản phẩm!"); return false; }
+            if (SizeList.Count()==0) { MessageBox.Show("Vui lòng thêm kích thước sản phẩm!");return false; }
+            if (ColorList.Count()==0) { MessageBox.Show("Vui lòng thêm màu sắc sản phẩm!");return false; }
+            if (SellPriceTextbox.Text == "") { MessageBox.Show("Vui lòng nhập giá bán sản phẩm!");return false; }
+            try { double.Parse(SellPriceTextbox.Text); } catch (Exception) { MessageBox.Show("Giá bán sản phẩm không hợp lệ."); return false; }
+            if (ImportPriceTextbox.Text=="") { MessageBox.Show("Vui lòng thêm giá nhập sản phẩm!");return false; }
+            try { double.Parse(ImportPriceTextbox.Text); } catch (Exception) { MessageBox.Show("Giá nhập sản phẩm không hợp lệ."); return false; }
+            if (PercentTextbox.Text == "") { MessageBox.Show("Vui lòng thêm phần trăm chi!");return false; }
+            try { double.Parse(PercentTextbox.Text); } catch (Exception) { MessageBox.Show("Phần trăm chi không hợp lệ."); return false; }
+            if (WeightTextbox.Text == "") { MessageBox.Show("Vui lòng thêm trọng lượng sản phẩm!");return false; }
+            try { Int32.Parse(WeightTextbox.Text); } catch (Exception) { MessageBox.Show("Trọng lượng sản phẩm không hợp lệ."); return false; }
+            if (AmountTextbox.Text == "") { MessageBox.Show("Vui lòng thêm số lượng sản phẩm!");return false; }
+            try { Int32.Parse(AmountTextbox.Text); } catch (Exception) { MessageBox.Show("Số lượng sản phẩm không hợp lệ."); return false; }
+            if (MinimumTextbox.Text == "") { MessageBox.Show("Vui lòng nhập số lượng tối thiểu!");return false; }
+            try { double.Parse(MinimumTextbox.Text); } catch (Exception) { MessageBox.Show("Số lượng tối thiểu không hợp lệ."); return false; }
+            if (SourceCombobox.SelectedIndex==-1) { MessageBox.Show("Vui lòng chọn nguồn nhập hàng!");return false; }
             return true;
         }
 
         private void ProductAddButton_Click(object sender, RoutedEventArgs e)
         {
-            if (!DataCheck()) return;
+            if (!InputCheck()) return;
+           
             Product product = new Product();
-
 
             product.ten = ProductNameTextbox.Text;
             product.ma = ProductIDTextbox.Text;
@@ -77,17 +98,22 @@ namespace _18120017_TripleNApp
             product.mausac = ColorList;
             product.kichthuoc = SizeList;
 
-         
             product.hinhanh = PicList;
 
-            ProductDAO.ProductAdd(product);
-            MessageBox.Show("Đã thêm sản phẩm mới.");
-            this.NavigationService.Navigate(new ProductListPage());
+            string addresult=ProductBUS.ProductAdd(product);
+            if (addresult == "OK")
+            {
+                MessageBox.Show("Thêm sản phẩm thành công.");
+                this.NavigationService.Navigate(new ProductListPage());
+            }
+            else
+                MessageBox.Show(addresult);
+            
         }
 
         private void BackButton_Click(object sender, RoutedEventArgs e)
         {
-
+            this.NavigationService.Navigate(new ProductListPage());
         }
 
         private void PicAddButton_Click(object sender, RoutedEventArgs e)
@@ -121,7 +147,11 @@ namespace _18120017_TripleNApp
         {
             if (SizeTextbox.Text == "") return;
             foreach (var item in SizeList)
-                if (item.size == SizeTextbox.Text) return;
+                if (item.size == SizeTextbox.Text)
+                {
+                    MessageBox.Show("Kích thước bị trùng!");
+                    return;
+                }
             SizeList.Add(new Size() { size = SizeTextbox.Text });
             SizeListview.Items.Refresh();
             SizeTextbox.Clear();
@@ -154,15 +184,36 @@ namespace _18120017_TripleNApp
         {
             if (ColorPicker.SelectedColorText == "") return;
             foreach (var item in ColorList)
-                if (item.color == ColorPicker.SelectedColorText) return;
+                if (item.color == ColorPicker.SelectedColorText)
+                {
+                    MessageBox.Show("Màu sắc bị trùng!");
+                    return;
+                }
 
             ColorList.Add(new Color() { color = ColorPicker.SelectedColorText });
             ColorListview.Items.Refresh();
         }
 
-        private void CategoryAddButton_Click(object sender, RoutedEventArgs e)
+        private void TypeAddButton_Click(object sender, RoutedEventArgs e)
         {
-            
+            TypeAddDialog dialog = new TypeAddDialog();
+            dialog.ShowDialog();
+            var value = TypeAddDialog.value;
+            if (value == "") return;
+
+            ProductType newtype = new ProductType() { ma = ProductBUS.RandomID(), ten = value };
+            var res = TypeList.FindAll(c => c.ten == value).FirstOrDefault();
+            if (res == null)
+            {
+                TypeList.Add(newtype);
+                TypeCombobox.Items.Refresh(); 
+            }
+            else
+            {
+                newtype = res;
+                MessageBox.Show("Loại sản phẩm đã tồn tại.");
+            }
+            TypeCombobox.SelectedItem = newtype;
         }
     }
 }

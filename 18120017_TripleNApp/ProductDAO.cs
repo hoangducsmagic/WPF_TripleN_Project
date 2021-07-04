@@ -32,12 +32,12 @@ namespace _18120017_TripleNApp
                                  where c.MaSanPham == item.MaSanPham
                                  select (c.KichThuoc);
                 foreach (var item2 in sizequery) kichthuoc.Add(new Size() { size = item2 });
-               
 
+                string currentFolder = AppDomain.CurrentDomain.BaseDirectory;
                 var imagequery = from c in db.HINHANHSANPHAM
                                  where c.MaSanPham == item.MaSanPham
                                  select (c.HinhAnh);
-                foreach (var item2 in imagequery) hinhanh.Add(new Pic() { pic = item2 });
+                foreach (var item2 in imagequery) hinhanh.Add(new Pic() { pic = item2,path= $"{currentFolder}ImagesResource\\{item2}" });
                 
                 string tenloai = db.LOAISANPHAM.Find(item.MaLoai).TenLoai;
                 ProductList.Add(new Product() { avt = hinhanh.ElementAtOrDefault(0).pic, ma = item.MaSanPham, ten = item.TenSanPham, tenloai=tenloai, maloai = item.MaLoai, daban = (int)item.SoLuongDaBan, tonkho = (int)item.SoLuongTonKho, giaban = (double)item.GiaBan, gianhap = (double)item.GiaNhap, hinhanh = hinhanh, mausac = mausac, kichthuoc = kichthuoc, manguon = item.MaNguon, mota = item.MoTa, phantram = (double)item.PhanTramChi, toithieu = (int)item.SoLuongToiThieu, trongluong = (double)item.TrongLuong, nhapthem = (item.SoLuongTonKho < item.SoLuongToiThieu) });
@@ -97,9 +97,6 @@ namespace _18120017_TripleNApp
             if (typeexist == null)
                 db.LOAISANPHAM.Add(new LOAISANPHAM() { MaLoai = product.maloai, TenLoai = product.tenloai });
             
-            
-           
-
             // Copy ảnh vào thư mục nội bộ
             string newName, newItem;
             string currentFolder = AppDomain.CurrentDomain.BaseDirectory;
@@ -113,8 +110,6 @@ namespace _18120017_TripleNApp
                 db.HINHANHSANPHAM.Add(new HINHANHSANPHAM() { HinhAnh = item.pic, MaSanPham = product.ma });
             }
 
-        
-
             // Thêm màu sắc
             foreach (var item in product.mausac)
                 db.MAUSACSANPHAM.Add(new MAUSACSANPHAM() { MaSanPham = product.ma, MauSac = item.color });
@@ -127,5 +122,9 @@ namespace _18120017_TripleNApp
             db.SaveChanges();
         }
         
+        public void ProductUpdate(Product product)
+        {
+            
+        }
     }
 }

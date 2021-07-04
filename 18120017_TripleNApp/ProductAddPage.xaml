@@ -5,12 +5,13 @@
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
       xmlns:local="clr-namespace:_18120017_TripleNApp"
       
-     xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes" xmlns:xctk="http://schemas.xceed.com/wpf/xaml/toolkit"
+      xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes" 
+      xmlns:xctk="http://schemas.xceed.com/wpf/xaml/toolkit"
       TextElement.Foreground="{DynamicResource MaterialDesignBody}"
-     TextElement.FontWeight="Regular"
-     TextElement.FontSize="13"
-     TextOptions.TextFormattingMode="Ideal"
-     TextOptions.TextRenderingMode="Auto"
+      TextElement.FontWeight="Regular"
+      TextElement.FontSize="13"
+      TextOptions.TextFormattingMode="Ideal"
+      TextOptions.TextRenderingMode="Auto"
       
       mc:Ignorable="d" 
       d:DesignWidth="1245" Height="650"
@@ -18,7 +19,7 @@
       Title="ProductAddPage">
 
     <Page.Resources>
-        <local:BitmapConverter x:Key="BitmapConverter"/>
+        
         <local:MoneyConverter x:Key="MoneyConverter"/>
     </Page.Resources>
 
@@ -140,7 +141,7 @@
                                         </DataTemplate>
                                     </ComboBox.ItemTemplate>
                                 </ComboBox>
-                                <Button VerticalAlignment="Center" Name="CategoryAddButton" Content="Thêm loại" Margin="10" Click="CategoryAddButton_Click"/>
+                                <Button VerticalAlignment="Center" Name="TypeAddButton" Content="Thêm loại" Margin="10" Click="TypeAddButton_Click"/>
 
                             </StackPanel>
 

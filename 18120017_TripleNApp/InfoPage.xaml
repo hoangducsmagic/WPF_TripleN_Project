@@ -1,0 +1,48 @@
+﻿<Page x:Class="_18120017_TripleNApp.InfoPage"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:_18120017_TripleNApp"
+      mc:Ignorable="d" 
+      xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+      Title="InfoPage" 
+      d:DesignHeight="650" d:DesignWidth="1245"
+      FontFamily="Bree Serif" FontSize="34"
+      
+      Background="#ddffcf">
+
+    <StackPanel>
+        <materialDesign:ColorZone Mode="PrimaryMid" Padding="16">
+            <Grid>
+                <TextBlock FontFamily="Amatic SC"  FontWeight="Bold" FontSize="40" Text="THÔNG TIN PHẦN MỀM" HorizontalAlignment="Center"/>
+            </Grid>
+        </materialDesign:ColorZone>
+        <Grid>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="3*"/>
+                <ColumnDefinition Width="7*"/>
+            </Grid.ColumnDefinitions>
+            <Image Source="ImagesResource/avatar.jpg" />
+            <StackPanel Grid.Column="1" Margin="20">
+                <TextBlock Text="Đồ án môn học Thiết kế phần mềm" HorizontalAlignment="Center" Margin="3"/>
+                <TextBlock Text="Ứng dụng Quản lý kinh doanh quần áo online - TripleN" HorizontalAlignment="Center" Margin="3"/>
+                <TextBlock Text="Họ và tên: Lâm Hoàng Đức" Foreground="DarkRed" FontWeight="Bold" Margin="3 30 3 3" FontFamily="Amatic SC" FontSize="40"/>
+                <TextBlock Text="Mã số sinh viên: 18120017" Foreground="DarkRed" FontWeight="Bold" Margin="3" FontFamily="Amatic SC" FontSize="40"/>
+                <TextBlock Text="Trường: Đại học Khoa học Tự nhiên - ĐHQG TPHCM" Foreground="DarkRed" FontWeight="Bold" Margin="3" FontFamily="Amatic SC" FontSize="40"/>
+                <TextBlock Text="Email: hoangducsmagic@gmail.com" Foreground="DarkRed" FontWeight="Bold" Margin="3" FontFamily="Amatic SC" FontSize="40"/>
+                <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" Margin="20">
+                    <Grid Cursor="Hand" MouseLeftButtonUp="FacebookButton_MouseLeftButtonUp">
+                        <materialDesign:PackIcon Kind="Facebook" Name="FacebookButton" Width="40" Height="40" Foreground="Black" Margin="10"/>
+                    </Grid>
+                    <Grid Cursor="Hand" MouseLeftButtonUp="GithubButton_MouseLeftButtonUp">
+                        <materialDesign:PackIcon Kind="Github" Name="GithubButton"  Width="40" Height="40" Foreground="Black" Margin="10"/>
+                    </Grid>
+                    <Grid Cursor="Hand" MouseLeftButtonUp="InstagramButton_MouseLeftButtonUp">
+                        <materialDesign:PackIcon Kind="Instagram" Name="InstagramButton"  Width="40" Height="40" Foreground="Black" Margin="10"/>
+                    </Grid>
+                </StackPanel>
+            </StackPanel>
+        </Grid>
+    </StackPanel>
+</Page>

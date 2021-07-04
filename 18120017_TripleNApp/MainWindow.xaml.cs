@@ -67,7 +67,7 @@ namespace _18120017_TripleNApp
             ButtonCloseMenu.Visibility = Visibility.Collapsed;
             MainFrame.IsEnabled = true;
             MoveCursorMenu(0);
-            //MainFrame.NavigationService.Navigate(new ProductPage());
+            MainFrame.NavigationService.Navigate(new ProductListPage());
         }
 
         private void BillButton_MouseLeftButtonUp(object sender, MouseButtonEventArgs e)
@@ -108,7 +108,7 @@ namespace _18120017_TripleNApp
 
         private void ButtonInfo_Click(object sender, RoutedEventArgs e)
         {
-            // Hiễn thị dialog information
+            MainFrame.NavigationService.Navigate(new InfoPage());
         }
     }
 }
