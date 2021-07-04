@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -64,7 +65,67 @@ namespace _18120017_TripleNApp
             return TypeList;
         }
 
+        public List<ProductType> GetTypeData2()
+        {
+            List<ProductType> TypeList = new List<ProductType>();
+            var typequery = from c in db.LOAISANPHAM
+                            select c;
+
+            foreach(var item in typequery)
+            {
+                TypeList.Add(new ProductType() { ma = item.MaLoai, ten = item.TenLoai });
+
+            }
+            return TypeList;
+        }
+
+        public List<ProductSource> GetSourceData()
+        {
+            List<ProductSource> SourceList = new List<ProductSource>();
+            var query = from c in db.NGUONNHAP
+                        select c;
+            foreach (var item in query)
+                SourceList.Add(new ProductSource() { ten = item.TenNguon, ma = item.MaNguon });
+            return SourceList;
+
+        }
+
+        public void ProductAdd(Product product)
+        {
+            // Thêm loại
+            var typeexist = db.LOAISANPHAM.Find(product.maloai);
+            if (typeexist == null)
+                db.LOAISANPHAM.Add(new LOAISANPHAM() { MaLoai = product.maloai, TenLoai = product.tenloai });
+            
+            
+           
+
+            // Copy ảnh vào thư mục nội bộ
+            string newName, newItem;
+            string currentFolder = AppDomain.CurrentDomain.BaseDirectory;
+            foreach (var item in product.hinhanh)
+            {
+                var info = new FileInfo(item.path);
+                newName = $"{Guid.NewGuid()}{info.Extension}";
+                newItem = $"{currentFolder}ImagesResource\\{newName}";
+                File.Copy(item.path, newItem);
+                item.pic = newName;
+                db.HINHANHSANPHAM.Add(new HINHANHSANPHAM() { HinhAnh = item.pic, MaSanPham = product.ma });
+            }
+
         
+
+            // Thêm màu sắc
+            foreach (var item in product.mausac)
+                db.MAUSACSANPHAM.Add(new MAUSACSANPHAM() { MaSanPham = product.ma, MauSac = item.color });
+
+            // Thêm kích thước
+            foreach (var item in product.kichthuoc)
+                db.KICHTHUOCSANPHAM.Add(new KICHTHUOCSANPHAM() { KichThuoc = item.size, MaSanPham = product.ma });
+
+            db.SANPHAM.Add(new SANPHAM() { MaSanPham = product.ma, MaLoai = product.maloai, GiaBan = product.giaban, GiaNhap = product.gianhap, MaNguon = product.manguon, MoTa = product.mota, PhanTramChi = product.phantram, SoLuongDaBan = product.daban, SoLuongTonKho = product.tonkho, SoLuongToiThieu = product.toithieu, TenSanPham = product.ten, TrongLuong = product.trongluong });
+            db.SaveChanges();
+        }
         
     }
 }

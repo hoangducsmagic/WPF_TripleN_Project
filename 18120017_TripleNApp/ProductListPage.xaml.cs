@@ -96,7 +96,7 @@ namespace _18120017_TripleNApp
 
         private void ProductAddButton_Click(object sender, RoutedEventArgs e)
         {
-
+            this.NavigationService.Navigate(new ProductAddPage());
         }
     }
 }
