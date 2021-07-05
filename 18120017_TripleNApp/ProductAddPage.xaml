@@ -118,7 +118,7 @@
                              AcceptsReturn="True"
                              TextWrapping="Wrap"
                              VerticalScrollBarVisibility="Auto"
-                             materialDesign:HintAssist.Hint="Mô tả món bánh"/>
+                             materialDesign:HintAssist.Hint="Mô tả sản phẩm"/>
 
                     <Grid>
                         <Separator BorderThickness="1" BorderBrush="LightGray" VerticalAlignment="Center"/>

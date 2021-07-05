@@ -117,6 +117,7 @@
       <DependentUpon>MyDB.tt</DependentUpon>
     </Compile>
     <Compile Include="Color.cs" />
+    <Compile Include="DirectPicConverter.cs" />
     <Compile Include="DONHANG.cs">
       <DependentUpon>MyDB.tt</DependentUpon>
     </Compile>

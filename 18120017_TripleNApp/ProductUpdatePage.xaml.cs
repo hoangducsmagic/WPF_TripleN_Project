@@ -36,20 +36,27 @@ namespace _18120017_TripleNApp
         {
             InitializeComponent();
             product = item;
+
             TypeList = ProductDAO.GetTypeData2();
             SourceList = ProductDAO.GetSourceData();
-            PicListview.ItemsSource = PicList;
-            SizeListview.ItemsSource = SizeList;
-            ColorListview.ItemsSource = ColorList;
             TypeCombobox.ItemsSource = TypeList;
             SourceCombobox.ItemsSource = SourceList;
 
             DataLoad();
+            
+            PicListview.ItemsSource = PicList;
+            SizeListview.ItemsSource = SizeList;
+            ColorListview.ItemsSource = ColorList;
+           
+
+          
 
         }
 
         private void DataLoad() // load dữ  liệu lên  màn hình
         {
+            
+
             ProductNameTextbox.Text = product.ten;
             ProductIDTextbox.Text = product.ma;
             ProductDescriptionTextbox.Text = product.mota;
@@ -64,15 +71,15 @@ namespace _18120017_TripleNApp
 
             // load hình ảnh
             PicList = product.hinhanh;
-            PicListview.Items.Refresh();
+            //PicListview.Items.Refresh();
 
             // load màu sắc
             ColorList = product.mausac;
-            ColorListview.Items.Refresh();
+            //ColorListview.Items.Refresh();
 
             // load kích thước
             SizeList = product.kichthuoc;
-            SizeListview.Items.Refresh();
+            //SizeListview.Items.Refresh();
 
         }
 

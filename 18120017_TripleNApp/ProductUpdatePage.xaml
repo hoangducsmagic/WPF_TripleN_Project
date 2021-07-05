@@ -18,7 +18,7 @@
       Title="ProductUpdatePage">
 
     <Page.Resources>
-
+        <local:DirectPicConverter x:Key="DirectPicConverter"/>
         <local:MoneyConverter x:Key="MoneyConverter"/>
     </Page.Resources>
 
@@ -46,7 +46,7 @@
                             </ListView.ItemsPanel>
                             <ListView.ItemTemplate>
                                 <DataTemplate>
-                                    <Image Source="{Binding path}" Height="120" Width="120"   Stretch="Uniform"/>
+                                    <Image Source="{Binding path,Converter={StaticResource DirectPicConverter}}" Height="120" Width="120"   Stretch="Uniform"/>
                                 </DataTemplate>
                             </ListView.ItemTemplate>
                         </ListView>

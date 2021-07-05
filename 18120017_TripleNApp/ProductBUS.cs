@@ -44,5 +44,10 @@ namespace _18120017_TripleNApp
             ProductDAO.ProductUpdate(product);
             return "OK";
         }
+
+        public void ProductDelete(Product product)
+        {
+            ProductDAO.ProductDelete(product);
+        }
     }
 }

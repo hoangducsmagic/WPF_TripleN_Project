@@ -21,6 +21,7 @@ namespace _18120017_TripleNApp
     public partial class ProductListPage : Page
     {
         ProductDAO ProductDAO = new ProductDAO();
+        ProductBUS ProductBUS = new ProductBUS();
         public ProductListPage()
         {
             InitializeComponent();
@@ -86,12 +87,18 @@ namespace _18120017_TripleNApp
 
         private void ProductUpdateButton_Click(object sender, RoutedEventArgs e)
         {
-
+            var selection = (sender as Button).DataContext as Product;
+            this.NavigationService.Navigate(new ProductUpdatePage(selection));
         }
 
         private void ProductDeleteButton_Click(object sender, RoutedEventArgs e)
         {
-
+            var selection = (sender as Button).DataContext as Product;
+            ProductBUS.ProductDelete(selection);
+            
+            ProductListview.ItemsSource = ProductDAO.GetProductData();
+            TypeTreeview.ItemsSource = ProductDAO.GetTypeData();
+            MessageBox.Show("Đã xóa sản phẩm.");
         }
 
         private void ProductAddButton_Click(object sender, RoutedEventArgs e)

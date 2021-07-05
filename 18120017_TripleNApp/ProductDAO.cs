@@ -122,9 +122,129 @@ namespace _18120017_TripleNApp
             db.SaveChanges();
         }
         
-        public void ProductUpdate(Product product)
+        public void ProductUpdate(Product newitem)
         {
-            
+            var olditem = db.SANPHAM.Find(newitem.ma);
+
+            // cập nhật loại
+            if (olditem.MaLoai != newitem.maloai)
+            {
+                var oldtype = from c in db.SANPHAM
+                              where c.MaLoai == olditem.MaLoai
+                              select c;
+                if (oldtype.Count() == 1)   // xóa loại cũ
+                {
+                    var item = db.LOAISANPHAM.Find(oldtype.FirstOrDefault().MaLoai);
+                    db.LOAISANPHAM.Remove(item);
+                }
+                var typeexist = db.LOAISANPHAM.Find(newitem.maloai);
+                if (typeexist == null)  //  thêm loại mới
+                    db.LOAISANPHAM.Add(new LOAISANPHAM() { MaLoai = newitem.maloai, TenLoai = newitem.tenloai });
+            }
+
+
+            // cập nhật hình ảnh
+            string newName, newItem;
+            string currentFolder = AppDomain.CurrentDomain.BaseDirectory;
+            List<Pic> OldPicList = new List<Pic>();
+            var oldpicquery = from c in db.HINHANHSANPHAM
+                              where c.MaSanPham == newitem.ma
+                              select c;
+            foreach (var item in oldpicquery)
+            {
+                OldPicList.Add(new Pic() { pic = item.HinhAnh,path= $"{currentFolder}ImagesResource\\{item.HinhAnh}" });
+            }
+
+            // 1. Thêm ảnh mới
+            foreach (var item in newitem.hinhanh) if (OldPicList.FindAll(c => c.pic == item.pic).Count() == 0)
+                {
+                    var info = new FileInfo(item.path);
+                    newName = $"{Guid.NewGuid()}{info.Extension}";
+                    newItem = $"{currentFolder}ImagesResource\\{newName}";
+                    File.Copy(item.path, newItem);
+                    item.pic = newName;
+                    db.HINHANHSANPHAM.Add(new HINHANHSANPHAM() { HinhAnh = item.pic, MaSanPham = newitem.ma });
+                }
+
+            // 2. Xóa ảnh không dùng
+            foreach (var item in OldPicList) if (newitem.hinhanh.FindAll(c => c.pic == item.pic).Count() == 0)
+                {
+                    File.Delete(item.path);
+                    var tam = new FileInfo(item.pic);
+                    db.HINHANHSANPHAM.Remove(db.HINHANHSANPHAM.Where(c => c.MaSanPham == newitem.ma).Where(c => c.HinhAnh == item.pic).FirstOrDefault());
+                }
+
+            // cập nhật kích thước
+            var oldsizelist = from c in db.KICHTHUOCSANPHAM
+                              where c.MaSanPham == newitem.ma
+                              select c;
+            foreach (var item in oldsizelist) db.KICHTHUOCSANPHAM.Remove(item);
+
+            foreach (var item in newitem.kichthuoc) db.KICHTHUOCSANPHAM.Add(new KICHTHUOCSANPHAM() { KichThuoc = item.size, MaSanPham = newitem.ma });
+
+            // cập nhật màu sắc
+            var oldcolorlist = from c in db.MAUSACSANPHAM
+                               where c.MaSanPham == newitem.ma
+                               select c;
+            foreach (var item in oldcolorlist) db.MAUSACSANPHAM.Remove(item);
+
+            foreach (var item in newitem.mausac) db.MAUSACSANPHAM.Add(new MAUSACSANPHAM() { MaSanPham = newitem.ma, MauSac = item.color });
+
+            // cập thông tin chung
+            olditem.TenSanPham = newitem.ten;
+            olditem.MaLoai = newitem.maloai;
+            olditem.MoTa = newitem.mota;
+            olditem.TrongLuong = newitem.trongluong;
+            olditem.SoLuongTonKho = newitem.tonkho;
+            olditem.GiaNhap = newitem.gianhap;
+            olditem.GiaBan = newitem.giaban;
+            olditem.PhanTramChi = newitem.phantram;
+            olditem.MaNguon = newitem.manguon;
+            olditem.SoLuongToiThieu = newitem.toithieu;
+
+            db.SaveChanges();
+        }
+
+        public void ProductDelete(Product product)
+        {
+            // Xóa loại
+            var type = from c in db.SANPHAM
+                          where c.MaLoai == product.maloai
+                          select c;
+            if (type.Count() == 1)   
+            {
+                var item = db.LOAISANPHAM.Find(type.FirstOrDefault().MaLoai);
+                db.LOAISANPHAM.Remove(item);
+            }
+
+            // Xóa hình ảnh
+            foreach (var item in product.hinhanh) 
+                {
+                    File.Delete(item.path);
+                    db.HINHANHSANPHAM.Remove(db.HINHANHSANPHAM.Where(c => c.MaSanPham == product.ma).Where(c => c.HinhAnh == item.pic).FirstOrDefault());
+                }
+
+            // Xóa kích thước
+            var oldsizelist = from c in db.KICHTHUOCSANPHAM
+                              where c.MaSanPham == product.ma
+                              select c;
+            foreach (var item in oldsizelist) db.KICHTHUOCSANPHAM.Remove(item);
+
+            // Xóa màu sắc
+            var oldcolorlist = from c in db.MAUSACSANPHAM
+                               where c.MaSanPham == product.ma
+                               select c;
+            foreach (var item in oldcolorlist) db.MAUSACSANPHAM.Remove(item);
+
+            //Xóa trong chi tiết đơn hàng  - không cập nhật giá trị đơn hàng
+            var billquery = from c in db.CHITIETDATHANG
+                            where c.MaSanPham == product.ma
+                            select c;
+            foreach (var item in billquery) db.CHITIETDATHANG.Remove(item);
+
+            // Xóa thông tin chung
+            db.SANPHAM.Remove(db.SANPHAM.Where(c => c.MaSanPham == product.ma).FirstOrDefault());
+            db.SaveChanges();
         }
     }
 }

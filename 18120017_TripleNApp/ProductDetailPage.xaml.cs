@@ -21,7 +21,7 @@ namespace _18120017_TripleNApp
     public partial class ProductDetailPage : Page
     {
         Product Product;
-        
+        ProductBUS ProductBUS = new ProductBUS();
         public ProductDetailPage(Product CurrentProduct)
         {
             InitializeComponent();
@@ -35,12 +35,14 @@ namespace _18120017_TripleNApp
 
         private void UpdateButton_Click(object sender, RoutedEventArgs e)
         {
-
+            this.NavigationService.Navigate(new ProductUpdatePage(Product));
         }
 
         private void DeleteButton_Click(object sender, RoutedEventArgs e)
         {
-
+            ProductBUS.ProductDelete(Product);
+            MessageBox.Show("Đã xóa sản phẩm.");
+            this.NavigationService.Navigate(new ProductListPage());
         }
 
         private void PicListview_MouseLeftButtonUp(object sender, MouseButtonEventArgs e)
