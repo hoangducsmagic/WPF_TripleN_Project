@@ -25,6 +25,9 @@ namespace _18120017_TripleNApp
         List<ProductInBill> BuyList = new List<ProductInBill>();
         List<Product> ProductList = new List<Product>();
 
+        BillBUS BillBUS = new BillBUS();
+        CustomerDAO CustomerDAO = new CustomerDAO();
+
         public BillAddPage()
         {
             InitializeComponent();
@@ -68,7 +71,14 @@ namespace _18120017_TripleNApp
 
         private void ProductAmountTextbox_TextChanged(object sender, TextChangedEventArgs e)
         {
+            if (ProductAmountTextbox.Text == "")
+            {
+                ProductAmountTextbox.Text = "1";
+            }
+            if (ProductNameCombobox.SelectedIndex == -1) return;
 
+            var selectedproduct = ProductList.ElementAtOrDefault(ProductNameCombobox.SelectedIndex);
+            ProductSumTextblock.Text = (Int32.Parse(ProductAmountTextbox.Text) * selectedproduct.giaban).ToString();
         }
 
         private void ProductNameCombobox_SelectionChanged(object sender, SelectionChangedEventArgs e)
@@ -76,21 +86,36 @@ namespace _18120017_TripleNApp
             var selectedproduct = ProductList.ElementAtOrDefault(ProductNameCombobox.SelectedIndex);
             ProductIDTextblock.Text = selectedproduct.ma;
             ProductPriceTextblock.Text = selectedproduct.giaban.ToString();
+            ProductSumTextblock.Text = (Int32.Parse(ProductAmountTextbox.Text) * selectedproduct.giaban).ToString();
+
         }
 
         private void ProductDeleteButton_Click(object sender, RoutedEventArgs e)
         {
+            var selection = (sender as Button).DataContext as ProductInBill;
+            Bill.thanhtien -= selection.thanhtien;
+            TotalMoneyTextbox.DataContext = Bill.thanhtien;
+            BuyList.Remove(selection);
+            ProductListview.Items.Refresh();
 
         }
 
         private void GenerateIDButton_Click(object sender, RoutedEventArgs e)
         {
-
+            BillIDTextbox.Text = BillBUS.RandomID();
         }
 
         private void MemChooseButton_Click(object sender, RoutedEventArgs e)
         {
+            var screen = new MemChooseDialog();
+            screen.ShowDialog();
+            var value = MemChooseDialog.value;
+            if (value == "Not selected yet") return;
 
+            var query = CustomerDAO.FindCustomer(value);
+            MemNameTextbox.Text = query.ten;
+            MemAddressTextbox.Text = query.diachi;
+            MemPhoneTextbox.Text = query.sdt;
         }
     }
 }

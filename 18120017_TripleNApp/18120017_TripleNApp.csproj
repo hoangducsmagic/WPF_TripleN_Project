@@ -116,6 +116,7 @@
     <Compile Include="BillAddPage.xaml.cs">
       <DependentUpon>BillAddPage.xaml</DependentUpon>
     </Compile>
+    <Compile Include="BillBUS.cs" />
     <Compile Include="BillDAO.cs" />
     <Compile Include="BillListPage.xaml.cs">
       <DependentUpon>BillListPage.xaml</DependentUpon>
@@ -126,6 +127,8 @@
     </Compile>
     <Compile Include="Color.cs" />
     <Compile Include="Customer.cs" />
+    <Compile Include="CustomerBUS.cs" />
+    <Compile Include="CustomerDAO.cs" />
     <Compile Include="DateConverter.cs" />
     <Compile Include="DirectPicConverter.cs" />
     <Compile Include="DONHANG.cs">
@@ -134,8 +137,14 @@
     <Compile Include="HINHANHSANPHAM.cs">
       <DependentUpon>MyDB.tt</DependentUpon>
     </Compile>
+    <Compile Include="Import.cs" />
+    <Compile Include="ImportBUS.cs" />
+    <Compile Include="ImportDAO.cs" />
     <Compile Include="InfoPage.xaml.cs">
       <DependentUpon>InfoPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="MemChooseDialog.xaml.cs">
+      <DependentUpon>MemChooseDialog.xaml</DependentUpon>
     </Compile>
     <Compile Include="Pic.cs" />
     <Compile Include="KHACHHANG.cs">
@@ -222,6 +231,10 @@
       <DependentUpon>MainWindow.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
+    <Page Include="MemChooseDialog.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="ProductAddPage.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
