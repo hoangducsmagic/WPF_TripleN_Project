@@ -112,11 +112,21 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="Bill.cs" />
+    <Compile Include="BillAddPage.xaml.cs">
+      <DependentUpon>BillAddPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="BillDAO.cs" />
+    <Compile Include="BillListPage.xaml.cs">
+      <DependentUpon>BillListPage.xaml</DependentUpon>
+    </Compile>
     <Compile Include="BitmapConverter.cs" />
     <Compile Include="CHITIETDATHANG.cs">
       <DependentUpon>MyDB.tt</DependentUpon>
     </Compile>
     <Compile Include="Color.cs" />
+    <Compile Include="Customer.cs" />
+    <Compile Include="DateConverter.cs" />
     <Compile Include="DirectPicConverter.cs" />
     <Compile Include="DONHANG.cs">
       <DependentUpon>MyDB.tt</DependentUpon>
@@ -169,6 +179,7 @@
     <Compile Include="ProductDetailPage.xaml.cs">
       <DependentUpon>ProductDetailPage.xaml</DependentUpon>
     </Compile>
+    <Compile Include="ProductInBill.cs" />
     <Compile Include="ProductListPage.xaml.cs">
       <DependentUpon>ProductListPage.xaml</DependentUpon>
     </Compile>
@@ -187,6 +198,14 @@
     <Compile Include="TypeAddDialog.xaml.cs">
       <DependentUpon>TypeAddDialog.xaml</DependentUpon>
     </Compile>
+    <Page Include="BillAddPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="BillListPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="InfoPage.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
