@@ -41,6 +41,15 @@
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
+    <EntitySetMapping Name="KHUYENMAI">
+      <EntityTypeMapping TypeName="TripleNDatabaseModel.KHUYENMAI">
+        <MappingFragment StoreEntitySet="KHUYENMAI">
+          <ScalarProperty Name="MaDon" ColumnName="MaDon" />
+          <ScalarProperty Name="TenKhuyenMai" ColumnName="TenKhuyenMai" />
+          <ScalarProperty Name="TienKhuyenMai" ColumnName="TienKhuyenMai" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
     <EntitySetMapping Name="KICHTHUOCSANPHAM">
       <EntityTypeMapping TypeName="TripleNDatabaseModel.KICHTHUOCSANPHAM">
         <MappingFragment StoreEntitySet="KICHTHUOCSANPHAM">

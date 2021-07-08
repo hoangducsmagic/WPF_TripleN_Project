@@ -8,10 +8,11 @@ namespace _18120017_TripleNApp
 {
     public class CustomerDAO
     {
-        List<Customer> MemList = new List<Customer>();
+        
         TripleNDatabaseEntities db = new TripleNDatabaseEntities();
         public List<Customer> GetCustomerData()
         {
+            List<Customer> MemList = new List<Customer>();
             var query = from c in db.KHACHHANG
                         select c;
             foreach (var item in query)
@@ -21,7 +22,29 @@ namespace _18120017_TripleNApp
         
         public Customer FindCustomer(string ID)
         {
-            return MemList.Find(c => c.ma == ID);
+            var query = db.KHACHHANG.Find(ID);
+            Customer khachhang = new Customer() { diachi=query.DiaChi,ma=query.MaKhachHang,sdt=query.SoDienThoai,solan=(int)query.SoLanDatHang,ten=query.HoTen,tongtien=(double)query.TongTienDatHang};
+            return khachhang;
+        }
+
+        public Customer FindCustomer(string ten,string sdt)
+        {
+            var query = from c in db.KHACHHANG
+                        where c.HoTen == ten
+                        where c.SoDienThoai == sdt
+                        select c;
+            if (query.Count() > 0)
+            {
+                Customer khachhang = new Customer() { diachi = query.FirstOrDefault().DiaChi, ma = query.FirstOrDefault().MaKhachHang, sdt = query.FirstOrDefault().SoDienThoai, solan = (int)query.FirstOrDefault().SoLanDatHang, ten = query.FirstOrDefault().HoTen, tongtien = (double)query.FirstOrDefault().TongTienDatHang };
+                return khachhang;
+            }
+            return null;
+        }
+
+        public void AddCustomer(Customer customer)
+        {
+            db.KHACHHANG.Add(new KHACHHANG() {DiaChi=customer.diachi,HoTen=customer.ten,MaKhachHang=customer.ma,SoDienThoai=customer.sdt,SoLanDatHang=customer.solan,TongTienDatHang=customer.tongtien });
+            db.SaveChanges();
         }
     }
 }

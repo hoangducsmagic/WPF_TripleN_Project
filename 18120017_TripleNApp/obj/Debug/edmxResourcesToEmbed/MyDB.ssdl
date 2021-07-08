@@ -38,6 +38,15 @@
     <Property Name="SoLanDatHang" Type="int" />
     <Property Name="TongTienDatHang" Type="float" />
   </EntityType>
+  <EntityType Name="KHUYENMAI">
+    <Key>
+      <PropertyRef Name="MaDon" />
+      <PropertyRef Name="TenKhuyenMai" />
+    </Key>
+    <Property Name="MaDon" Type="varchar" MaxLength="20" Nullable="false" />
+    <Property Name="TenKhuyenMai" Type="nvarchar" MaxLength="300" Nullable="false" />
+    <Property Name="TienKhuyenMai" Type="float" />
+  </EntityType>
   <EntityType Name="KICHTHUOCSANPHAM">
     <Key>
       <PropertyRef Name="MaSanPham" />
@@ -146,6 +155,18 @@
       </Dependent>
     </ReferentialConstraint>
   </Association>
+  <Association Name="FK_KHUYENMAI_DONHANG">
+    <End Role="DONHANG" Type="Self.DONHANG" Multiplicity="1" />
+    <End Role="KHUYENMAI" Type="Self.KHUYENMAI" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="DONHANG">
+        <PropertyRef Name="MaDon" />
+      </Principal>
+      <Dependent Role="KHUYENMAI">
+        <PropertyRef Name="MaDon" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
   <Association Name="FK_KICHTHUOCSANPHAM_SANPHAM">
     <End Role="SANPHAM" Type="Self.SANPHAM" Multiplicity="1" />
     <End Role="KICHTHUOCSANPHAM" Type="Self.KICHTHUOCSANPHAM" Multiplicity="*" />
@@ -211,6 +232,7 @@
     <EntitySet Name="DONHANG" EntityType="Self.DONHANG" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="HINHANHSANPHAM" EntityType="Self.HINHANHSANPHAM" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="KHACHHANG" EntityType="Self.KHACHHANG" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="KHUYENMAI" EntityType="Self.KHUYENMAI" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="KICHTHUOCSANPHAM" EntityType="Self.KICHTHUOCSANPHAM" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="LOAISANPHAM" EntityType="Self.LOAISANPHAM" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="MAUSACSANPHAM" EntityType="Self.MAUSACSANPHAM" Schema="dbo" store:Type="Tables" />
@@ -232,6 +254,10 @@
     <AssociationSet Name="FK_HINHANHSANPHAM_SANPHAM" Association="Self.FK_HINHANHSANPHAM_SANPHAM">
       <End Role="SANPHAM" EntitySet="SANPHAM" />
       <End Role="HINHANHSANPHAM" EntitySet="HINHANHSANPHAM" />
+    </AssociationSet>
+    <AssociationSet Name="FK_KHUYENMAI_DONHANG" Association="Self.FK_KHUYENMAI_DONHANG">
+      <End Role="DONHANG" EntitySet="DONHANG" />
+      <End Role="KHUYENMAI" EntitySet="KHUYENMAI" />
     </AssociationSet>
     <AssociationSet Name="FK_KICHTHUOCSANPHAM_SANPHAM" Association="Self.FK_KICHTHUOCSANPHAM_SANPHAM">
       <End Role="SANPHAM" EntitySet="SANPHAM" />

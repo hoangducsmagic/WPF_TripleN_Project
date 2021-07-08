@@ -91,7 +91,7 @@
                                 <ColumnDefinition Width="*"/>
                             </Grid.ColumnDefinitions>
                             <TextBlock Grid.Column="0" Text="{Binding ma}"  HorizontalAlignment="Center" VerticalAlignment="Center" />
-                            <TextBlock Grid.Column="1" Text="{Binding tenkhachhang}"  HorizontalAlignment="Center" VerticalAlignment="Center" />
+                            <TextBlock Grid.Column="1" Text="{Binding khachhang.ten}"  HorizontalAlignment="Center" VerticalAlignment="Center" />
                             <TextBlock Grid.Column="2" Text="{Binding ngaylap,Converter={StaticResource DateConverter}}"  HorizontalAlignment="Center" VerticalAlignment="Center" />
                             <TextBlock Grid.Column="3" Text="{Binding thanhtien,Converter={StaticResource MoneyConverter}}"  HorizontalAlignment="Center" VerticalAlignment="Center" />
                             <Button Grid.Column="4" Content="Xóa" HorizontalAlignment="Center"  VerticalAlignment="Center" Name="BillDeleteButton" Click="BillDeleteButton_Click"/>

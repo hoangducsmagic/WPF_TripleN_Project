@@ -43,6 +43,15 @@
           <Property Name="SoLanDatHang" Type="int" />
           <Property Name="TongTienDatHang" Type="float" />
         </EntityType>
+        <EntityType Name="KHUYENMAI">
+          <Key>
+            <PropertyRef Name="MaDon" />
+            <PropertyRef Name="TenKhuyenMai" />
+          </Key>
+          <Property Name="MaDon" Type="varchar" MaxLength="20" Nullable="false" />
+          <Property Name="TenKhuyenMai" Type="nvarchar" MaxLength="300" Nullable="false" />
+          <Property Name="TienKhuyenMai" Type="float" />
+        </EntityType>
         <EntityType Name="KICHTHUOCSANPHAM">
           <Key>
             <PropertyRef Name="MaSanPham" />
@@ -151,6 +160,18 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <Association Name="FK_KHUYENMAI_DONHANG">
+          <End Role="DONHANG" Type="Self.DONHANG" Multiplicity="1" />
+          <End Role="KHUYENMAI" Type="Self.KHUYENMAI" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="DONHANG">
+              <PropertyRef Name="MaDon" />
+            </Principal>
+            <Dependent Role="KHUYENMAI">
+              <PropertyRef Name="MaDon" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <Association Name="FK_KICHTHUOCSANPHAM_SANPHAM">
           <End Role="SANPHAM" Type="Self.SANPHAM" Multiplicity="1" />
           <End Role="KICHTHUOCSANPHAM" Type="Self.KICHTHUOCSANPHAM" Multiplicity="*" />
@@ -216,6 +237,7 @@
           <EntitySet Name="DONHANG" EntityType="Self.DONHANG" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="HINHANHSANPHAM" EntityType="Self.HINHANHSANPHAM" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="KHACHHANG" EntityType="Self.KHACHHANG" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="KHUYENMAI" EntityType="Self.KHUYENMAI" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="KICHTHUOCSANPHAM" EntityType="Self.KICHTHUOCSANPHAM" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="LOAISANPHAM" EntityType="Self.LOAISANPHAM" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="MAUSACSANPHAM" EntityType="Self.MAUSACSANPHAM" Schema="dbo" store:Type="Tables" />
@@ -237,6 +259,10 @@
           <AssociationSet Name="FK_HINHANHSANPHAM_SANPHAM" Association="Self.FK_HINHANHSANPHAM_SANPHAM">
             <End Role="SANPHAM" EntitySet="SANPHAM" />
             <End Role="HINHANHSANPHAM" EntitySet="HINHANHSANPHAM" />
+          </AssociationSet>
+          <AssociationSet Name="FK_KHUYENMAI_DONHANG" Association="Self.FK_KHUYENMAI_DONHANG">
+            <End Role="DONHANG" EntitySet="DONHANG" />
+            <End Role="KHUYENMAI" EntitySet="KHUYENMAI" />
           </AssociationSet>
           <AssociationSet Name="FK_KICHTHUOCSANPHAM_SANPHAM" Association="Self.FK_KICHTHUOCSANPHAM_SANPHAM">
             <End Role="SANPHAM" EntitySet="SANPHAM" />
@@ -286,6 +312,7 @@
           <Property Name="ThanhTien" Type="Double" />
           <NavigationProperty Name="CHITIETDATHANG" Relationship="Self.FK_CHITIETDATHANG_DONHANG" FromRole="DONHANG" ToRole="CHITIETDATHANG" />
           <NavigationProperty Name="KHACHHANG" Relationship="Self.FK_DONHANG_KHACHHANG" FromRole="DONHANG" ToRole="KHACHHANG" />
+          <NavigationProperty Name="KHUYENMAI" Relationship="Self.FK_KHUYENMAI_DONHANG" FromRole="DONHANG" ToRole="KHUYENMAI" />
         </EntityType>
         <EntityType Name="HINHANHSANPHAM">
           <Key>
@@ -307,6 +334,16 @@
           <Property Name="SoLanDatHang" Type="Int32" />
           <Property Name="TongTienDatHang" Type="Double" />
           <NavigationProperty Name="DONHANG" Relationship="Self.FK_DONHANG_KHACHHANG" FromRole="KHACHHANG" ToRole="DONHANG" />
+        </EntityType>
+        <EntityType Name="KHUYENMAI">
+          <Key>
+            <PropertyRef Name="MaDon" />
+            <PropertyRef Name="TenKhuyenMai" />
+          </Key>
+          <Property Name="MaDon" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="TenKhuyenMai" Type="String" MaxLength="300" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="TienKhuyenMai" Type="Double" />
+          <NavigationProperty Name="DONHANG" Relationship="Self.FK_KHUYENMAI_DONHANG" FromRole="KHUYENMAI" ToRole="DONHANG" />
         </EntityType>
         <EntityType Name="KICHTHUOCSANPHAM">
           <Key>
@@ -416,6 +453,18 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <Association Name="FK_KHUYENMAI_DONHANG">
+          <End Role="DONHANG" Type="Self.DONHANG" Multiplicity="1" />
+          <End Role="KHUYENMAI" Type="Self.KHUYENMAI" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="DONHANG">
+              <PropertyRef Name="MaDon" />
+            </Principal>
+            <Dependent Role="KHUYENMAI">
+              <PropertyRef Name="MaDon" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <Association Name="FK_HINHANHSANPHAM_SANPHAM">
           <End Role="SANPHAM" Type="Self.SANPHAM" Multiplicity="1" />
           <End Role="HINHANHSANPHAM" Type="Self.HINHANHSANPHAM" Multiplicity="*" />
@@ -493,6 +542,7 @@
           <EntitySet Name="DONHANG" EntityType="Self.DONHANG" />
           <EntitySet Name="HINHANHSANPHAM" EntityType="Self.HINHANHSANPHAM" />
           <EntitySet Name="KHACHHANG" EntityType="Self.KHACHHANG" />
+          <EntitySet Name="KHUYENMAI" EntityType="Self.KHUYENMAI" />
           <EntitySet Name="KICHTHUOCSANPHAM" EntityType="Self.KICHTHUOCSANPHAM" />
           <EntitySet Name="LOAISANPHAM" EntityType="Self.LOAISANPHAM" />
           <EntitySet Name="MAUSACSANPHAM" EntityType="Self.MAUSACSANPHAM" />
@@ -510,6 +560,10 @@
           <AssociationSet Name="FK_DONHANG_KHACHHANG" Association="Self.FK_DONHANG_KHACHHANG">
             <End Role="KHACHHANG" EntitySet="KHACHHANG" />
             <End Role="DONHANG" EntitySet="DONHANG" />
+          </AssociationSet>
+          <AssociationSet Name="FK_KHUYENMAI_DONHANG" Association="Self.FK_KHUYENMAI_DONHANG">
+            <End Role="DONHANG" EntitySet="DONHANG" />
+            <End Role="KHUYENMAI" EntitySet="KHUYENMAI" />
           </AssociationSet>
           <AssociationSet Name="FK_HINHANHSANPHAM_SANPHAM" Association="Self.FK_HINHANHSANPHAM_SANPHAM">
             <End Role="SANPHAM" EntitySet="SANPHAM" />
@@ -579,6 +633,15 @@
                 <ScalarProperty Name="SoDienThoai" ColumnName="SoDienThoai" />
                 <ScalarProperty Name="SoLanDatHang" ColumnName="SoLanDatHang" />
                 <ScalarProperty Name="TongTienDatHang" ColumnName="TongTienDatHang" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="KHUYENMAI">
+            <EntityTypeMapping TypeName="TripleNDatabaseModel.KHUYENMAI">
+              <MappingFragment StoreEntitySet="KHUYENMAI">
+                <ScalarProperty Name="MaDon" ColumnName="MaDon" />
+                <ScalarProperty Name="TenKhuyenMai" ColumnName="TenKhuyenMai" />
+                <ScalarProperty Name="TienKhuyenMai" ColumnName="TienKhuyenMai" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>

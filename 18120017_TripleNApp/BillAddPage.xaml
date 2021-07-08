@@ -38,6 +38,7 @@
                     <DatePicker  FontFamily="Bree Serif" FontSize="25" Foreground="DarkRed" VerticalAlignment="Center" Margin="0 -16 0 0"
                          SelectedDate="{x:Static sys:DateTime.Now}" Width="160" HorizontalContentAlignment="Center"
                          Name="DateCreatingPicker"
+                        SelectedDateChanged="DateCreatingPicker_SelectedDateChanged"
                          Style="{StaticResource MaterialDesignFloatingHintDatePicker}"  />
                 </StackPanel>
             </StackPanel>
@@ -49,11 +50,13 @@
                         <StackPanel Orientation="Horizontal" Margin="25 10 5 5">
                             <TextBlock Text="Tên khách hàng: " FontWeight="Bold"/>
                             <TextBox  Name="MemNameTextbox"
+                                      TextChanged="MemNameTextbox_TextChanged"
                                      Style="{StaticResource MaterialDesignFloatingHintTextBox}" Width="350" Margin="5 -22 0 0" />
                         </StackPanel>
                         <StackPanel Orientation="Horizontal" Margin="25 5 5 5">
                             <TextBlock Text="Số điện thoại: " FontWeight="Bold"/>
                             <TextBox  Name="MemPhoneTextbox"
+                                      TextChanged="MemPhoneTextbox_TextChanged"
                                      Style="{StaticResource MaterialDesignFloatingHintTextBox}" Width="250" Margin="5 -22 0 0" />
                         </StackPanel>
                         <StackPanel Orientation="Horizontal" Margin="25 5 5 5">
@@ -178,16 +181,45 @@
                             <TextBlock Grid.Column="0" Text="Loại khuyến mãi" HorizontalAlignment="Center" FontWeight="Bold"/>
                             <TextBlock Grid.Column="1" Text="Số tiền" HorizontalAlignment="Center" FontWeight="Bold"/>
                         </Grid>
-                        <TextBlock Text="(Chưa có khuyến mãi nào được áp dụng)" Foreground="Gray" HorizontalAlignment="Center"/>
-
+                        <TextBlock Name="NoDiscountTextblock" Text="(Chưa có khuyến mãi nào được áp dụng)" Foreground="Gray" HorizontalAlignment="Center"/>
+                        <ListView Name="DiscountListview" >
+                            <ListView.ItemsPanel>
+                                <ItemsPanelTemplate>
+                                    <StackPanel/>
+                                </ItemsPanelTemplate>
+                            </ListView.ItemsPanel>
+                            <ListView.ItemTemplate>
+                                <DataTemplate>
+                                    <StackPanel>
+                                        <Separator BorderThickness="1" BorderBrush="BlueViolet"/>
+                                        <Grid Width="750">
+                                            <Grid.ColumnDefinitions>
+                                                <ColumnDefinition Width="*"/>
+                                                <ColumnDefinition Width="*"/>
+                                                <ColumnDefinition Width="auto"/>
+                                            </Grid.ColumnDefinitions>
+                                            <TextBlock Grid.Column="0" Text="{Binding ten}" HorizontalAlignment="Center" />
+                                            <TextBlock Grid.Column="1" Text="{Binding sotien}" HorizontalAlignment="Center"/>
+                                        </Grid>
+                                    </StackPanel>
+                                </DataTemplate>
+                            </ListView.ItemTemplate>
+                        </ListView>
                     </StackPanel>
 
                 </Border>
-                <TextBlock Background="#ddffcf" FontWeight="Bold" Foreground="Gold" Text="Danh sách khuyến mãi" FontSize="15" VerticalAlignment="Top" HorizontalAlignment="Left" Margin="25 0 0 0"/>
+                <TextBlock Background="#ddffcf" FontWeight="Bold" Foreground="Gold" Text="Danh sách khuyến mãi"  FontSize="15" VerticalAlignment="Top" HorizontalAlignment="Left" Margin="25 0 0 0"/>
             </Grid>
 
 
 
+            <StackPanel Orientation="Horizontal">
+                <materialDesign:PackIcon Kind="Truck" Foreground="DarkRed" Margin="40 0 5 0" Height="25" Width="25" VerticalAlignment="Center"/>
+                <TextBlock Text="Phí vận chuyển: " Margin="5" FontFamily="Bree Serif" FontSize="25" Foreground="DarkRed" />
+                <TextBox  Width="200"  Name="TransportTextbox" FontFamily="Bree Serif" FontSize="25" Foreground="DarkRed" VerticalAlignment="Center"
+                          TextChanged="TransportTextbox_TextChanged"
+                         Style="{StaticResource MaterialDesignFloatingHintTextBox}" Margin="5 -11 5 5"  />
+            </StackPanel>
             <StackPanel Orientation="Horizontal">
                 <materialDesign:PackIcon Kind="Coins" Foreground="DarkRed" Margin="40 0 5 0" Height="25" Width="25" VerticalAlignment="Center"/>
                 <TextBlock Text="TỔNG THÀNH TIỀN: " Margin="5" FontFamily="Bree Serif" FontSize="25" Foreground="DarkRed" />

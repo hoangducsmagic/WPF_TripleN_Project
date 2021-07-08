@@ -18,6 +18,7 @@ namespace _18120017_TripleNApp
         public DONHANG()
         {
             this.CHITIETDATHANG = new HashSet<CHITIETDATHANG>();
+            this.KHUYENMAI = new HashSet<KHUYENMAI>();
         }
     
         public string MaDon { get; set; }
@@ -29,5 +30,7 @@ namespace _18120017_TripleNApp
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<CHITIETDATHANG> CHITIETDATHANG { get; set; }
         public virtual KHACHHANG KHACHHANG { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<KHUYENMAI> KHUYENMAI { get; set; }
     }
 }

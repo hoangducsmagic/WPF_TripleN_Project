@@ -21,10 +21,13 @@ namespace _18120017_TripleNApp
     public partial class BillListPage : Page
     {
         BillDAO BillDAO = new BillDAO();
+        BillBUS BillBUS = new BillBUS();
+        List<Bill> BillList = new List<Bill>();
         public BillListPage()
         {
             InitializeComponent();
-            BillListview.ItemsSource = BillDAO.GetBillData();
+            BillList= BillDAO.GetBillData();
+            BillListview.ItemsSource = BillList;
         }
 
         private void BillAddButton_Click(object sender, RoutedEventArgs e)
@@ -34,12 +37,19 @@ namespace _18120017_TripleNApp
 
         private void BillListview_MouseLeftButtonUp(object sender, MouseButtonEventArgs e)
         {
+            var selection = (sender as ListView).SelectedItem as Bill;
+            if (selection == null) return;
 
+            this.NavigationService.Navigate(new BillDetailPage(selection));
         }
 
         private void BillDeleteButton_Click(object sender, RoutedEventArgs e)
         {
-
+            var selection = (sender as Button).DataContext as Bill;
+            BillBUS.BillDelete(selection);
+            BillList.Remove(selection);
+            BillListview.Items.Refresh();
+            MessageBox.Show("Đã xóa hóa đơn");
         }
 
         private void SearchButton_Click(object sender, RoutedEventArgs e)

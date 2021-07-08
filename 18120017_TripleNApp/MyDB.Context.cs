@@ -29,6 +29,7 @@ namespace _18120017_TripleNApp
         public virtual DbSet<DONHANG> DONHANG { get; set; }
         public virtual DbSet<HINHANHSANPHAM> HINHANHSANPHAM { get; set; }
         public virtual DbSet<KHACHHANG> KHACHHANG { get; set; }
+        public virtual DbSet<KHUYENMAI> KHUYENMAI { get; set; }
         public virtual DbSet<KICHTHUOCSANPHAM> KICHTHUOCSANPHAM { get; set; }
         public virtual DbSet<LOAISANPHAM> LOAISANPHAM { get; set; }
         public virtual DbSet<MAUSACSANPHAM> MAUSACSANPHAM { get; set; }
