@@ -209,6 +209,10 @@
       <DependentUpon>MyDB.tt</DependentUpon>
     </Compile>
     <Compile Include="Size.cs" />
+    <Compile Include="Statistic.cs" />
+    <Compile Include="StatisticPage.xaml.cs">
+      <DependentUpon>StatisticPage.xaml</DependentUpon>
+    </Compile>
     <Compile Include="THONGBAONHAPHANG.cs">
       <DependentUpon>MyDB.tt</DependentUpon>
     </Compile>
@@ -260,6 +264,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="ProductUpdatePage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="StatisticPage.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

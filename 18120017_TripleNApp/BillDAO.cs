@@ -10,6 +10,7 @@ namespace _18120017_TripleNApp
     {
         TripleNDatabaseEntities db = new TripleNDatabaseEntities();
 
+        
 
         public Bill GetBillData(string ID)
         {
@@ -63,7 +64,7 @@ namespace _18120017_TripleNApp
             if (oldcustomer == null)
             {
                 db.KHACHHANG.Add(new KHACHHANG() { HoTen = Bill.khachhang.ten, DiaChi = Bill.khachhang.diachi, MaKhachHang = Bill.khachhang.ma, SoDienThoai = Bill.khachhang.sdt, SoLanDatHang = 1, TongTienDatHang = Bill.thanhtien });
-            }  else
+            }  else 
             {
                 oldcustomer.SoLanDatHang++;
                 oldcustomer.TongTienDatHang += Bill.thanhtien;
@@ -72,8 +73,12 @@ namespace _18120017_TripleNApp
 
             // Chi tiết đơn hàng
             foreach (var item in Bill.ProductList)
+            {
+                var product = db.SANPHAM.Find(item.masanpham);
+                product.SoLuongTonKho -= item.soluong;
+                product.SoLuongDaBan += item.soluong;
                 db.CHITIETDATHANG.Add(new CHITIETDATHANG() { MaDonHang = Bill.ma, MaSanPham = item.masanpham, SoLuong = item.soluong });
-
+            }
             //  Khuyến mãi
             foreach (var item in Bill.DiscountList)
                 db.KHUYENMAI.Add(new KHUYENMAI() { MaDon = Bill.ma, TenKhuyenMai = item.ten, TienKhuyenMai = item.sotien });

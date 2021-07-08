@@ -94,7 +94,7 @@ namespace _18120017_TripleNApp
             ButtonCloseMenu.Visibility = Visibility.Collapsed;
             MainFrame.IsEnabled = true;
             MoveCursorMenu(3);
-            //MainFrame.NavigationService.Navigate(new BillPage());
+            MainFrame.NavigationService.Navigate(new StatisticPage());
         }
 
         private void SettingButton_MouseLeftButtonUp(object sender, MouseButtonEventArgs e)

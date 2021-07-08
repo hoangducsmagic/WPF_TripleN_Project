@@ -41,7 +41,9 @@ D:\WPF_TripleN_Project-main\18120017_TripleNApp\bin\Debug\ro\Xceed.Wpf.AvalonDoc
 D:\WPF_TripleN_Project-main\18120017_TripleNApp\bin\Debug\ru\Xceed.Wpf.AvalonDock.resources.dll
 D:\WPF_TripleN_Project-main\18120017_TripleNApp\bin\Debug\sv\Xceed.Wpf.AvalonDock.resources.dll
 D:\WPF_TripleN_Project-main\18120017_TripleNApp\bin\Debug\zh-Hans\Xceed.Wpf.AvalonDock.resources.dll
+D:\WPF_TripleN_Project-main\18120017_TripleNApp\obj\Debug\18120017_TripleNApp.csprojAssemblyReference.cache
 D:\WPF_TripleN_Project-main\18120017_TripleNApp\obj\Debug\BillAddPage.g.cs
+D:\WPF_TripleN_Project-main\18120017_TripleNApp\obj\Debug\BillDetailPage.g.cs
 D:\WPF_TripleN_Project-main\18120017_TripleNApp\obj\Debug\BillListPage.g.cs
 D:\WPF_TripleN_Project-main\18120017_TripleNApp\obj\Debug\InfoPage.g.cs
 D:\WPF_TripleN_Project-main\18120017_TripleNApp\obj\Debug\MainWindow.g.cs
@@ -50,6 +52,7 @@ D:\WPF_TripleN_Project-main\18120017_TripleNApp\obj\Debug\ProductAddPage.g.cs
 D:\WPF_TripleN_Project-main\18120017_TripleNApp\obj\Debug\ProductDetailPage.g.cs
 D:\WPF_TripleN_Project-main\18120017_TripleNApp\obj\Debug\ProductListPage.g.cs
 D:\WPF_TripleN_Project-main\18120017_TripleNApp\obj\Debug\ProductUpdatePage.g.cs
+D:\WPF_TripleN_Project-main\18120017_TripleNApp\obj\Debug\StatisticPage.g.cs
 D:\WPF_TripleN_Project-main\18120017_TripleNApp\obj\Debug\TypeAddDialog.g.cs
 D:\WPF_TripleN_Project-main\18120017_TripleNApp\obj\Debug\App.g.cs
 D:\WPF_TripleN_Project-main\18120017_TripleNApp\obj\Debug\18120017_TripleNApp_Content.g.cs
@@ -58,6 +61,7 @@ D:\WPF_TripleN_Project-main\18120017_TripleNApp\obj\Debug\18120017_TripleNApp_Ma
 D:\WPF_TripleN_Project-main\18120017_TripleNApp\obj\Debug\18120017_TripleNApp_MarkupCompile.lref
 D:\WPF_TripleN_Project-main\18120017_TripleNApp\obj\Debug\App.baml
 D:\WPF_TripleN_Project-main\18120017_TripleNApp\obj\Debug\BillAddPage.baml
+D:\WPF_TripleN_Project-main\18120017_TripleNApp\obj\Debug\BillDetailPage.baml
 D:\WPF_TripleN_Project-main\18120017_TripleNApp\obj\Debug\BillListPage.baml
 D:\WPF_TripleN_Project-main\18120017_TripleNApp\obj\Debug\InfoPage.baml
 D:\WPF_TripleN_Project-main\18120017_TripleNApp\obj\Debug\MainWindow.baml
@@ -66,6 +70,7 @@ D:\WPF_TripleN_Project-main\18120017_TripleNApp\obj\Debug\ProductAddPage.baml
 D:\WPF_TripleN_Project-main\18120017_TripleNApp\obj\Debug\ProductDetailPage.baml
 D:\WPF_TripleN_Project-main\18120017_TripleNApp\obj\Debug\ProductListPage.baml
 D:\WPF_TripleN_Project-main\18120017_TripleNApp\obj\Debug\ProductUpdatePage.baml
+D:\WPF_TripleN_Project-main\18120017_TripleNApp\obj\Debug\StatisticPage.baml
 D:\WPF_TripleN_Project-main\18120017_TripleNApp\obj\Debug\TypeAddDialog.baml
 D:\WPF_TripleN_Project-main\18120017_TripleNApp\obj\Debug\18120017_TripleNApp.g.resources
 D:\WPF_TripleN_Project-main\18120017_TripleNApp\obj\Debug\_18120017_TripleNApp.Properties.Resources.resources
@@ -74,6 +79,3 @@ D:\WPF_TripleN_Project-main\18120017_TripleNApp\obj\Debug\18120017_TripleNApp.cs
 D:\WPF_TripleN_Project-main\18120017_TripleNApp\obj\Debug\18120017_TripleNApp.csproj.CopyComplete
 D:\WPF_TripleN_Project-main\18120017_TripleNApp\obj\Debug\18120017_TripleNApp.exe
 D:\WPF_TripleN_Project-main\18120017_TripleNApp\obj\Debug\18120017_TripleNApp.pdb
-D:\WPF_TripleN_Project-main\18120017_TripleNApp\obj\Debug\18120017_TripleNApp.csprojAssemblyReference.cache
-D:\WPF_TripleN_Project-main\18120017_TripleNApp\obj\Debug\BillDetailPage.g.cs
-D:\WPF_TripleN_Project-main\18120017_TripleNApp\obj\Debug\BillDetailPage.baml
