@@ -52,6 +52,8 @@ D:\WPF_TripleN_Project-main\18120017_TripleNApp\obj\Debug\ProductAddPage.g.cs
 D:\WPF_TripleN_Project-main\18120017_TripleNApp\obj\Debug\ProductDetailPage.g.cs
 D:\WPF_TripleN_Project-main\18120017_TripleNApp\obj\Debug\ProductListPage.g.cs
 D:\WPF_TripleN_Project-main\18120017_TripleNApp\obj\Debug\ProductUpdatePage.g.cs
+D:\WPF_TripleN_Project-main\18120017_TripleNApp\obj\Debug\SourceDetailPage.g.cs
+D:\WPF_TripleN_Project-main\18120017_TripleNApp\obj\Debug\SourceListPage.g.cs
 D:\WPF_TripleN_Project-main\18120017_TripleNApp\obj\Debug\StatisticPage.g.cs
 D:\WPF_TripleN_Project-main\18120017_TripleNApp\obj\Debug\TypeAddDialog.g.cs
 D:\WPF_TripleN_Project-main\18120017_TripleNApp\obj\Debug\App.g.cs
@@ -70,6 +72,8 @@ D:\WPF_TripleN_Project-main\18120017_TripleNApp\obj\Debug\ProductAddPage.baml
 D:\WPF_TripleN_Project-main\18120017_TripleNApp\obj\Debug\ProductDetailPage.baml
 D:\WPF_TripleN_Project-main\18120017_TripleNApp\obj\Debug\ProductListPage.baml
 D:\WPF_TripleN_Project-main\18120017_TripleNApp\obj\Debug\ProductUpdatePage.baml
+D:\WPF_TripleN_Project-main\18120017_TripleNApp\obj\Debug\SourceDetailPage.baml
+D:\WPF_TripleN_Project-main\18120017_TripleNApp\obj\Debug\SourceListPage.baml
 D:\WPF_TripleN_Project-main\18120017_TripleNApp\obj\Debug\StatisticPage.baml
 D:\WPF_TripleN_Project-main\18120017_TripleNApp\obj\Debug\TypeAddDialog.baml
 D:\WPF_TripleN_Project-main\18120017_TripleNApp\obj\Debug\18120017_TripleNApp.g.resources

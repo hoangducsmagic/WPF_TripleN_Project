@@ -8,5 +8,9 @@ namespace _18120017_TripleNApp
 {
     public class ImportBUS
     {
+        public void SourceDelete(Import Source)
+        {
+            // do something
+        }
     }
 }

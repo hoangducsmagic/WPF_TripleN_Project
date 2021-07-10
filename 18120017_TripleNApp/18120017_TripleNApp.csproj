@@ -138,6 +138,7 @@
     <Compile Include="DONHANG.cs">
       <DependentUpon>MyDB.tt</DependentUpon>
     </Compile>
+    <Compile Include="FavoriteConverter.cs" />
     <Compile Include="HINHANHSANPHAM.cs">
       <DependentUpon>MyDB.tt</DependentUpon>
     </Compile>
@@ -209,6 +210,12 @@
       <DependentUpon>MyDB.tt</DependentUpon>
     </Compile>
     <Compile Include="Size.cs" />
+    <Compile Include="SourceDetailPage.xaml.cs">
+      <DependentUpon>SourceDetailPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="SourceListPage.xaml.cs">
+      <DependentUpon>SourceListPage.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Statistic.cs" />
     <Compile Include="StatisticPage.xaml.cs">
       <DependentUpon>StatisticPage.xaml</DependentUpon>
@@ -264,6 +271,14 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="ProductUpdatePage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="SourceDetailPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="SourceListPage.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
