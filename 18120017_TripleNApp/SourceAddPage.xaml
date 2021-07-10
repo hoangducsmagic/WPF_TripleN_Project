@@ -1,0 +1,34 @@
+﻿<Page x:Class="_18120017_TripleNApp.SourceAddPage"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:_18120017_TripleNApp"
+      mc:Ignorable="d" 
+      d:DesignHeight="1245" d:DesignWidth="650"
+      Title="SourceAddPage">
+
+    <StackPanel>
+        <StackPanel Orientation="Horizontal">
+            <TextBlock Text="Mã nguồn nhập: "/>
+            <TextBox Name="SourceIDTextbox" Width="100" />
+            <Button Content="Tạo tự động" Name="IDGenerateButton" Click="IDGenerateButton_Click"/>
+        </StackPanel>
+        <StackPanel Orientation="Horizontal">
+            <TextBlock Text="Tên nguồn nhập: "/>
+            <TextBox Name="SourceNameTextbox" Width="100" />
+        </StackPanel>
+        <StackPanel Orientation="Horizontal">
+            <TextBlock Text="Địa chỉ nguồn nhập: "/>
+            <TextBox Name="SourceAddressTextbox" Width="100" />
+        </StackPanel>
+        <StackPanel Orientation="Horizontal">
+            <TextBlock Text="Link nguồn nhập: "/>
+            <TextBox Name="SourceLinkTextbox" Width="100" />
+        </StackPanel>
+        <StackPanel Orientation="Horizontal">
+            <Button Content="Thêm nguồn nhập" Name="SourceAddButton" Click="SourceAddButton_Click"/>
+            <Button Content="Quay lại" Name="BackButton" Click="BackButton_Click"/>
+        </StackPanel>
+    </StackPanel>
+</Page>

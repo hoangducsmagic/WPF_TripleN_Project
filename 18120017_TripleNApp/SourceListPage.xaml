@@ -12,7 +12,6 @@
 
     <Page.Resources>
         <local:MoneyConverter x:Key="MoneyConverter"/>
-        <local:DateConverter x:Key="DateConverter"/>
         <local:FavoriteConverter x:Key="FavoriteConverter"/>
     </Page.Resources>
 
@@ -92,7 +91,7 @@
                             </Grid.ColumnDefinitions>
                             <TextBlock Grid.Column="0" Text="{Binding ma}"  HorizontalAlignment="Center" VerticalAlignment="Center" />
                             <TextBlock Grid.Column="1" Text="{Binding ten}"  HorizontalAlignment="Center" VerticalAlignment="Center" />
-                            <TextBlock Grid.Column="2" Text="{Binding tongtien,Converter={StaticResource DateConverter}}"  HorizontalAlignment="Center" VerticalAlignment="Center" />
+                            <TextBlock Grid.Column="2" Text="{Binding tongtien,Converter={StaticResource MoneyConverter}}"  HorizontalAlignment="Center" VerticalAlignment="Center" />
                             <materialDesign:PackIcon Grid.Column="3" Kind="{Binding yeuthich,Converter={StaticResource FavoriteConverter}}" Foreground="red"  HorizontalAlignment="Center" VerticalAlignment="Center" />
                             <Button Grid.Column="4" Content="Xóa" HorizontalAlignment="Center"  VerticalAlignment="Center" Name="SourceDeleteButton" Click="SourceDeleteButton_Click"/>
                         </Grid>

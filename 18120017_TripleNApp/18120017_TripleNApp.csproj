@@ -210,6 +210,9 @@
       <DependentUpon>MyDB.tt</DependentUpon>
     </Compile>
     <Compile Include="Size.cs" />
+    <Compile Include="SourceAddPage.xaml.cs">
+      <DependentUpon>SourceAddPage.xaml</DependentUpon>
+    </Compile>
     <Compile Include="SourceDetailPage.xaml.cs">
       <DependentUpon>SourceDetailPage.xaml</DependentUpon>
     </Compile>
@@ -271,6 +274,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="ProductUpdatePage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="SourceAddPage.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

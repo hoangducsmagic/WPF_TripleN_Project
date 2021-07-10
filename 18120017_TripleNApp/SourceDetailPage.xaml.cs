@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -23,6 +24,18 @@ namespace _18120017_TripleNApp
         public SourceDetailPage(Import Source)
         {
             InitializeComponent();
+            DataContext = Source;
+        }
+
+        private void LinkTextblock_MouseLeftButtonUp(object sender, MouseButtonEventArgs e)
+        {
+            Process.Start(LinkTextblock.Text);
+        }
+
+        private void BackButton_Click(object sender, RoutedEventArgs e)
+        {
+            this.NavigationService.Navigate(new SourceListPage());
         }
     }
 }
+

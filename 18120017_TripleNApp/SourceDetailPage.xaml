@@ -3,12 +3,55 @@
       xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
       xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
-      xmlns:local="clr-namespace:_18120017_TripleNApp"
+      xmlns:local="clr-namespace:_18120017_TripleNApp" 
+      xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
       mc:Ignorable="d" 
-      d:DesignHeight="450" d:DesignWidth="800"
+      d:DesignHeight="1245" d:DesignWidth="650"
       Title="SourceDetailPage">
 
-    <Grid>
-        
-    </Grid>
+    <Page.Resources>
+        <local:MoneyConverter x:Key="MoneyConverter"/>
+    </Page.Resources>
+    <StackPanel>
+        <materialDesign:ColorZone Mode="PrimaryMid" Padding="16">
+            <Grid>
+                <Button HorizontalAlignment="Left"
+                            Name="BackButton"
+                            Click="BackButton_Click"
+                            Style="{StaticResource MaterialDesignFloatingActionMiniAccentButton}">
+                    <materialDesign:PackIcon Kind="ArrowBack" Height="auto" Width="auto"/>
+                </Button>
+                <StackPanel>
+                    <TextBlock FontFamily="Amatic SC" FontWeight="Bold" FontSize="40" Text="CHI TIẾT HÓA ĐƠN" HorizontalAlignment="Center"/>
+                </StackPanel>
+            </Grid>
+        </materialDesign:ColorZone>
+        <StackPanel Orientation="Horizontal">
+            <TextBlock Text="Mã nguồn nhập: "/>
+            <TextBlock Text="{Binding ma}"/>
+        </StackPanel>
+        <StackPanel Orientation="Horizontal">
+            <TextBlock Text="Tên nguồn nhập: "/>
+            <TextBlock Text="{Binding ten}"/>
+        </StackPanel>
+        <StackPanel Orientation="Horizontal">
+            <TextBlock Text="Địa chỉ: "/>
+            <TextBlock Text="{Binding diachi}"/>
+        </StackPanel>
+        <StackPanel Orientation="Horizontal">
+            <TextBlock Text="Link web nguồn: "/>
+            <TextBlock Cursor="Hand" Name="LinkTextblock" 
+                       Text="{Binding link}" 
+                       Foreground="Blue" TextDecorations="Underline"
+                       MouseLeftButtonUp="LinkTextblock_MouseLeftButtonUp" />
+        </StackPanel>
+        <StackPanel Orientation="Horizontal">
+            <TextBlock Text="Tổng sản phẩm đã nhập: "/>
+            <TextBlock Text="{Binding tongsanpham}"/>
+        </StackPanel>
+        <StackPanel Orientation="Horizontal">
+            <TextBlock Text="Tổng tiền đã nhập: "/>
+            <TextBlock Text="{Binding tongtien,Converter={StaticResource MoneyConverter}}"/>
+        </StackPanel>
+    </StackPanel>
 </Page>

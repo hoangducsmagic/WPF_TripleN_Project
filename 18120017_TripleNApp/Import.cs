@@ -16,7 +16,7 @@ namespace _18120017_TripleNApp
         public string link { get; set; }
         public double tongtien { get; set; }
         public double tongsanpham { get; set; }
-        bool yeuthich;
+        public bool yeuthich { get; set; }
 
         public Import()
         {

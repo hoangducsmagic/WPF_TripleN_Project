@@ -21,10 +21,14 @@ namespace _18120017_TripleNApp
     public partial class SourceListPage : Page
     {
         ImportBUS ImportBUS = new ImportBUS();
+        ImportDAO ImportDAO = new ImportDAO();
+        List<Import> SourceList = new List<Import>();
 
         public SourceListPage()
         {
             InitializeComponent();
+            SourceList = ImportDAO.GetSourceList();
+            SourceListview.ItemsSource = SourceList;
         }
 
         private void SourceListview_MouseLeftButtonUp(object sender, MouseButtonEventArgs e)
@@ -36,7 +40,18 @@ namespace _18120017_TripleNApp
         private void SourceDeleteButton_Click(object sender, RoutedEventArgs e)
         {
             var selection = (sender as Button).DataContext as Import;
-            ImportBUS.SourceDelete(selection);
+            var productlist=ImportBUS.SourceDelete(selection);
+            if (productlist != null)
+            {
+                MessageBox.Show($"Bạn không thể xóa nguồn hàng này vì còn {productlist.Item1} sản phẩm đang bán bao gồm: {productlist.Item2}");
+            }
+            else
+            {
+                SourceList.Remove(selection);
+                SourceListview.Items.Refresh();
+                MessageBox.Show("Đã xóa nguồn nhập hàng.");
+            }
+
             
         }
 
@@ -52,7 +67,7 @@ namespace _18120017_TripleNApp
 
         private void SourceAddButton_Click(object sender, RoutedEventArgs e)
         {
-
+            this.NavigationService.Navigate(new SourceAddPage());
         }
     }
 }
