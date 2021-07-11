@@ -23,6 +23,7 @@ namespace _18120017_TripleNApp
         public MainWindow()
         {
             InitializeComponent();
+            Pagination.CurrentPage = 1;
             MainFrame.NavigationService.Navigate(new ProductListPage());
         }
 
@@ -67,6 +68,9 @@ namespace _18120017_TripleNApp
             ButtonCloseMenu.Visibility = Visibility.Collapsed;
             MainFrame.IsEnabled = true;
             MoveCursorMenu(0);
+
+            
+            Pagination.CurrentPage = 1;
             MainFrame.NavigationService.Navigate(new ProductListPage());
         }
 

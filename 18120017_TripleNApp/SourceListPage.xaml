@@ -56,48 +56,50 @@
                 </StackPanel>
             </StackPanel>
         </materialDesign:ColorZone>
-
-        <Grid Width="1045" HorizontalAlignment="Center" Margin="0 40 0 0">
-            <Grid.ColumnDefinitions>
-                <ColumnDefinition Width="*"/>
-                <ColumnDefinition Width="*"/>
-                <ColumnDefinition Width="*"/>
-                <ColumnDefinition Width="*"/>
-                <ColumnDefinition Width="*"/>
-            </Grid.ColumnDefinitions>
-            <TextBlock Grid.Column="0" Text="Mã nguồn nhập" FontSize="20" HorizontalAlignment="Center" FontWeight="Bold"/>
-            <TextBlock Grid.Column="1" Text="Tên nguồn nhập" FontSize="20" HorizontalAlignment="Center" FontWeight="Bold"/>
-            <TextBlock Grid.Column="2" Text="Tổng tiền nhập"  FontSize="20" HorizontalAlignment="Center" FontWeight="Bold"/>
-            <TextBlock Grid.Column="3" Text="Yêu thích" FontSize="20" HorizontalAlignment="Center" FontWeight="Bold"/>
-        </Grid>
-        <ListView Name="SourceListview" HorizontalAlignment="Center" ScrollViewer.VerticalScrollBarVisibility="Auto" ScrollViewer.CanContentScroll="False"
+        <TextBlock Text="Không tìm thấy nguồn nhập hàng!" Name="NotExistTextblock" Visibility="Collapsed"/>
+        <StackPanel Name="ContentPanel" >
+            <Grid Width="1045" HorizontalAlignment="Center" Margin="0 40 0 0">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="*"/>
+                </Grid.ColumnDefinitions>
+                <TextBlock Grid.Column="0" Text="Mã nguồn nhập" FontSize="20" HorizontalAlignment="Center" FontWeight="Bold"/>
+                <TextBlock Grid.Column="1" Text="Tên nguồn nhập" FontSize="20" HorizontalAlignment="Center" FontWeight="Bold"/>
+                <TextBlock Grid.Column="2" Text="Tổng tiền nhập"  FontSize="20" HorizontalAlignment="Center" FontWeight="Bold"/>
+                <TextBlock Grid.Column="3" Text="Yêu thích" FontSize="20" HorizontalAlignment="Center" FontWeight="Bold"/>
+            </Grid>
+            <ListView Name="SourceListview" HorizontalAlignment="Center" ScrollViewer.VerticalScrollBarVisibility="Auto" ScrollViewer.CanContentScroll="False"
                   MouseLeftButtonUp="SourceListview_MouseLeftButtonUp">
-            <ListView.ItemsPanel>
-                <ItemsPanelTemplate>
-                    <StackPanel/>
-                </ItemsPanelTemplate>
-            </ListView.ItemsPanel>
-            <ListView.ItemTemplate>
-                <DataTemplate>
-                    <StackPanel>
-                        <Separator BorderThickness="1" BorderBrush="LightGray" />
-                        <Grid Width="1045" HorizontalAlignment="Center">
-                            <Grid.ColumnDefinitions>
-                                <ColumnDefinition Width="*"/>
-                                <ColumnDefinition Width="*"/>
-                                <ColumnDefinition Width="*"/>
-                                <ColumnDefinition Width="*"/>
-                                <ColumnDefinition Width="*"/>
-                            </Grid.ColumnDefinitions>
-                            <TextBlock Grid.Column="0" Text="{Binding ma}"  HorizontalAlignment="Center" VerticalAlignment="Center" />
-                            <TextBlock Grid.Column="1" Text="{Binding ten}"  HorizontalAlignment="Center" VerticalAlignment="Center" />
-                            <TextBlock Grid.Column="2" Text="{Binding tongtien,Converter={StaticResource MoneyConverter}}"  HorizontalAlignment="Center" VerticalAlignment="Center" />
-                            <materialDesign:PackIcon Grid.Column="3" Kind="{Binding yeuthich,Converter={StaticResource FavoriteConverter}}" Foreground="red"  HorizontalAlignment="Center" VerticalAlignment="Center" />
-                            <Button Grid.Column="4" Content="Xóa" HorizontalAlignment="Center"  VerticalAlignment="Center" Name="SourceDeleteButton" Click="SourceDeleteButton_Click"/>
-                        </Grid>
-                    </StackPanel>
-                </DataTemplate>
-            </ListView.ItemTemplate>
-        </ListView>
+                <ListView.ItemsPanel>
+                    <ItemsPanelTemplate>
+                        <StackPanel/>
+                    </ItemsPanelTemplate>
+                </ListView.ItemsPanel>
+                <ListView.ItemTemplate>
+                    <DataTemplate>
+                        <StackPanel>
+                            <Separator BorderThickness="1" BorderBrush="LightGray" />
+                            <Grid Width="1045" HorizontalAlignment="Center">
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="*"/>
+                                    <ColumnDefinition Width="*"/>
+                                    <ColumnDefinition Width="*"/>
+                                    <ColumnDefinition Width="*"/>
+                                    <ColumnDefinition Width="*"/>
+                                </Grid.ColumnDefinitions>
+                                <TextBlock Grid.Column="0" Text="{Binding ma}"  HorizontalAlignment="Center" VerticalAlignment="Center" />
+                                <TextBlock Grid.Column="1" Text="{Binding ten}"  HorizontalAlignment="Center" VerticalAlignment="Center" />
+                                <TextBlock Grid.Column="2" Text="{Binding tongtien,Converter={StaticResource MoneyConverter}}"  HorizontalAlignment="Center" VerticalAlignment="Center" />
+                                <materialDesign:PackIcon Grid.Column="3" Kind="{Binding yeuthich,Converter={StaticResource FavoriteConverter}}" Foreground="red"  HorizontalAlignment="Center" VerticalAlignment="Center" />
+                                <Button Grid.Column="4" Content="Xóa" HorizontalAlignment="Center"  VerticalAlignment="Center" Name="SourceDeleteButton" Click="SourceDeleteButton_Click"/>
+                            </Grid>
+                        </StackPanel>
+                    </DataTemplate>
+                </ListView.ItemTemplate>
+            </ListView>
+        </StackPanel>
     </StackPanel>
 </Page>

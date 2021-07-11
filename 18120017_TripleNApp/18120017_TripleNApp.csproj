@@ -185,6 +185,7 @@
     <Compile Include="NGUONNHAP.cs">
       <DependentUpon>MyDB.tt</DependentUpon>
     </Compile>
+    <Compile Include="Pagination.cs" />
     <Compile Include="Pic.cs" />
     <Compile Include="LimitReachConverter.cs" />
     <Compile Include="MoneyConverter.cs" />

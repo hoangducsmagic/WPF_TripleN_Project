@@ -11,6 +11,37 @@ namespace _18120017_TripleNApp
     {
         public TripleNDatabaseEntities db = new TripleNDatabaseEntities();
 
+        public Product FindProduct(string ID)
+        {
+            
+            var item = db.SANPHAM.Find(ID);
+            List<Color> mausac = new List<Color>();
+            List<Pic> hinhanh = new List<Pic>();
+            List<Size> kichthuoc = new List<Size>();
+
+            var colorquery = from c in db.MAUSACSANPHAM
+                             where c.MaSanPham == item.MaSanPham
+                             select (c.MauSac);
+            foreach (var item2 in colorquery) mausac.Add(new Color() { color = item2 });
+
+
+            var sizequery = from c in db.KICHTHUOCSANPHAM
+                            where c.MaSanPham == item.MaSanPham
+                            select (c.KichThuoc);
+            foreach (var item2 in sizequery) kichthuoc.Add(new Size() { size = item2 });
+
+            string currentFolder = AppDomain.CurrentDomain.BaseDirectory;
+            var imagequery = from c in db.HINHANHSANPHAM
+                             where c.MaSanPham == item.MaSanPham
+                             select (c.HinhAnh);
+            foreach (var item2 in imagequery) hinhanh.Add(new Pic() { pic = item2, path = $"{currentFolder}ImagesResource\\{item2}" });
+
+            string tenloai = db.LOAISANPHAM.Find(item.MaLoai).TenLoai;
+            Product Product=new Product() { avt = hinhanh.ElementAtOrDefault(0).pic, ma = item.MaSanPham, ten = item.TenSanPham, tenloai = tenloai, maloai = item.MaLoai, daban = (int)item.SoLuongDaBan, tonkho = (int)item.SoLuongTonKho, giaban = (double)item.GiaBan, gianhap = (double)item.GiaNhap, hinhanh = hinhanh, mausac = mausac, kichthuoc = kichthuoc, manguon = item.MaNguon, mota = item.MoTa, phantram = (double)item.PhanTramChi, toithieu = (int)item.SoLuongToiThieu, trongluong = (double)item.TrongLuong, nhapthem = (item.SoLuongTonKho < item.SoLuongToiThieu) };
+
+            return Product;
+        }
+
         public List<Product> GetProductData()
         {
             List<Product> ProductList = new List<Product>();

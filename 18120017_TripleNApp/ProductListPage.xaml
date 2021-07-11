@@ -100,7 +100,8 @@
                                 <materialDesign:PackIcon Kind="Plus" Height="30" Width="30" VerticalAlignment="Center" Foreground="Black"/>
                             </Button>
 
-                            <StackPanel Orientation="Horizontal" Grid.Column="2" HorizontalAlignment="Center">
+                            <StackPanel Orientation="Horizontal" Grid.Column="2" HorizontalAlignment="Center" 
+                                        Name="PageNavigationPanel">
                                 <Button HorizontalAlignment="Right" 
                                         Name="PreviousPageButton"
                                         Click="PreviousPageButton_Click"
@@ -108,28 +109,28 @@
                                     <materialDesign:PackIcon Kind="NavigateBefore" Height="auto" Width="auto"/>
                                 </Button>
                                 <TextBox Name="CurrentPageTextBox"  
-                             LostFocus="CurrentPageTextBox_LostFocus"
-                             GotFocus="CurrentPageTextBox_GotFocus"
-                             PreviewTextInput="CurrentPageTextBox_PreviewTextInput"
-                             KeyDown="CurrentPageTextBox_KeyDown"
-                             Cursor="Hand"
-                             Width="60"
-                             BorderThickness="0"
-                             TextAlignment="Center"
-                             HorizontalAlignment="Center"
-                             FontSize="20"
-                             Margin="5 0 5 0" SelectionBrush="Black" Background="#FF673AB7" Foreground="#DDFFFFFF"/>
+                                         LostFocus="CurrentPageTextBox_LostFocus"
+                                         GotFocus="CurrentPageTextBox_GotFocus"
+                                         PreviewTextInput="CurrentPageTextBox_PreviewTextInput"
+                                         KeyDown="CurrentPageTextBox_KeyDown"
+                                         Cursor="Hand"
+                                         Width="60"
+                                         BorderThickness="0"
+                                         TextAlignment="Center"
+                                         HorizontalAlignment="Center"
+                                         FontSize="20"
+                                         Margin="5 0 5 0" SelectionBrush="Black" Background="#FF673AB7" Foreground="#DDFFFFFF"/>
                                 <Button HorizontalAlignment="Right" 
-                            Name="NextPageButton"
-                            Click="NextPageButton_Click"
-                            Style="{StaticResource MaterialDesignFloatingActionMiniAccentButton}">
-                                    <materialDesign:PackIcon Kind="NavigateNext" Height="auto" Width="auto"/>
+                                        Name="NextPageButton"
+                                        Click="NextPageButton_Click"
+                                        Style="{StaticResource MaterialDesignFloatingActionMiniAccentButton}">
+                                                <materialDesign:PackIcon Kind="NavigateNext" Height="auto" Width="auto"/>
                                 </Button>
                             </StackPanel>
                         </Grid>
                     </StackPanel>
                 </materialDesign:ColorZone>
-
+                <TextBlock Text="Không tìm thấy sản phẩm nào!" Name="NotExistTextblock" Visibility="Collapsed"/>
                 <ListView Name="ProductListview" ScrollViewer.CanContentScroll="False" Margin="20"
                           ScrollViewer.HorizontalScrollBarVisibility="Disabled"
                           HorizontalAlignment="Center" 

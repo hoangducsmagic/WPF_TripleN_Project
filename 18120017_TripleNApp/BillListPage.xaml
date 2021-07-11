@@ -57,48 +57,50 @@
                 </StackPanel>
             </StackPanel>
         </materialDesign:ColorZone>
-
-        <Grid Width="1045" HorizontalAlignment="Center" Margin="0 40 0 0">
-            <Grid.ColumnDefinitions>
-                <ColumnDefinition Width="*"/>
-                <ColumnDefinition Width="*"/>
-                <ColumnDefinition Width="*"/>
-                <ColumnDefinition Width="*"/>
-                <ColumnDefinition Width="*"/>
-            </Grid.ColumnDefinitions>
-            <TextBlock Grid.Column="0" Text="Hóa đơn" FontSize="20" HorizontalAlignment="Center" FontWeight="Bold"/>
-            <TextBlock Grid.Column="1" Text="Khách hàng" FontSize="20" HorizontalAlignment="Center" FontWeight="Bold"/>
-            <TextBlock Grid.Column="2" Text="Ngày lập"  FontSize="20" HorizontalAlignment="Center" FontWeight="Bold"/>
-            <TextBlock Grid.Column="3" Text="Thành tiền" FontSize="20" HorizontalAlignment="Center" FontWeight="Bold"/>
-        </Grid>
-        <ListView Name="BillListview" HorizontalAlignment="Center" ScrollViewer.VerticalScrollBarVisibility="Auto" ScrollViewer.CanContentScroll="False"
+        <TextBlock Text="Không tìm thấy đơn hàng!" Name="NotExistTextblock" Visibility="Collapsed"/>
+        <StackPanel Name="ContentPanel">
+            <Grid Width="1045" HorizontalAlignment="Center" Margin="0 40 0 0">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="*"/>
+                </Grid.ColumnDefinitions>
+                <TextBlock Grid.Column="0" Text="Hóa đơn" FontSize="20" HorizontalAlignment="Center" FontWeight="Bold"/>
+                <TextBlock Grid.Column="1" Text="Khách hàng" FontSize="20" HorizontalAlignment="Center" FontWeight="Bold"/>
+                <TextBlock Grid.Column="2" Text="Ngày lập"  FontSize="20" HorizontalAlignment="Center" FontWeight="Bold"/>
+                <TextBlock Grid.Column="3" Text="Thành tiền" FontSize="20" HorizontalAlignment="Center" FontWeight="Bold"/>
+            </Grid>
+            <ListView Name="BillListview" HorizontalAlignment="Center" ScrollViewer.VerticalScrollBarVisibility="Auto" ScrollViewer.CanContentScroll="False"
                   MouseLeftButtonUp="BillListview_MouseLeftButtonUp">
-            <ListView.ItemsPanel>
-                <ItemsPanelTemplate>
-                    <StackPanel/>
-                </ItemsPanelTemplate>
-            </ListView.ItemsPanel>
-            <ListView.ItemTemplate>
-                <DataTemplate>
-                    <StackPanel>
-                        <Separator BorderThickness="1" BorderBrush="LightGray" />
-                        <Grid Width="1045" HorizontalAlignment="Center">
-                            <Grid.ColumnDefinitions>
-                                <ColumnDefinition Width="*"/>
-                                <ColumnDefinition Width="*"/>
-                                <ColumnDefinition Width="*"/>
-                                <ColumnDefinition Width="*"/>
-                                <ColumnDefinition Width="*"/>
-                            </Grid.ColumnDefinitions>
-                            <TextBlock Grid.Column="0" Text="{Binding ma}"  HorizontalAlignment="Center" VerticalAlignment="Center" />
-                            <TextBlock Grid.Column="1" Text="{Binding khachhang.ten}"  HorizontalAlignment="Center" VerticalAlignment="Center" />
-                            <TextBlock Grid.Column="2" Text="{Binding ngaylap,Converter={StaticResource DateConverter}}"  HorizontalAlignment="Center" VerticalAlignment="Center" />
-                            <TextBlock Grid.Column="3" Text="{Binding thanhtien,Converter={StaticResource MoneyConverter}}"  HorizontalAlignment="Center" VerticalAlignment="Center" />
-                            <Button Grid.Column="4" Content="Xóa" HorizontalAlignment="Center"  VerticalAlignment="Center" Name="BillDeleteButton" Click="BillDeleteButton_Click"/>
-                        </Grid>
-                    </StackPanel>
-                </DataTemplate>
-            </ListView.ItemTemplate>
-        </ListView>
+                <ListView.ItemsPanel>
+                    <ItemsPanelTemplate>
+                        <StackPanel/>
+                    </ItemsPanelTemplate>
+                </ListView.ItemsPanel>
+                <ListView.ItemTemplate>
+                    <DataTemplate>
+                        <StackPanel>
+                            <Separator BorderThickness="1" BorderBrush="LightGray" />
+                            <Grid Width="1045" HorizontalAlignment="Center">
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="*"/>
+                                    <ColumnDefinition Width="*"/>
+                                    <ColumnDefinition Width="*"/>
+                                    <ColumnDefinition Width="*"/>
+                                    <ColumnDefinition Width="*"/>
+                                </Grid.ColumnDefinitions>
+                                <TextBlock Grid.Column="0" Text="{Binding ma}"  HorizontalAlignment="Center" VerticalAlignment="Center" />
+                                <TextBlock Grid.Column="1" Text="{Binding khachhang.ten}"  HorizontalAlignment="Center" VerticalAlignment="Center" />
+                                <TextBlock Grid.Column="2" Text="{Binding ngaylap,Converter={StaticResource DateConverter}}"  HorizontalAlignment="Center" VerticalAlignment="Center" />
+                                <TextBlock Grid.Column="3" Text="{Binding thanhtien,Converter={StaticResource MoneyConverter}}"  HorizontalAlignment="Center" VerticalAlignment="Center" />
+                                <Button Grid.Column="4" Content="Xóa" HorizontalAlignment="Center"  VerticalAlignment="Center" Name="BillDeleteButton" Click="BillDeleteButton_Click"/>
+                            </Grid>
+                        </StackPanel>
+                    </DataTemplate>
+                </ListView.ItemTemplate>
+            </ListView>
+        </StackPanel>
     </StackPanel>
 </Page>

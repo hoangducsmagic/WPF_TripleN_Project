@@ -1,3 +1,4 @@
+D:\WPF_TripleN_Project-main\18120017_TripleNApp\obj\Debug\18120017_TripleNApp.csprojAssemblyReference.cache
 D:\WPF_TripleN_Project-main\18120017_TripleNApp\obj\Debug\BillAddPage.g.cs
 D:\WPF_TripleN_Project-main\18120017_TripleNApp\obj\Debug\BillDetailPage.g.cs
 D:\WPF_TripleN_Project-main\18120017_TripleNApp\obj\Debug\BillListPage.g.cs
