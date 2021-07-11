@@ -6,6 +6,7 @@
         xmlns:local="clr-namespace:_18120017_TripleNApp"
         xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
         mc:Ignorable="d"
+        Loaded="Window_Loaded"
         WindowStartupLocation="CenterScreen" AllowsTransparency="True" WindowStyle="None"
         Title="MainWindow" Height="700" Width="1245">
     <Window.Icon>

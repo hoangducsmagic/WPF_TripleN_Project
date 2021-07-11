@@ -57,5 +57,10 @@ namespace _18120017_TripleNApp
             value = "Not selected yet";
             this.Close();
         }
+
+        private void TitleBar_MouseDown(object sender, MouseButtonEventArgs e)
+        {
+            DragMove();
+        }
     }
 }

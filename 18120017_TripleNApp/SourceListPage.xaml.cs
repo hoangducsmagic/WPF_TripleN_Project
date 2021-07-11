@@ -24,13 +24,13 @@ namespace _18120017_TripleNApp
         ImportDAO ImportDAO = new ImportDAO();
         List<Import> SourceList = new List<Import>();
         List<Import> SearchList = new List<Import>();
-
+        Sorting Sorting = new Sorting();
         public SourceListPage()
         {
             InitializeComponent();
             SourceList = ImportDAO.GetSourceList();
-            SearchList = ImportDAO.GetSourceList();
-            SourceListview.ItemsSource = SourceList;
+            SearchList = Sorting.SourceSort(SourceList);
+            SourceListview.ItemsSource = SearchList;
         }
 
         private void SourceListview_MouseLeftButtonUp(object sender, MouseButtonEventArgs e)
@@ -107,4 +107,4 @@ namespace _18120017_TripleNApp
             this.NavigationService.Navigate(new SourceAddPage());
         }
     }
-}
+} 

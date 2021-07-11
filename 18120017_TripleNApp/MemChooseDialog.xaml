@@ -6,39 +6,62 @@
         xmlns:local="clr-namespace:_18120017_TripleNApp"
         mc:Ignorable="d"
         xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+        
+      Background="#ffffb5"
+        WindowStartupLocation="CenterScreen" AllowsTransparency="True" WindowStyle="None"
         Title="MemChoseDialog" Height="400" Width="650">
-    <ScrollViewer VerticalScrollBarVisibility="Auto">
-        <StackPanel>
-            <TextBlock Text="DANH SÁCH KHÁCH HÀNG CŨ" FontFamily="Bree Serif" FontSize="25" Foreground="DarkRed" Margin="20" HorizontalAlignment="Center"/>
-            <Grid>
-                <ListView Name="MemListview" HorizontalAlignment="Center" Height="200" ScrollViewer.VerticalScrollBarVisibility="Auto">
-                    <ListView.ItemsPanel>
-                        <ItemsPanelTemplate>
-                            <StackPanel/>
-                        </ItemsPanelTemplate>
-                    </ListView.ItemsPanel>
-                    <ListView.ItemTemplate>
-                        <DataTemplate>
-                            <StackPanel>
-                                <Separator Foreground="BlueViolet"/>
-                                <StackPanel Orientation="Horizontal">
-                                    <TextBlock Text="Tên: " FontWeight="Bold" Margin="5"/>
-                                    <TextBlock Text="{Binding ten}" Margin="5"/>
-                                    <TextBlock Text="   -   SĐT: " FontWeight="Bold" Margin="5"/>
-                                    <TextBlock Text="{Binding sdt}" Margin="5"/>
-                                </StackPanel>
-                            </StackPanel>
-                        </DataTemplate>
-                    </ListView.ItemTemplate>
-                </ListView>
-                <TextBlock Name="EmptyTextblock" Foreground="LightGray" Text="(Bạn chưa có khách hàng cũ nào cả)" Visibility="Collapsed" FontStyle="Italic" FontSize="13"  HorizontalAlignment="Center"/>
-            </Grid>
 
-            <StackPanel HorizontalAlignment="Center" Orientation="Horizontal" Margin="20">
-                <Button Content="Chọn" Name="OKButton" Margin="10"  Click="OKButton_Click"/>
-                <Button Content="Quay lại" Name="BackButton" Margin="10" Click="BackButton_Click"/>
+    <WindowChrome.WindowChrome>
+        <WindowChrome ResizeBorderThickness="0" CaptionHeight="0"/>
+    </WindowChrome.WindowChrome>
+    <Window.Clip>
+        <RectangleGeometry RadiusX="25" RadiusY="25" Rect="0,0,650,400"/>
+    </Window.Clip>
+
+    <StackPanel>
+        <Grid Name="TitleBar" Background="Black" VerticalAlignment="Top" MouseDown="TitleBar_MouseDown">
+            <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" VerticalAlignment="Center">
+                <Image Source="ImagesResource/icon.png" Margin="0 0 20 0" Height="40" Width="40" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                <TextBlock Text="Chọn khách hàng" FontFamily="Amatic SC" FontWeight="Bold" FontSize="20 pt" Foreground="LightGreen" HorizontalAlignment="Center" VerticalAlignment="Center" />
+                <Image Source="ImagesResource/icon.png" Margin="20 0 0 0" Height="40" Width="40" HorizontalAlignment="Center" VerticalAlignment="Center"/>
             </StackPanel>
-        </StackPanel>
+        </Grid>
+        <ScrollViewer VerticalScrollBarVisibility="Auto">
+                <StackPanel>
+                    <TextBlock Text="DANH SÁCH KHÁCH HÀNG CŨ" FontFamily="Bree Serif" FontSize="25" Foreground="DarkRed" Margin="20" HorizontalAlignment="Center"/>
+                    <Grid>
+                        <ListView Name="MemListview" HorizontalAlignment="Center" Height="200" ScrollViewer.VerticalScrollBarVisibility="Auto">
+                            <ListView.ItemsPanel>
+                                <ItemsPanelTemplate>
+                                    <StackPanel/>
+                                </ItemsPanelTemplate>
+                            </ListView.ItemsPanel>
+                            <ListView.ItemTemplate>
+                                <DataTemplate>
+                                    <StackPanel>
+                                        <Separator Foreground="BlueViolet"/>
+                                        <StackPanel Orientation="Horizontal">
+                                            <TextBlock Text="Tên: " FontWeight="Bold" Margin="5"/>
+                                            <TextBlock Text="{Binding ten}" Margin="5"/>
+                                            <TextBlock Text="   -   SĐT: " FontWeight="Bold" Margin="5"/>
+                                            <TextBlock Text="{Binding sdt}" Margin="5"/>
+                                        </StackPanel>
+                                    </StackPanel>
+                                </DataTemplate>
+                            </ListView.ItemTemplate>
+                        </ListView>
+                        <TextBlock Name="EmptyTextblock" Foreground="LightGray" Text="(Bạn chưa có khách hàng cũ nào cả)" Visibility="Collapsed" FontStyle="Italic" FontSize="13"  HorizontalAlignment="Center"/>
+                    </Grid>
 
-    </ScrollViewer>
+                    <StackPanel HorizontalAlignment="Center" Orientation="Horizontal" Margin="20">
+                        <Button Content="Chọn" Name="OKButton" Margin="10"  Click="OKButton_Click"/>
+                        <Button Content="Quay lại" Name="BackButton" Margin="10" Click="BackButton_Click"/>
+                    </StackPanel>
+                </StackPanel>
+
+            </ScrollViewer>
+    </StackPanel>
+    
+    
+    
 </Window>

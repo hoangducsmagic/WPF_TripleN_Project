@@ -11,6 +11,7 @@ namespace _18120017_TripleNApp
     public class ImportBUS
     {
         ImportDAO ImportDAO = new ImportDAO();
+        
 
         public void SourceAdd(Import Source)
         {
@@ -30,6 +31,28 @@ namespace _18120017_TripleNApp
             }
             ImportDAO.SourceDelete(Source);
             return null;
+        }
+
+        public void SourceUpdate(Import Source)
+        {
+            ImportDAO.SourceUpdate(Source);
+        }
+
+        public void MakeAnouncement()
+        {
+            var today=DateTime.Now.Date;
+            var AnounList = ImportDAO.GetAnounList();
+            foreach(var item in AnounList) 
+                if (item.thoigian == today)
+                {
+                    AnoucementDialog screen = new AnoucementDialog(item);
+                    screen.ShowDialog();
+                }
+        }
+
+        public void AnounDelete(string SourceID)
+        {
+            ImportDAO.AnounDelete(SourceID);
         }
     }
 }

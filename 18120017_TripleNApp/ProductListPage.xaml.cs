@@ -28,16 +28,17 @@ namespace _18120017_TripleNApp
         List<Product> ProductList = new List<Product>();
         List<Product> SearchList = new List<Product>();
         List<ProductType> ProductByType = new List<ProductType>();
+        Sorting Sorting = new Sorting();
 
         public ProductListPage()
         {
             InitializeComponent();
 
             ProductList= ProductDAO.GetProductData();
-            SearchList = ProductDAO.GetProductData();
+            SearchList = Sorting.ProductSort(ProductList);
             Pagination.update(ProductList.Count());
             PageNavigationRefresh();
-            ProductListview.ItemsSource = ProductList.Skip(Pagination.skip()).Take(Pagination.take());
+            ProductListview.ItemsSource = SearchList.Skip(Pagination.skip()).Take(Pagination.take());
          
 
             ProductByType = ProductDAO.GetTypeData();

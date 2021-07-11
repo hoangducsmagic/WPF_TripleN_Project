@@ -14,5 +14,10 @@ namespace _18120017_TripleNApp
         public string sdt { get; set; }
         public int solan { get; set; }
         public double tongtien { get; set; }
+
+        public Customer()
+        {
+            ma = IDGeneration.RandomID();
+        }
     }
 }

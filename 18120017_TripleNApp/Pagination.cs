@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Configuration;
+using System.Diagnostics;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -9,10 +10,19 @@ namespace _18120017_TripleNApp
 {
     public class Pagination
     {
+        Configuration config = ConfigurationManager.OpenExeConfiguration(ConfigurationUserLevel.None);
+
         public static int CurrentPage { get; set; } 
-        public int ProductPerPage { get; set; } = Int32.Parse(ConfigurationManager.AppSettings["ProductPerPage"]);
+        public int ProductPerPage { get; set; } 
         public int TotalProduct { get; set; }
         public int TotalPage { get; set; }
+
+        public Pagination()
+        {
+            ProductPerPage = Int32.Parse(config.AppSettings.Settings["ProductPerPage"].Value);
+        
+            
+        }
 
         public void update(int totalproduct)
         {

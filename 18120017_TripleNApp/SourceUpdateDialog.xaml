@@ -1,0 +1,62 @@
+﻿<Window x:Class="_18120017_TripleNApp.SourceUpdateDialog"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:_18120017_TripleNApp"
+        xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes" 
+
+        mc:Ignorable="d"
+        
+        Background="#ffffb5"
+        WindowStartupLocation="CenterScreen" AllowsTransparency="True" WindowStyle="None"
+        Title="SourceUpdateDialog" Height="360" Width="800">
+
+    <WindowChrome.WindowChrome>
+        <WindowChrome ResizeBorderThickness="0" CaptionHeight="0"/>
+    </WindowChrome.WindowChrome>
+    <Window.Clip>
+        <RectangleGeometry RadiusX="25" RadiusY="25" Rect="0,0,800,360"/>
+    </Window.Clip>
+
+    <StackPanel>
+        <Grid Name="TitleBar" Background="Black" VerticalAlignment="Top" MouseDown="TitleBar_MouseDown">
+            <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" VerticalAlignment="Center">
+                <Image Source="ImagesResource/icon.png" Margin="0 0 20 0" Height="40" Width="40" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                <TextBlock Text="CẬP NHẬT THÔNG TIN NGUỒN NHẬP" FontFamily="Amatic SC" FontWeight="Bold" FontSize="20 pt" Foreground="LightGreen" HorizontalAlignment="Center" VerticalAlignment="Center" />
+                <Image Source="ImagesResource/icon.png" Margin="20 0 0 0" Height="40" Width="40" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+            </StackPanel>
+        </Grid>
+
+        <ScrollViewer VerticalScrollBarVisibility="Auto">
+
+            <StackPanel Margin="10">
+                <StackPanel Orientation="Horizontal" Margin="0 0 0 10">
+                    <TextBlock Text="Mã sản phẩm: " FontFamily="Bree Serif" Foreground="Gray" FontSize="20"  Margin="10 10 0 10"/>
+                    <TextBlock  Name="SourceIDTextbox"  FontFamily="Bree Serif" Foreground="Gray" FontSize="20"  Margin="0 10 10 10"/>
+                </StackPanel>
+                <TextBox materialDesign:HintAssist.Hint="Tên nguồn nhập hàng"  Name="SourceNameTextbox" FontFamily="Bree Serif" Foreground="DarkRed" FontSize="20" FontWeight="Bold"
+                             Style="{StaticResource MaterialDesignTextBox}" Margin="10"/>
+                <TextBox materialDesign:HintAssist.Hint="Link nguồn nhập hàng" Name="SourceLinkTextbox" FontFamily="Bree Serif" Foreground="DarkRed" FontSize="20" FontWeight="Bold"
+                             Style="{StaticResource MaterialDesignTextBox}" Margin="10"/>
+                <TextBox Style="{StaticResource MaterialDesignOutlinedTextBox}" Name="SourceAddressTextbox"
+                            
+                     Margin="10"
+                     VerticalAlignment="Top"
+                     Height="70"
+                     AcceptsReturn="True"
+                     TextWrapping="Wrap"
+                     VerticalScrollBarVisibility="Auto"
+                     materialDesign:HintAssist.Hint="Địa chỉ nguồn nhập hàng"/>
+
+                <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
+                    <Button Content="Cập nhật" Name="SourceUpdateButton" Click="SourceUpdateButton_Click" Margin="10"/>
+                    <Button Content="Quay lại" Name="BackButton" Click="BackButton_Click" Margin="10"/>
+                </StackPanel>
+            </StackPanel>
+
+        </ScrollViewer>
+    </StackPanel>
+    
+
+</Window>

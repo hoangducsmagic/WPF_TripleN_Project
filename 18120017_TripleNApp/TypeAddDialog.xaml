@@ -6,10 +6,27 @@
         xmlns:local="clr-namespace:_18120017_TripleNApp"
         mc:Ignorable="d"
         xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
-        Title="Thêm loại sản  phẩm" Height="180" Width="400">
-    <StackPanel VerticalAlignment="Center">
-        <TextBox materialDesign:HintAssist.Hint="Tên loại sản phẩm mới" Name="CategoryNameTextbox"
-                 Style="{StaticResource MaterialDesignFloatingHintTextBox}" Margin="10"/>
+        Background="#ffffb5"
+        WindowStartupLocation="CenterScreen" AllowsTransparency="True" WindowStyle="None"
+        Title="Thêm loại sản  phẩm" Height="160" Width="400">
+
+    <WindowChrome.WindowChrome>
+        <WindowChrome ResizeBorderThickness="0" CaptionHeight="0"/>
+    </WindowChrome.WindowChrome>
+    <Window.Clip>
+        <RectangleGeometry RadiusX="25" RadiusY="25" Rect="0,0,400,160"/>
+    </Window.Clip>
+
+    <StackPanel >
+        <Grid Name="TitleBar" Background="Black" VerticalAlignment="Top" MouseDown="TitleBar_MouseDown">
+            <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" VerticalAlignment="Center">
+                <Image Source="ImagesResource/icon.png" Margin="0 0 20 0" Height="40" Width="40" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                <TextBlock Text="THÊM LOẠI SẢN PHẨM" FontFamily="Amatic SC" FontWeight="Bold" FontSize="20 pt" Foreground="LightGreen" HorizontalAlignment="Center" VerticalAlignment="Center" />
+                <Image Source="ImagesResource/icon.png" Margin="20 0 0 0" Height="40" Width="40" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+            </StackPanel>
+        </Grid>
+        <TextBox materialDesign:HintAssist.Hint="Tên loại sản phẩm mới"  Name="CategoryNameTextbox" FontFamily="Bree Serif" Foreground="DarkRed" FontSize="20" FontWeight="Bold"
+                             Style="{StaticResource MaterialDesignTextBox}" Margin="20 20 20 5"/>
         <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
             <Button Name="AddButton" Content="Thêm loại" Click="AddButton_Click" Margin="10"/>
             <Button Name="BackButton" Content="Quay lại" Click="BackButton_Click" Margin="10"/>

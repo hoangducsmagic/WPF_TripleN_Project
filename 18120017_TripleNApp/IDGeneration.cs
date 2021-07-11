@@ -9,8 +9,10 @@ namespace _18120017_TripleNApp
     public class IDGeneration
     {
         Random rng = new Random();
-        public string RandomID()
+        public static string RandomID()
         {
+            Random rng = new Random();
+
             string day = DateTime.Now.Day.ToString();
             string month = DateTime.Now.Month.ToString();
             string year = DateTime.Now.Year.ToString();

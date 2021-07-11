@@ -24,12 +24,13 @@ namespace _18120017_TripleNApp
         BillBUS BillBUS = new BillBUS();
         List<Bill> BillList = new List<Bill>();
         List<Bill> SearchList = new List<Bill>();
+        Sorting Sorting = new Sorting();
         public BillListPage()
         {
             InitializeComponent();
             BillList= BillDAO.GetBillData();
-            SearchList = BillDAO.GetBillData();
-            BillListview.ItemsSource = BillList;
+            SearchList = Sorting.BillSort(BillList);
+            BillListview.ItemsSource = SearchList;
         }
 
         private void BillAddButton_Click(object sender, RoutedEventArgs e)

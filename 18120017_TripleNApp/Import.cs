@@ -15,12 +15,16 @@ namespace _18120017_TripleNApp
         public string diachi { get; set; }
         public string link { get; set; }
         public double tongtien { get; set; }
-        public double tongsanpham { get; set; }
+        public int tongsanpham { get; set; }
         public bool yeuthich { get; set; }
+        public bool cothongbao { get; set; }
+        public string noidung { get; set; }
+        public DateTime thoigian { get; set; }
 
         public Import()
         {
             ma = IDGeneration.RandomID();
+            cothongbao = false;
             yeuthich = false;
             tongtien = 0;
             tongsanpham = 0;

@@ -112,6 +112,13 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="Anoucement.cs" />
+    <Compile Include="AnoucementDialog.xaml.cs">
+      <DependentUpon>AnoucementDialog.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="AnounAddDialog.xaml.cs">
+      <DependentUpon>AnounAddDialog.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Bill.cs" />
     <Compile Include="BillAddPage.xaml.cs">
       <DependentUpon>BillAddPage.xaml</DependentUpon>
@@ -210,7 +217,11 @@
     <Compile Include="SANPHAM.cs">
       <DependentUpon>MyDB.tt</DependentUpon>
     </Compile>
+    <Compile Include="SettingPage.xaml.cs">
+      <DependentUpon>SettingPage.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Size.cs" />
+    <Compile Include="Sorting.cs" />
     <Compile Include="SourceAddPage.xaml.cs">
       <DependentUpon>SourceAddPage.xaml</DependentUpon>
     </Compile>
@@ -219,6 +230,9 @@
     </Compile>
     <Compile Include="SourceListPage.xaml.cs">
       <DependentUpon>SourceListPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="SourceUpdateDialog.xaml.cs">
+      <DependentUpon>SourceUpdateDialog.xaml</DependentUpon>
     </Compile>
     <Compile Include="Statistic.cs" />
     <Compile Include="StatisticPage.xaml.cs">
@@ -230,6 +244,14 @@
     <Compile Include="TypeAddDialog.xaml.cs">
       <DependentUpon>TypeAddDialog.xaml</DependentUpon>
     </Compile>
+    <Page Include="AnoucementDialog.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="AnounAddDialog.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="BillAddPage.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -278,6 +300,10 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="SettingPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="SourceAddPage.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -287,6 +313,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="SourceListPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="SourceUpdateDialog.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

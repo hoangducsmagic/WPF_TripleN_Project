@@ -25,8 +25,20 @@ namespace _18120017_TripleNApp
             var query = from c in db.NGUONNHAP
                         select c;
             foreach (var item in query)
-                SourceList.Add(new Import() { diachi=item.DiaChi,link=item.LinkNguon,ma=item.MaNguon,ten=item.TenNguon,tongsanpham=(int)item.TongSanPhamNhap,tongtien=(double)item.TongTienNhap});
-            return SourceList;
+            {
+                Import Source = new Import() { diachi = item.DiaChi, link = item.LinkNguon, ma = item.MaNguon, ten = item.TenNguon, tongsanpham = (int)item.TongSanPhamNhap, tongtien = (double)item.TongTienNhap,yeuthich=(bool)item.YeuThich };
+                
+                var anounquery = db.THONGBAONHAPHANG.Find(item.MaNguon);
+                if (anounquery != null)
+                {
+                    Source.cothongbao = true;
+                    Source.noidung = anounquery.NoiDung;
+                    Source.thoigian = (DateTime)anounquery.ThoiGianThongBao;
+                }
+                else Source.cothongbao = false;
+                SourceList.Add(Source);
+            }
+                return SourceList;
         }
 
         public void SourceAdd(Import Source)
@@ -37,8 +49,59 @@ namespace _18120017_TripleNApp
 
         public void SourceDelete(Import Source)
         {
+            var anounquery = db.THONGBAONHAPHANG.Find(Source.ma);
+            if (anounquery != null) db.THONGBAONHAPHANG.Remove(anounquery);
+
             var item = db.NGUONNHAP.Find(Source.ma);
             db.NGUONNHAP.Remove(item);
+            db.SaveChanges();
+        }
+
+        public void SourceUpdate(Import Source)
+        {
+            var item = db.NGUONNHAP.Find(Source.ma);
+            item.TenNguon = Source.ten;
+            item.TongSanPhamNhap = Source.tongsanpham;
+            item.TongTienNhap = Source.tongtien;
+            item.YeuThich = Source.yeuthich;
+            
+            if (Source.cothongbao)
+            {
+                var query = db.THONGBAONHAPHANG.Find(Source.ma);
+                if (query == null)
+                {
+                    db.THONGBAONHAPHANG.Add(new THONGBAONHAPHANG() { MaNguon=Source.ma,NoiDung=Source.noidung,ThoiGianThongBao=(DateTime)Source.thoigian});
+                }
+                else
+                {
+                    query.ThoiGianThongBao = Source.thoigian;
+                    query.NoiDung = Source.noidung;
+                }
+            }
+            else
+            {
+                var query = db.THONGBAONHAPHANG.Find(Source.ma);
+                if (query != null) db.THONGBAONHAPHANG.Remove(query);
+            }
+
+            db.SaveChanges();
+        }
+
+        public List<Anoucement> GetAnounList()
+        {
+            List<Anoucement> AnounList = new List<Anoucement>();
+            var query = from c in db.THONGBAONHAPHANG
+                        join d in db.NGUONNHAP on c.MaNguon equals d.MaNguon
+                        select new { c, d };
+            foreach (var item in query)
+                AnounList.Add(new Anoucement() { manguon = item.c.MaNguon, tennguon = item.d.TenNguon, noidung = item.c.NoiDung, thoigian = (DateTime)item.c.ThoiGianThongBao });
+            return AnounList;
+        }
+
+        public void AnounDelete(string SourceID)
+        {
+            var anoun = db.THONGBAONHAPHANG.Find(SourceID);
+            db.THONGBAONHAPHANG.Remove(anoun);
             db.SaveChanges();
         }
     }

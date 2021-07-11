@@ -1,0 +1,57 @@
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+using System.Windows;
+using System.Windows.Controls;
+using System.Windows.Data;
+using System.Windows.Documents;
+using System.Windows.Input;
+using System.Windows.Media;
+using System.Windows.Media.Imaging;
+using System.Windows.Shapes;
+
+namespace _18120017_TripleNApp
+{
+    /// <summary>
+    /// Interaction logic for SourceUpdateDialog.xaml
+    /// </summary>
+    public partial class SourceUpdateDialog : Window
+    {
+        
+        public static bool ischange;
+        public static Import value=new Import();
+
+        public SourceUpdateDialog(Import item)
+        {
+            InitializeComponent();
+            SourceIDTextbox.Text = item.ma;
+            SourceNameTextbox.Text = item.ten;
+            SourceAddressTextbox.Text = item.diachi;
+            SourceLinkTextbox.Text = item.link;
+            value = item;
+        }
+
+        private void SourceUpdateButton_Click(object sender, RoutedEventArgs e)
+        {
+            
+            value.ten = SourceNameTextbox.Text;
+            value.diachi = SourceAddressTextbox.Text;
+            value.link = SourceLinkTextbox.Text;
+            ischange = true;
+            this.Close();
+        }
+
+        private void BackButton_Click(object sender, RoutedEventArgs e)
+        {
+            ischange = false;
+            this.Close();
+        }
+
+        private void TitleBar_MouseDown(object sender, MouseButtonEventArgs e)
+        {
+            DragMove();
+        }
+    }
+}

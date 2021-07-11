@@ -25,6 +25,9 @@ namespace _18120017_TripleNApp
             InitializeComponent();
             Pagination.CurrentPage = 1;
             MainFrame.NavigationService.Navigate(new ProductListPage());
+
+            
+
         }
 
         private void ButtonClose_Click(object sender, RoutedEventArgs e)
@@ -107,12 +110,18 @@ namespace _18120017_TripleNApp
             ButtonCloseMenu.Visibility = Visibility.Collapsed;
             MainFrame.IsEnabled = true;
             MoveCursorMenu(4);
-            //MainFrame.NavigationService.Navigate(new BillPage());
+            MainFrame.NavigationService.Navigate(new SettingPage());
         }
 
         private void ButtonInfo_Click(object sender, RoutedEventArgs e)
         {
             MainFrame.NavigationService.Navigate(new InfoPage());
+        }
+
+        private void Window_Loaded(object sender, RoutedEventArgs e)
+        {
+            ImportBUS ImportBUS = new ImportBUS();
+            ImportBUS.MakeAnouncement();
         }
     }
 }
