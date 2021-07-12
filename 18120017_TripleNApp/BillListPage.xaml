@@ -14,31 +14,29 @@
         <local:MoneyConverter x:Key="MoneyConverter"/>
         <local:DateConverter x:Key="DateConverter"/>
     </Page.Resources>
+    <ScrollViewer VerticalScrollBarVisibility="Auto">
+        <StackPanel>
+            <materialDesign:ColorZone Mode="PrimaryMid" Padding="16">
+                <StackPanel>
+                    <TextBlock FontFamily="Amatic SC" FontWeight="Bold" FontSize="40" Text="DANH SÁCH HÓA ĐƠN" HorizontalAlignment="Center"/>
 
-    <StackPanel>
-        <materialDesign:ColorZone Mode="PrimaryMid" Padding="16">
-            <StackPanel>
-                <TextBlock FontFamily="Amatic SC" FontWeight="Bold" FontSize="40" Text="DANH SÁCH HÓA ĐƠN" HorizontalAlignment="Center"/>
-
-                <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
-
-
-                    <materialDesign:ColorZone Mode="Standard" Width="400"
+                    <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
+                        <materialDesign:ColorZone Name="SearchZone" Mode="Standard" Width="400"
                                            Padding="8 4 8 4"
                                            CornerRadius="2"
                                            Panel.ZIndex="1"
                                            Margin="16 0 0 0"
                                            materialDesign:ShadowAssist.ShadowDepth="Depth1">
-                        <Grid>
-                            <Grid.ColumnDefinitions>
-                                <ColumnDefinition Width="Auto" />
-                                <ColumnDefinition Width="*" />
-                                <ColumnDefinition Width="Auto" />
-                            </Grid.ColumnDefinitions>
-                            <Button Name="SearchButton" Click="SearchButton_Click" Style="{DynamicResource MaterialDesignToolButton}">
-                                <materialDesign:PackIcon Kind="Magnify" Opacity=".56" />
-                            </Button>
-                            <TextBox Grid.Column="1"
+                            <Grid>
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="Auto" />
+                                    <ColumnDefinition Width="*" />
+                                    <ColumnDefinition Width="Auto" />
+                                </Grid.ColumnDefinitions>
+                                <Button Name="SearchButton" Click="SearchButton_Click" Style="{DynamicResource MaterialDesignToolButton}">
+                                    <materialDesign:PackIcon Kind="Magnify" Opacity=".56" />
+                                </Button>
+                                <TextBox Grid.Column="1"
                                   Margin="8 0 0 0"
                                   materialDesign:HintAssist.Hint="Nhập tên khách hàng cần tìm"
                                   materialDesign:TextFieldAssist.DecorationVisibility="Hidden"
@@ -48,59 +46,68 @@
                                   Name="SearchTextBox"
                                   KeyDown="SearchTexttBox_KeyDown"
                                   LostFocus="SearchButton_Click"/>
-                        </Grid>
-                    </materialDesign:ColorZone>
-
-                    <Button Margin="30 0 0 0" Name="BillAddButton" Click="BillAddButton_Click"  Background="GreenYellow">
-                        <materialDesign:PackIcon Kind="Plus" Height="30" Width="30" VerticalAlignment="Center" Foreground="Black"/>
-                    </Button>
-                </StackPanel>
-            </StackPanel>
-        </materialDesign:ColorZone>
-        <TextBlock Text="Không tìm thấy đơn hàng!" Name="NotExistTextblock" Visibility="Collapsed"/>
-        <StackPanel Name="ContentPanel">
-            <Grid Width="1045" HorizontalAlignment="Center" Margin="0 40 0 0">
-                <Grid.ColumnDefinitions>
-                    <ColumnDefinition Width="*"/>
-                    <ColumnDefinition Width="*"/>
-                    <ColumnDefinition Width="*"/>
-                    <ColumnDefinition Width="*"/>
-                    <ColumnDefinition Width="*"/>
-                </Grid.ColumnDefinitions>
-                <TextBlock Grid.Column="0" Text="Hóa đơn" FontSize="20" HorizontalAlignment="Center" FontWeight="Bold"/>
-                <TextBlock Grid.Column="1" Text="Khách hàng" FontSize="20" HorizontalAlignment="Center" FontWeight="Bold"/>
-                <TextBlock Grid.Column="2" Text="Ngày lập"  FontSize="20" HorizontalAlignment="Center" FontWeight="Bold"/>
-                <TextBlock Grid.Column="3" Text="Thành tiền" FontSize="20" HorizontalAlignment="Center" FontWeight="Bold"/>
-            </Grid>
-            <ListView Name="BillListview" HorizontalAlignment="Center" ScrollViewer.VerticalScrollBarVisibility="Auto" ScrollViewer.CanContentScroll="False"
-                  MouseLeftButtonUp="BillListview_MouseLeftButtonUp">
-                <ListView.ItemsPanel>
-                    <ItemsPanelTemplate>
-                        <StackPanel/>
-                    </ItemsPanelTemplate>
-                </ListView.ItemsPanel>
-                <ListView.ItemTemplate>
-                    <DataTemplate>
-                        <StackPanel>
-                            <Separator BorderThickness="1" BorderBrush="LightGray" />
-                            <Grid Width="1045" HorizontalAlignment="Center">
-                                <Grid.ColumnDefinitions>
-                                    <ColumnDefinition Width="*"/>
-                                    <ColumnDefinition Width="*"/>
-                                    <ColumnDefinition Width="*"/>
-                                    <ColumnDefinition Width="*"/>
-                                    <ColumnDefinition Width="*"/>
-                                </Grid.ColumnDefinitions>
-                                <TextBlock Grid.Column="0" Text="{Binding ma}"  HorizontalAlignment="Center" VerticalAlignment="Center" />
-                                <TextBlock Grid.Column="1" Text="{Binding khachhang.ten}"  HorizontalAlignment="Center" VerticalAlignment="Center" />
-                                <TextBlock Grid.Column="2" Text="{Binding ngaylap,Converter={StaticResource DateConverter}}"  HorizontalAlignment="Center" VerticalAlignment="Center" />
-                                <TextBlock Grid.Column="3" Text="{Binding thanhtien,Converter={StaticResource MoneyConverter}}"  HorizontalAlignment="Center" VerticalAlignment="Center" />
-                                <Button Grid.Column="4" Content="Xóa" HorizontalAlignment="Center"  VerticalAlignment="Center" Name="BillDeleteButton" Click="BillDeleteButton_Click"/>
                             </Grid>
-                        </StackPanel>
-                    </DataTemplate>
-                </ListView.ItemTemplate>
-            </ListView>
+                        </materialDesign:ColorZone>
+
+                        <Button Margin="30 0 0 0" Name="BillAddButton" Click="BillAddButton_Click"  Background="GreenYellow">
+                            <materialDesign:PackIcon Kind="Plus" Height="30" Width="30" VerticalAlignment="Center" Foreground="Black"/>
+                        </Button>
+                    </StackPanel>
+                </StackPanel>
+            </materialDesign:ColorZone>
+            <TextBlock Name="NothingToShowTextblock" HorizontalAlignment="Center" Margin="0 30 0 0"
+                       FontFamily="Bree Serif" FontSize="30"
+                       Text="Không có đơn hàng nào để hiển thị!"
+                       Visibility="Collapsed"/>
+            <TextBlock Text="Không tìm thấy đơn hàng!" Name="NotExistTextblock" Visibility="Collapsed"
+                                          FontFamily="Bree Serif" FontSize="30" HorizontalAlignment="Center" Margin="0 30 0 0"/>
+
+
+            <StackPanel Name="ContentPanel">
+                <Grid Width="1045" HorizontalAlignment="Center" Margin="0 40 0 0">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="*"/>
+                    </Grid.ColumnDefinitions>
+                    <TextBlock Grid.Column="0" Text="Hóa đơn" FontSize="20" HorizontalAlignment="Center" FontWeight="Bold"/>
+                    <TextBlock Grid.Column="1" Text="Khách hàng" FontSize="20" HorizontalAlignment="Center" FontWeight="Bold"/>
+                    <TextBlock Grid.Column="2" Text="Ngày lập"  FontSize="20" HorizontalAlignment="Center" FontWeight="Bold"/>
+                    <TextBlock Grid.Column="3" Text="Thành tiền" FontSize="20" HorizontalAlignment="Center" FontWeight="Bold"/>
+                </Grid>
+                <ListView Name="BillListview" HorizontalAlignment="Center" ScrollViewer.VerticalScrollBarVisibility="Auto" ScrollViewer.CanContentScroll="False"
+                  MouseLeftButtonUp="BillListview_MouseLeftButtonUp">
+                    <ListView.ItemsPanel>
+                        <ItemsPanelTemplate>
+                            <StackPanel/>
+                        </ItemsPanelTemplate>
+                    </ListView.ItemsPanel>
+                    <ListView.ItemTemplate>
+                        <DataTemplate>
+                            <StackPanel>
+                                <Separator BorderThickness="1" BorderBrush="LightGray" />
+                                <Grid Width="1045" HorizontalAlignment="Center">
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width="*"/>
+                                        <ColumnDefinition Width="*"/>
+                                        <ColumnDefinition Width="*"/>
+                                        <ColumnDefinition Width="*"/>
+                                        <ColumnDefinition Width="*"/>
+                                    </Grid.ColumnDefinitions>
+                                    <TextBlock Grid.Column="0" Text="{Binding ma}"  HorizontalAlignment="Center" VerticalAlignment="Center" />
+                                    <TextBlock Grid.Column="1" Text="{Binding khachhang.ten}"  HorizontalAlignment="Center" VerticalAlignment="Center" />
+                                    <TextBlock Grid.Column="2" Text="{Binding ngaylap,Converter={StaticResource DateConverter}}"  HorizontalAlignment="Center" VerticalAlignment="Center" />
+                                    <TextBlock Grid.Column="3" Text="{Binding thanhtien,Converter={StaticResource MoneyConverter}}"  HorizontalAlignment="Center" VerticalAlignment="Center" />
+                                    <Button Grid.Column="4" Content="Xóa" HorizontalAlignment="Center"  VerticalAlignment="Center" Name="BillDeleteButton" Click="BillDeleteButton_Click"/>
+                                </Grid>
+                            </StackPanel>
+                        </DataTemplate>
+                    </ListView.ItemTemplate>
+                </ListView>
+            </StackPanel>
         </StackPanel>
-    </StackPanel>
+    </ScrollViewer>
+
 </Page>

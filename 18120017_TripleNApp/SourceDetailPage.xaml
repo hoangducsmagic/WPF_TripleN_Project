@@ -7,6 +7,7 @@
       mc:Ignorable="d" 
       xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
       d:DesignHeight="650" d:DesignWidth="1245"
+      FontFamily="Bree Serif" FontSize="18"
       Background="#ddffcf"
       Title="SourceDetailPage">
 
@@ -31,9 +32,9 @@
         </materialDesign:ColorZone>
 
 
-        <Grid Margin="40 30 40 5">
-            <Border BorderThickness="1" BorderBrush="Gray" Margin="0 10 0 0" CornerRadius="8" HorizontalAlignment="Left" Padding="10" MinWidth="500">
-                <StackPanel>
+        <Grid Margin="40 30 40 5" HorizontalAlignment="Center">
+            <Border BorderThickness="1" BorderBrush="Gray" Margin="0 10 0 0" CornerRadius="8" HorizontalAlignment="Left" Padding="10" MinWidth="600">
+                <StackPanel >
                     <StackPanel Orientation="Horizontal">
                         <TextBlock Text="Mã nguồn nhập: "/>
                         <TextBlock Text="{Binding ma}"/>
@@ -59,8 +60,8 @@
             <TextBlock Background="#ddffcf" FontWeight="Bold" Foreground="Gold" Text="THÔNG TIN LIÊN HỆ" FontSize="15" VerticalAlignment="Top" HorizontalAlignment="Left" Margin="25 0 0 0"/>
         </Grid>
 
-        <Grid Margin="40 5 40 5">
-            <Border BorderThickness="1" BorderBrush="Gray" Margin="0 10 0 0" CornerRadius="8" HorizontalAlignment="Left" Padding="10" MinWidth="500">
+        <Grid Margin="40 5 40 5" HorizontalAlignment="Center">
+            <Border BorderThickness="1" BorderBrush="Gray" Margin="0 10 0 0" CornerRadius="8" HorizontalAlignment="Left" Padding="10" MinWidth="600">
                 <StackPanel>
                     <StackPanel Orientation="Horizontal">
                         <TextBlock Text="Tổng sản phẩm đã nhập: "/>
@@ -76,8 +77,8 @@
         </Grid>
 
 
-        <Grid Margin="40 5 40 5" Name="AnounPanel">
-            <Border BorderThickness="1" BorderBrush="Gray" Margin="0 10 0 0" CornerRadius="8" HorizontalAlignment="Left" Padding="10" MinWidth="500">
+        <Grid Margin="40 5 40 5" Name="AnounPanel" HorizontalAlignment="Center">
+            <Border BorderThickness="1" BorderBrush="Gray" Margin="0 10 0 0" CornerRadius="8" HorizontalAlignment="Left" Padding="10" MinWidth="600">
                 <StackPanel>
                     <StackPanel Orientation="Horizontal">
                         <TextBlock Text="Thời gian: "/>
@@ -95,7 +96,7 @@
         <StackPanel Orientation="Horizontal" Margin="20" HorizontalAlignment="Center">
             <Button Content="Thêm thông báo" Name="AnounAddButton" Margin="10" Click="AnounAddButton_Click"/>
             <Button Content="Xóa thông báo" Name="AnounDeleteButton" Margin="10" Click="AnounDeleteButton_Click"/>
-            <Button Content="Cập nhật thông  tin" Name="SouceUpdateButton" Margin="10" Click="SouceUpdateButton_Click"/>
+            <Button Content="Cập nhật thông tin" Name="SouceUpdateButton" Margin="10" Click="SouceUpdateButton_Click"/>
             <Button Content="Xóa thống kê" Name="StatisticDeleteButton" Margin="10" Click="StatisticDeleteButton_Click"/>
 
         </StackPanel>

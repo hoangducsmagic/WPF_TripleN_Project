@@ -26,8 +26,6 @@ namespace _18120017_TripleNApp
             Pagination.CurrentPage = 1;
             MainFrame.NavigationService.Navigate(new ProductListPage());
 
-            
-
         }
 
         private void ButtonClose_Click(object sender, RoutedEventArgs e)

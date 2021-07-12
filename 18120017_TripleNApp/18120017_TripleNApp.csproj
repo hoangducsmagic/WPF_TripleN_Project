@@ -37,6 +37,9 @@
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
+  <PropertyGroup>
+    <ApplicationIcon>icon.ico</ApplicationIcon>
+  </PropertyGroup>
   <ItemGroup>
     <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
       <HintPath>..\packages\EntityFramework.6.4.4\lib\net45\EntityFramework.dll</HintPath>
@@ -214,6 +217,8 @@
     <Compile Include="ProductUpdatePage.xaml.cs">
       <DependentUpon>ProductUpdatePage.xaml</DependentUpon>
     </Compile>
+    <Compile Include="RankColorConverter.cs" />
+    <Compile Include="RankIconConverter.cs" />
     <Compile Include="SANPHAM.cs">
       <DependentUpon>MyDB.tt</DependentUpon>
     </Compile>
@@ -373,6 +378,10 @@
     <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
   </ItemGroup>
   <ItemGroup>
+    <Resource Include="ImagesResource\bronze.png" />
+    <Resource Include="ImagesResource\gold.png" />
+    <Resource Include="ImagesResource\silver.png" />
+    <Resource Include="icon.ico" />
     <Content Include="MyDB.Context.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
       <DependentUpon>MyDB.edmx</DependentUpon>

@@ -28,26 +28,19 @@ namespace _18120017_TripleNApp
             
         }
 
+        bool InputCheck()
+        {
+            try { DateTime.Parse(DatePicker.Text); } catch (Exception) { MessageBox.Show("Ngày không hợp lệ!"); return false; }
+            if (DatePicker.SelectedDate == null) { MessageBox.Show("Vui lòng chọn ngày!"); return false; }
+            if (AnounTextbox.Text == "")  { MessageBox.Show("Vui lòng nhập nội dung thông báo!"); return false; }
+
+            return true;
+        }
+
         private void AnounAddButton_Click(object sender, RoutedEventArgs e)
         {
-            try
-            {
-                DateTime.Parse(DatePicker.Text);
-            } catch(Exception)
-            {
-                MessageBox.Show("Ngày không hợp lệ!");
-                return;
-            }
-            if (DatePicker.SelectedDate==null)
-            {
-                MessageBox.Show("Vui lòng chọn ngày!");
-                return;
-            }
-            if (AnounTextbox.Text == "")
-            {
-                MessageBox.Show("Vui lòng nhập nội dung thông báo!");
-                return;
-            }
+            if (!InputCheck()) return;
+
             date = (DateTime)DatePicker.SelectedDate;
             value = AnounTextbox.Text;
             this.Close();

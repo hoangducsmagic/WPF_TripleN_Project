@@ -56,12 +56,25 @@ namespace _18120017_TripleNApp
             return DisList;
         }
 
-        public void BillAdd(Bill Bill)
+        public string BillAdd(Bill Bill)
         {
+            var idquery = db.DONHANG.Find(Bill.ma);
+            if (idquery != null) return "Mã đơn bị trùng";
+            if (Bill.vanchuyen < 0) return "Phí vận chuyển không hợp lệ";
+
+            // kiểm tra quá số lượng tồn kho
+            foreach(var item in Bill.ProductList)
+            {
+                var tonkho = db.SANPHAM.Find(item.masanpham).SoLuongTonKho;
+                if (Bill.ProductList.Where(c => c.masanpham == item.masanpham).Sum(c => c.soluong) > tonkho)
+                    return $"Sản phẩm {item.tensanpham} vượt quá số lượng tồn kho!"; 
+            }
+
             Bill.thanhtien = Bill.ProductList.Sum(c => c.thanhtien) + Bill.vanchuyen;
             Bill.thanhtien -= Bill.DiscountList.Sum(c => c.sotien);
             Bill.thanhtien = Math.Max(Bill.thanhtien, 0);
             BillDAO.BillAdd(Bill);
+            return "";
         }
 
         public void BillDelete(Bill Bill)

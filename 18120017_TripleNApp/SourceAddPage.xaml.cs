@@ -34,18 +34,29 @@ namespace _18120017_TripleNApp
             SourceIDTextbox.Text = IDGeneration.RandomID();
         }
 
-        bool DataCheck()
+        bool InputCheck()
         {
+            if (SourceIDTextbox.Text == "") { MessageBox.Show("Vui lòng nhập  mã nguồn!");return false; }
+            if (SourceNameTextbox.Text == "") { MessageBox.Show("Vui lòng nhập tên nguồn!");return false; }
+            if (SourceAddressTextbox.Text == "") { MessageBox.Show("Vui lòng nhập địa chỉ nguồn!");return false; }
+            if (SourceLinkTextbox.Text == "") { MessageBox.Show("Vui lòng nhập link nguồn!");return false; }
             return true;
         }
         private void SourceAddButton_Click(object sender, RoutedEventArgs e)
         {
-            if (DataCheck()){
+            if (InputCheck()){
                 Source.ten = SourceNameTextbox.Text;
                 Source.diachi = SourceAddressTextbox.Text;
                 Source.link = SourceLinkTextbox.Text;
                 Source.ma = SourceIDTextbox.Text;
-                ImportBUS.SourceAdd(Source);
+
+                var addres=ImportBUS.SourceAdd(Source);
+
+                if (addres != "")
+                {
+                    MessageBox.Show(addres);
+                    return;
+                }
 
                 MessageBox.Show("Đã thêm nguồn hàng mới.");
                 this.NavigationService.Navigate(new SourceListPage());

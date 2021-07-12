@@ -87,7 +87,7 @@ namespace _18120017_TripleNApp
             var ischange = SourceUpdateDialog.ischange;
             if (ischange)
             {
-                MessageBox.Show("bị khùng");
+                
                 var value = SourceUpdateDialog.value;
                 ImportBUS.SourceUpdate(value);
                 Source = value;

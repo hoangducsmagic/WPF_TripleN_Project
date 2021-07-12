@@ -12,13 +12,10 @@ namespace _18120017_TripleNApp
     {
         public object Convert(object value, Type targetType, object parameter, CultureInfo culture)
         {
-           if ((bool)value == false)
-            {
-                return "HeartOutline";
-            } else
-            {
-                return "Heart";
-            }
+            if ((bool)value == true)
+                return "Red";
+            else
+                return "Black";
         }
 
         public object ConvertBack(object value, Type targetType, object parameter, CultureInfo culture)

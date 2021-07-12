@@ -10,8 +10,6 @@ namespace _18120017_TripleNApp
     {
         TripleNDatabaseEntities db = new TripleNDatabaseEntities();
 
-        
-
         public Bill GetBillData(string ID)
         {
             var query = db.DONHANG.Find(ID);
@@ -55,17 +53,21 @@ namespace _18120017_TripleNApp
             return BillList;
         }
 
-         
-
         public void BillAdd(Bill Bill)
         {
             // Kiểm tra khách hàng
-            var oldcustomer = db.KHACHHANG.Find(Bill.khachhang.ma);
+            var customerqquery = from c in db.KHACHHANG
+                              where c.HoTen == Bill.khachhang.ten
+                              where c.SoDienThoai == Bill.khachhang.sdt
+                              select c;
+            var oldcustomer = (customerqquery.Count() == 0 ? null : customerqquery.FirstOrDefault());    
             if (oldcustomer == null)
             {
+                Bill.khachhang.ma = IDGeneration.RandomID();
                 db.KHACHHANG.Add(new KHACHHANG() { HoTen = Bill.khachhang.ten, DiaChi = Bill.khachhang.diachi, MaKhachHang = Bill.khachhang.ma, SoDienThoai = Bill.khachhang.sdt, SoLanDatHang = 1, TongTienDatHang = Bill.thanhtien });
             }  else 
             {
+                Bill.khachhang.ma = oldcustomer.MaKhachHang;
                 oldcustomer.SoLanDatHang++;
                 oldcustomer.TongTienDatHang += Bill.thanhtien;
                 oldcustomer.DiaChi = Bill.khachhang.diachi;

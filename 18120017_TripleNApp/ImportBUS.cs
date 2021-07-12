@@ -11,11 +11,15 @@ namespace _18120017_TripleNApp
     public class ImportBUS
     {
         ImportDAO ImportDAO = new ImportDAO();
-        
+        TripleNDatabaseEntities db = new TripleNDatabaseEntities();
 
-        public void SourceAdd(Import Source)
+        public string SourceAdd(Import Source)
         {
+            var idquery = db.NGUONNHAP.Find(Source.ma);
+            if (idquery != null) return "Mã nguồn nhập bị trùng!";
+
             ImportDAO.SourceAdd(Source);
+            return "";
         }
 
         public Tuple<int,string> SourceDelete(Import Source)
@@ -26,7 +30,7 @@ namespace _18120017_TripleNApp
             {
                 
                 string namelist = "";
-                foreach (var item in productlist) namelist += $"{item};";
+                foreach (var item in productlist) namelist += $"{item}; ";
                 return Tuple.Create( productlist.Count(),namelist );
             }
             ImportDAO.SourceDelete(Source);
@@ -53,6 +57,21 @@ namespace _18120017_TripleNApp
         public void AnounDelete(string SourceID)
         {
             ImportDAO.AnounDelete(SourceID);
+        }
+
+        public void ChangeFavoriteStatus(Import Source)
+        {
+            if (Source.yeuthich) Source.yeuthich = false; else Source.yeuthich = true;
+            ImportDAO.SourceUpdate(Source);
+        }
+
+        public void AddSourceStatic(string ID, int sosanpham, double sotien)
+        {
+            TripleNDatabaseEntities db = new TripleNDatabaseEntities();
+            var item = db.NGUONNHAP.Find(ID);
+            item.TongSanPhamNhap += sosanpham;
+            item.TongTienNhap += sotien;
+            db.SaveChanges();
         }
     }
 }

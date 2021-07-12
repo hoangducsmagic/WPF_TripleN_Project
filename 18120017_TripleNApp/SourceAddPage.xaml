@@ -4,31 +4,49 @@
       xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
       xmlns:local="clr-namespace:_18120017_TripleNApp"
+      xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
       mc:Ignorable="d" 
-      d:DesignHeight="1245" d:DesignWidth="650"
+      d:DesignWidth="1245" d:DesignHeight="650"
+      Background="#ddffcf"
       Title="SourceAddPage">
 
+
+
+
     <StackPanel>
-        <StackPanel Orientation="Horizontal">
-            <TextBlock Text="Mã nguồn nhập: "/>
-            <TextBox Name="SourceIDTextbox" Width="100" />
-            <Button Content="Tạo tự động" Name="IDGenerateButton" Click="IDGenerateButton_Click"/>
-        </StackPanel>
-        <StackPanel Orientation="Horizontal">
-            <TextBlock Text="Tên nguồn nhập: "/>
-            <TextBox Name="SourceNameTextbox" Width="100" />
-        </StackPanel>
-        <StackPanel Orientation="Horizontal">
-            <TextBlock Text="Địa chỉ nguồn nhập: "/>
-            <TextBox Name="SourceAddressTextbox" Width="100" />
-        </StackPanel>
-        <StackPanel Orientation="Horizontal">
-            <TextBlock Text="Link nguồn nhập: "/>
-            <TextBox Name="SourceLinkTextbox" Width="100" />
-        </StackPanel>
-        <StackPanel Orientation="Horizontal">
-            <Button Content="Thêm nguồn nhập" Name="SourceAddButton" Click="SourceAddButton_Click"/>
-            <Button Content="Quay lại" Name="BackButton" Click="BackButton_Click"/>
+        <materialDesign:ColorZone Mode="PrimaryMid" Padding="16">
+            <Grid>
+                <TextBlock FontFamily="Amatic SC" FontWeight="Bold" FontSize="40" Text="THÊM NGUỒN NHẬP" HorizontalAlignment="Center"/>
+            </Grid>
+        </materialDesign:ColorZone>
+        <StackPanel Margin="20" HorizontalAlignment="Center">
+            <StackPanel Orientation="Horizontal" Margin="0 0 0 10">
+                <TextBlock Text="Mã nguồn nhập: " FontFamily="Bree Serif" Foreground="DarkRed" FontSize="20"  Margin="10 10 0 10"/>
+                <TextBox  Name="SourceIDTextbox" FontFamily="Bree Serif" Foreground="DarkRed" FontSize="20" FontWeight="Bold" Width="150"
+                             Style="{StaticResource MaterialDesignTextBox}" Margin="10"/>
+                <Button Content="Tạo tự động" Name="IDGenerateButton" Click="IDGenerateButton_Click"/>
+            </StackPanel>
+            <StackPanel Orientation="Horizontal" Margin="0 0 0 10">
+                <TextBlock Text="Tên nguồn nhập: " FontFamily="Bree Serif" Foreground="DarkRed" FontSize="20"  Margin="10 10 0 10"/>
+                <TextBox  Name="SourceNameTextbox" FontFamily="Bree Serif" Foreground="DarkRed" FontSize="20" FontWeight="Bold" Width="261"
+                             Style="{StaticResource MaterialDesignTextBox}" Margin="10"/>
+            </StackPanel>
+            <StackPanel Orientation="Horizontal" Margin="0 0 0 10">
+                <TextBlock Text="Địa chỉ nguồn nhập: " FontFamily="Bree Serif" Foreground="DarkRed" FontSize="20"  Margin="10 10 0 10"/>
+                <TextBox  Name="SourceAddressTextbox" FontFamily="Bree Serif" Foreground="DarkRed" FontSize="20" FontWeight="Bold" Width="400"
+                             Style="{StaticResource MaterialDesignTextBox}" Margin="10"/>
+            </StackPanel>
+            <StackPanel Orientation="Horizontal" Margin="0 0 0 10">
+                <TextBlock Text="Link nguồn nhập: " FontFamily="Bree Serif" Foreground="DarkRed" FontSize="20"  Margin="10 10 0 10"/>
+                <TextBox  Name="SourceLinkTextbox" FontFamily="Bree Serif" Foreground="DarkRed" FontSize="20" FontWeight="Bold" Width="421"
+                             Style="{StaticResource MaterialDesignTextBox}" Margin="10"/>
+            </StackPanel>
+
+            <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
+                <Button Content="Thêm nguồn nhập" Name="SourceAddButton" Click="SourceAddButton_Click" Margin="10"/>
+                <Button Content="Quay lại" Name="BackButton" Click="BackButton_Click" Margin="10"/>
+            </StackPanel>
         </StackPanel>
     </StackPanel>
+    
 </Page>

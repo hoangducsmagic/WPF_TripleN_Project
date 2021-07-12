@@ -30,7 +30,8 @@ namespace _18120017_TripleNApp
 
         ProductDAO ProductDAO = new ProductDAO();
         ProductBUS ProductBUS = new ProductBUS();
-        
+        ImportBUS ImportBUS = new ImportBUS();
+
         public ProductAddPage()
         {
             InitializeComponent();
@@ -103,6 +104,13 @@ namespace _18120017_TripleNApp
             string addresult=ProductBUS.ProductAdd(product);
             if (addresult == "OK")
             {
+                var result = MessageBox.Show("Bạn có muốn cập nhật dữ liệu thống kê  nguồn nhập không?", "Cập nhật dữ liệu", MessageBoxButton.YesNo);
+                if (result == MessageBoxResult.Yes)
+                {
+                    ImportBUS.AddSourceStatic(product.manguon, product.tonkho, product.tonkho * product.gianhap);
+                }
+
+
                 MessageBox.Show("Thêm sản phẩm thành công.");
                 this.NavigationService.Navigate(new ProductListPage());
             }

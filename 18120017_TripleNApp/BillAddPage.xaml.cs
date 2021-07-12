@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
@@ -46,8 +47,24 @@ namespace _18120017_TripleNApp
             this.NavigationService.Navigate(new BillListPage());
         }
 
+        bool InputCheck()
+        {
+            if (BillIDTextbox.Text == "") { MessageBox.Show("Vui lòng nhập mã đơn hàng!");return false; }
+            if (DateCreatingPicker.SelectedDate==null) { MessageBox.Show("Vui lòng chọn ngày lập đơn!");return false; }
+            try { DateTime.Parse(DateCreatingPicker.Text); } catch (Exception) { MessageBox.Show("Ngày lập đơn không hợp lệ!");return false; }
+            if (MemNameTextbox.Text == "") { MessageBox.Show("Vui lòng nhập tên khách hàng!");return false; }
+            if (MemPhoneTextbox.Text == "") { MessageBox.Show("Vui lòng nhập số điện thoại khách hàng!");return false; }
+            if (MemAddressTextbox.Text == "") { MessageBox.Show("Vui lòng nhập địa chỉ nhận  hàng!");return false; }
+            if (BuyList.Count() == 0) { MessageBox.Show("Vui lòng thêm ít nhất một sản phẩm vào đơn!");return false; }
+            if (TransportTextbox.Text=="") { MessageBox.Show("Vui lòng thêm phí vận chuyển!");return false; }
+
+            return true;
+        }
+
         private void BillAddButton_Click(object sender, RoutedEventArgs e)
         {
+            if (!InputCheck()) return;
+
             Bill.khachhang.ten = MemNameTextbox.Text;
             Bill.khachhang.sdt = MemPhoneTextbox.Text;
             Bill.khachhang.diachi = MemAddressTextbox.Text;
@@ -59,8 +76,12 @@ namespace _18120017_TripleNApp
 
             Bill.DiscountList = BillBUS.GetDiscountList(BuyList, Bill.khachhang, (DateTime)DateCreatingPicker.SelectedDate, Bill.vanchuyen);
 
-
-            BillBUS.BillAdd(Bill);
+            var addres=BillBUS.BillAdd(Bill);
+            if (addres != "")
+            {
+                MessageBox.Show(addres);
+                return;
+            }
             MessageBox.Show("Đã thêm đơn hàng.");
             this.NavigationService.Navigate(new BillListPage());
         }
@@ -90,6 +111,18 @@ namespace _18120017_TripleNApp
                 return;
             }
 
+            if (Int32.Parse(ProductAmountTextbox.Text) <= 0)
+            {
+                MessageBox.Show("Số lượng sản phẩm không hợp lệ!");
+                return;
+            }
+
+            if (BuyList.Find(c=>c.masanpham==ProductIDTextblock.Text)!=null)
+            {
+                MessageBox.Show("Sản phẩm bị trùng!");
+                return;
+            }
+
             var selectedproduct = ProductList.ElementAtOrDefault(ProductNameCombobox.SelectedIndex);
             ProductInBill newproduct=new ProductInBill()
             {
@@ -99,18 +132,28 @@ namespace _18120017_TripleNApp
                 soluong = Int32.Parse(ProductAmountTextbox.Text)
             };
             newproduct.thanhtien = newproduct.dongia * newproduct.soluong;
+
+      
+
             BuyList.Add(newproduct);
             ProductListview.Items.Refresh();
             Bill.thanhtien += newproduct.thanhtien;
             TotalMoneyTextbox.DataContext = Bill.thanhtien;
 
             GetDiscountInfo();
+
+            ProductNameCombobox.SelectedIndex=-1;
+            ProductAmountTextbox.Text = "1";
+            ProductIDTextblock.Text = "";
+            ProductSumTextblock.Text = "";
+            ProductPriceTextblock.Text = "";
             
         }
 
         private void ProductAmountTextbox_PreviewTextInput(object sender, TextCompositionEventArgs e)
         {
-
+            Regex regex = new Regex("[^0-9]+");
+            e.Handled = regex.IsMatch(e.Text);
         }
 
         private void ProductAmountTextbox_TextChanged(object sender, TextChangedEventArgs e)
@@ -128,6 +171,7 @@ namespace _18120017_TripleNApp
         private void ProductNameCombobox_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
             var selectedproduct = ProductList.ElementAtOrDefault(ProductNameCombobox.SelectedIndex);
+            if (selectedproduct == null) return;
             ProductIDTextblock.Text = selectedproduct.ma;
             ProductPriceTextblock.Text = selectedproduct.giaban.ToString();
             ProductSumTextblock.Text = (Int32.Parse(ProductAmountTextbox.Text) * selectedproduct.giaban).ToString();
@@ -209,6 +253,12 @@ namespace _18120017_TripleNApp
                 DiscountListview.ItemsSource = DiscountList;
 
             }
+        }
+
+        private void TransportTextbox_PreviewTextInput(object sender, TextCompositionEventArgs e)
+        {
+            Regex regex = new Regex("[^0-9]+");
+            e.Handled = regex.IsMatch(e.Text);
         }
     }
 }

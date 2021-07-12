@@ -33,8 +33,17 @@ namespace _18120017_TripleNApp
             value = item;
         }
 
+        bool InputCheck()
+        {
+            if (SourceNameTextbox.Text == "") { MessageBox.Show("Vui lòng nhập tên nguồn!"); return false; }
+            if (SourceAddressTextbox.Text == "") { MessageBox.Show("Vui lòng nhập địa chỉ nguồn!"); return false; }
+            if (SourceLinkTextbox.Text == "") { MessageBox.Show("Vui lòng nhập link nguồn!"); return false; }
+            return true;
+        }
+
         private void SourceUpdateButton_Click(object sender, RoutedEventArgs e)
         {
+            if (!InputCheck()) return;
             
             value.ten = SourceNameTextbox.Text;
             value.diachi = SourceAddressTextbox.Text;

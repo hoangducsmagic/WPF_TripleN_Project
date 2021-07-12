@@ -32,10 +32,13 @@ namespace _18120017_TripleNApp
         ProductDAO ProductDAO = new ProductDAO();
         Product product;
 
+        int beforeupdate;   // số lượng tồn kho trước khi cập nhật
+
         public ProductUpdatePage(Product item)
         {
             InitializeComponent();
             product = item;
+            beforeupdate = product.tonkho;
 
             TypeList = ProductDAO.GetTypeData2();
             SourceList = ProductDAO.GetSourceData();
@@ -69,18 +72,9 @@ namespace _18120017_TripleNApp
             MinimumTextbox.Text = product.toithieu.ToString();
             SourceCombobox.SelectedItem = SourceList.Find(c => c.ma == product.manguon);
 
-            // load hình ảnh
             PicList = product.hinhanh;
-            //PicListview.Items.Refresh();
-
-            // load màu sắc
             ColorList = product.mausac;
-            //ColorListview.Items.Refresh();
-
-            // load kích thước
             SizeList = product.kichthuoc;
-            //SizeListview.Items.Refresh();
-
         }
 
         private void PicAddButton_Click(object sender, RoutedEventArgs e)
@@ -233,6 +227,15 @@ namespace _18120017_TripleNApp
             string updateresult = ProductBUS.ProductUpdate(product);
             if (updateresult == "OK")
             {
+                if (product.tonkho > beforeupdate)
+                {
+                    var result = MessageBox.Show("Bạn có muốn cập nhật dữ liệu thống kê nguồn nhập không?", "Cập nhật dữ liệu", MessageBoxButton.YesNo);
+                    if (result == MessageBoxResult.Yes)
+                    {
+                        ImportBUS ImportBUS = new ImportBUS();
+                        ImportBUS.AddSourceStatic(product.manguon, product.tonkho - beforeupdate, (product.tonkho - beforeupdate) * product.gianhap);
+                    }
+                }
                 MessageBox.Show("Cập nhật sản phẩm thành công.");
                 this.NavigationService.Navigate(new ProductDetailPage(product));
             }

@@ -20,9 +20,7 @@
             <StackPanel>
                 <TextBlock FontFamily="Amatic SC" FontWeight="Bold" FontSize="40" Text="DANH SÁCH NGUỒN NHẬP HÀNG" HorizontalAlignment="Center"/>
                 <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
-
-
-                    <materialDesign:ColorZone Mode="Standard" Width="400"
+                    <materialDesign:ColorZone Name="SearchZone" Mode="Standard" Width="400"
                                            Padding="8 4 8 4"
                                            CornerRadius="2"
                                            Panel.ZIndex="1"
@@ -56,6 +54,10 @@
                 </StackPanel>
             </StackPanel>
         </materialDesign:ColorZone>
+        <TextBlock Name="NothingToShowTextblock" HorizontalAlignment="Center" Margin="0 30 0 0"
+                       FontFamily="Bree Serif" FontSize="30"
+                       Text="Không có nguồn nhập hàng nào để hiển thị!"
+                       Visibility="Collapsed"/>
         <TextBlock Text="Không tìm thấy nguồn nhập hàng!" Name="NotExistTextblock" Visibility="Collapsed"/>
         <StackPanel Name="ContentPanel" >
             <Grid Width="1045" HorizontalAlignment="Center" Margin="0 40 0 0">
@@ -93,7 +95,13 @@
                                 <TextBlock Grid.Column="0" Text="{Binding ma}"  HorizontalAlignment="Center" VerticalAlignment="Center" />
                                 <TextBlock Grid.Column="1" Text="{Binding ten}"  HorizontalAlignment="Center" VerticalAlignment="Center" />
                                 <TextBlock Grid.Column="2" Text="{Binding tongtien,Converter={StaticResource MoneyConverter}}"  HorizontalAlignment="Center" VerticalAlignment="Center" />
-                                <materialDesign:PackIcon Grid.Column="3" Kind="{Binding yeuthich,Converter={StaticResource FavoriteConverter}}" Foreground="red"  HorizontalAlignment="Center" VerticalAlignment="Center" />
+                                <Button Grid.Column="3"
+                                        Style="{StaticResource MaterialDesignFloatingActionMiniAccentButton}"
+                                        HorizontalAlignment="Center"
+                                        Click="FavoriteButton_Click"
+                                        >
+                                    <materialDesign:PackIcon Kind="Heart"  Foreground="{Binding yeuthich, Converter={StaticResource FavoriteConverter}}"/>
+                                </Button>
                                 <Button Grid.Column="4" Content="Xóa" HorizontalAlignment="Center"  VerticalAlignment="Center" Name="SourceDeleteButton" Click="SourceDeleteButton_Click"/>
                             </Grid>
                         </StackPanel>

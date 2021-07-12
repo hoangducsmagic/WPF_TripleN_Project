@@ -12,6 +12,13 @@
 
       Title="StatisticPage">
 
+    <Page.Resources>
+        <local:MoneyConverter x:Key="MoneyConverter"/>
+        <local:RankColorConverter x:Key="RankColorConverter"/>
+        <local:RankIconConverter x:Key="RankIconConverter"/>
+
+    </Page.Resources>
+    
     <ScrollViewer VerticalScrollBarVisibility="Auto">
         <StackPanel>
             <materialDesign:ColorZone Mode="PrimaryMid" Padding="16">
@@ -19,51 +26,111 @@
                     <TextBlock FontFamily="Amatic SC" FontWeight="Bold" FontSize="40" Text="THỐNG KÊ" HorizontalAlignment="Center"/>
                 </Grid>
             </materialDesign:ColorZone>
-            <Grid>
-                <Grid.ColumnDefinitions>
-                    <ColumnDefinition Width="*"/>
-                    <ColumnDefinition Width="*"/>
-                </Grid.ColumnDefinitions>
-                <StackPanel Grid.Column="0" Margin="10 20 10 10">
-                    <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
-                        <TextBlock Text="Năm: " FontSize="20" FontWeight="Bold" VerticalAlignment="Center"/>
-                        <ComboBox Name="YearCombobox" HorizontalContentAlignment="Center"
+            <TextBlock Name="NothingToShowTextblock" HorizontalAlignment="Center" Margin="0 30 0 0"
+                       FontFamily="Bree Serif" FontSize="30"
+                       Text="Không có dữ liệu để thống kê!"
+                       Visibility="Collapsed"/>
+            <StackPanel Name="ContentPanel">
+                <Grid>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="*"/>
+                    </Grid.ColumnDefinitions>
+                    <StackPanel Grid.Column="0" Margin="10 20 10 10">
+                        <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
+                            <TextBlock Text="Năm: " FontSize="20" FontWeight="Bold" VerticalAlignment="Center"/>
+                            <ComboBox Name="YearCombobox" HorizontalContentAlignment="Center"
                                   Style="{StaticResource MaterialDesignFloatingHintComboBox}" Margin="5 -12 0 0" Width="80" FontSize="20"
                                   SelectionChanged="YearCombobox_SelectionChanged">
-                            <ComboBox.ItemTemplate>
-                                <DataTemplate>
-                                    <TextBlock Text="{Binding}" />
-                                </DataTemplate>
-                            </ComboBox.ItemTemplate>
-                        </ComboBox>
+                                <ComboBox.ItemTemplate>
+                                    <DataTemplate>
+                                        <TextBlock Text="{Binding}" />
+                                    </DataTemplate>
+                                </ComboBox.ItemTemplate>
+                            </ComboBox>
+                        </StackPanel>
+                        <lvc:CartesianChart Name="ColumnChart" Height="350" DataTooltip="{x:Null}" Margin="20">
+                            <lvc:CartesianChart.AxisX>
+                                <lvc:Axis Labels="{Binding MonthList}"/>
+                            </lvc:CartesianChart.AxisX>
+                        </lvc:CartesianChart>
+                        <TextBlock Text="Tổng doanh thu qua các tháng" FontSize="20" FontStyle="Italic" HorizontalAlignment="Center"/>
                     </StackPanel>
-                    <lvc:CartesianChart Name="ColumnChart" Height="350" DataTooltip="{x:Null}" Margin="20">
-                        <lvc:CartesianChart.AxisX>
-                            <lvc:Axis Labels="{Binding MonthList}"/>
-                        </lvc:CartesianChart.AxisX>
-                    </lvc:CartesianChart>
-                    <TextBlock Text="Tổng doanh thu qua các tháng" FontSize="20" FontStyle="Italic" HorizontalAlignment="Center"/>
-                </StackPanel>
-                <StackPanel Grid.Column="1" Margin="10 20 10 10">
-                    <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
-                        <TextBlock Text="Tháng: " FontSize="20" FontWeight="Bold" VerticalAlignment="Center"/>
-                        <ComboBox Name="MonthCombobox"  HorizontalContentAlignment="Center"
+                    <StackPanel Grid.Column="1" Margin="10 20 10 10">
+                        <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
+                            <TextBlock Text="Tháng: " FontSize="20" FontWeight="Bold" VerticalAlignment="Center"/>
+                            <ComboBox Name="MonthCombobox"  HorizontalContentAlignment="Center"
                           Style="{StaticResource MaterialDesignFloatingHintComboBox}" Margin="5 -12 0 0" Width="60" FontSize="20"
                           SelectionChanged="MonthCombobox_SelectionChanged">
-                            <ComboBox.ItemTemplate>
-                                <DataTemplate>
-                                    <TextBlock Text="{Binding}"/>
-                                </DataTemplate>
-                            </ComboBox.ItemTemplate>
-                        </ComboBox>
+                                <ComboBox.ItemTemplate>
+                                    <DataTemplate>
+                                        <TextBlock Text="{Binding}"/>
+                                    </DataTemplate>
+                                </ComboBox.ItemTemplate>
+                            </ComboBox>
+                        </StackPanel>
+                        <Grid Margin="20">
+                            <TextBlock Name="EmptyPie" Text="Tháng này không bán được sản phẩm nào." FontSize="20" HorizontalAlignment="Center" Visibility="Collapsed"/>
+                            <lvc:PieChart Name="PieChart" Height="350" LegendLocation="Bottom"/>
+                        </Grid>
+                        <TextBlock Text="Doanh thu sản phẩm trong tháng" FontSize="20" FontStyle="Italic" HorizontalAlignment="Center"/>
                     </StackPanel>
-                    <Grid Margin="20">
-                        <TextBlock Name="EmptyPie" Text="Tháng này không bán được sản phẩm nào." Visibility="Collapsed"/>
-                        <lvc:PieChart Name="PieChart" Height="350" LegendLocation="Bottom"/>
-                    </Grid>
-                    <TextBlock Text="Doanh thu sản phẩm trong tháng" FontSize="20" FontStyle="Italic" HorizontalAlignment="Center"/>
-                </StackPanel>
-            </Grid>
+                </Grid>
+
+                <Grid Margin="0 20 0 10">
+                    <Separator BorderThickness="1" BorderBrush="LightGray" VerticalAlignment="Center"/>
+                    <TextBlock Text="DANH SÁCH KHÁCH HÀNG" FontSize="30" FontFamily="Bree Serif" FontWeight="Bold" Foreground="DarkGreen" Background="#ddffcf" HorizontalAlignment="Center"/>
+                </Grid>
+                <Grid Width="1045" HorizontalAlignment="Center" Margin="0 40 0 0">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="25"/>
+                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="*"/>
+
+                    </Grid.ColumnDefinitions>
+                    <Image Grid.Column="0" Source="ImagesResource/gold.png" Height="40" Visibility="Hidden"/>
+                    <TextBlock Grid.Column="1" Text="STT" FontSize="20" HorizontalAlignment="Center" FontWeight="Bold"/>
+                    <TextBlock Grid.Column="2" Text="Tên khách hàng" FontSize="20" HorizontalAlignment="Center" FontWeight="Bold"/>
+                    <TextBlock Grid.Column="3" Text="Điện thoại"  FontSize="20" HorizontalAlignment="Center" FontWeight="Bold"/>
+                    <TextBlock Grid.Column="4" Text="Số lần mua hàng" FontSize="20" HorizontalAlignment="Center" FontWeight="Bold"/>
+                    <TextBlock Grid.Column="5" Text="Tổng tiền thanh toán" FontSize="20" HorizontalAlignment="Center" FontWeight="Bold"/>
+
+                </Grid>
+                <ListView Name="CustomerListview"  IsHitTestVisible="False" Margin="0 0 0 30"
+                      HorizontalAlignment="Center" ScrollViewer.VerticalScrollBarVisibility="Auto" ScrollViewer.CanContentScroll="False">
+                    <ListView.ItemsPanel>
+                        <ItemsPanelTemplate>
+                            <StackPanel/>
+                        </ItemsPanelTemplate>
+                    </ListView.ItemsPanel>
+                    <ListView.ItemTemplate >
+                        <DataTemplate>
+                            <StackPanel >
+                                <Separator BorderThickness="1" BorderBrush="LightGray" />
+                                <Grid Width="1045" HorizontalAlignment="Center" Background="{Binding Item1,Converter={StaticResource RankColorConverter}}">
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width="25"/>
+                                        <ColumnDefinition Width="*"/>
+                                        <ColumnDefinition Width="*"/>
+                                        <ColumnDefinition Width="*"/>
+                                        <ColumnDefinition Width="*"/>
+                                        <ColumnDefinition Width="*"/>
+                                    </Grid.ColumnDefinitions>
+                                    <Image Grid.Column="0" Height="40" Source="{Binding Item1,Converter={StaticResource RankIconConverter}}" HorizontalAlignment="Right"/>
+                                    <TextBlock Grid.Column="1" Text="{Binding Item1}"  HorizontalAlignment="Center" VerticalAlignment="Center" />
+                                    <TextBlock Grid.Column="2" Text="{Binding Item2.ten}"  HorizontalAlignment="Center" VerticalAlignment="Center" />
+                                    <TextBlock Grid.Column="3" Text="{Binding Item2.sdt}"  HorizontalAlignment="Center" VerticalAlignment="Center" />
+                                    <TextBlock Grid.Column="4" Text="{Binding Item2.solan}"  HorizontalAlignment="Center" VerticalAlignment="Center" />
+                                    <TextBlock Grid.Column="5" Text="{Binding Item2.tongtien,Converter={StaticResource MoneyConverter}}"  HorizontalAlignment="Center" VerticalAlignment="Center" />
+                                </Grid>
+                            </StackPanel>
+                        </DataTemplate>
+                    </ListView.ItemTemplate>
+                </ListView>
+            </StackPanel>
         </StackPanel>
     </ScrollViewer>
 </Page>

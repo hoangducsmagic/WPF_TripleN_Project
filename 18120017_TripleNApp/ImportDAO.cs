@@ -38,7 +38,7 @@ namespace _18120017_TripleNApp
                 else Source.cothongbao = false;
                 SourceList.Add(Source);
             }
-                return SourceList;
+            return SourceList;
         }
 
         public void SourceAdd(Import Source)
@@ -103,6 +103,11 @@ namespace _18120017_TripleNApp
             var anoun = db.THONGBAONHAPHANG.Find(SourceID);
             db.THONGBAONHAPHANG.Remove(anoun);
             db.SaveChanges();
+        }
+
+        public NGUONNHAP  SourceFind(string ID)
+        {
+            return db.NGUONNHAP.Find(ID);
         }
     }
 }

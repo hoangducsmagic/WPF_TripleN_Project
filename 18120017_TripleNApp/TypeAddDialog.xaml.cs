@@ -28,6 +28,11 @@ namespace _18120017_TripleNApp
 
         private void AddButton_Click(object sender, RoutedEventArgs e)
         {
+            if (CategoryNameTextbox.Text == "")
+            {
+                MessageBox.Show("Vui lòng nhập tên loại!");
+                return;
+            }
             value = CategoryNameTextbox.Text;
             this.Close();
         }

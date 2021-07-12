@@ -217,7 +217,7 @@
                 <materialDesign:PackIcon Kind="Truck" Foreground="DarkRed" Margin="40 0 5 0" Height="25" Width="25" VerticalAlignment="Center"/>
                 <TextBlock Text="Phí vận chuyển: " Margin="5" FontFamily="Bree Serif" FontSize="25" Foreground="DarkRed" />
                 <TextBox  Width="200"  Name="TransportTextbox" FontFamily="Bree Serif" FontSize="25" Foreground="DarkRed" VerticalAlignment="Center"
-                          TextChanged="TransportTextbox_TextChanged"
+                          TextChanged="TransportTextbox_TextChanged" PreviewTextInput="TransportTextbox_PreviewTextInput"
                          Style="{StaticResource MaterialDesignFloatingHintTextBox}" Margin="5 -11 5 5"  />
             </StackPanel>
             <StackPanel Orientation="Horizontal">

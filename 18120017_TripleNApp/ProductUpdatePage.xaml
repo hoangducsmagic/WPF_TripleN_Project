@@ -200,7 +200,7 @@
                     </Grid>
 
                     <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" Margin="0 10 0 0">
-                        <Button Name="ProductUpdateButton" Content="Thêm sản phẩm" Margin="10" Click="ProductUpdateButton_Click"/>
+                        <Button Name="ProductUpdateButton" Content="Cập nhật sản phẩm" Margin="10" Click="ProductUpdateButton_Click"/>
                         <Button Name="BackButton" Content="Quay lại"  Margin="10" Click="BackButton_Click"/>
                     </StackPanel>
                 </StackPanel>

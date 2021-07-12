@@ -29,6 +29,15 @@ namespace _18120017_TripleNApp
         {
             InitializeComponent();
             BillList= BillDAO.GetBillData();
+
+            if (BillList.Count() == 0)
+            {
+                NothingToShowTextblock.Visibility = Visibility.Visible;
+                ContentPanel.Visibility = Visibility.Collapsed;
+                SearchZone.Visibility = Visibility.Hidden;
+                return;
+            }
+
             SearchList = Sorting.BillSort(BillList);
             BillListview.ItemsSource = SearchList;
         }
@@ -51,6 +60,7 @@ namespace _18120017_TripleNApp
             var selection = (sender as Button).DataContext as Bill;
             BillBUS.BillDelete(selection);
             BillList.Remove(selection);
+            SearchList.Remove(selection);
             BillListview.Items.Refresh();
             MessageBox.Show("Đã xóa hóa đơn");
         }
@@ -93,6 +103,7 @@ namespace _18120017_TripleNApp
                 NotExistTextblock.Visibility = Visibility.Collapsed;
                 ContentPanel.Visibility = Visibility.Visible;
                 BillListview.ItemsSource = SearchList;
+                BillListview.Items.Refresh();
             }
         }
 

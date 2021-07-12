@@ -35,6 +35,16 @@ namespace _18120017_TripleNApp
             InitializeComponent();
 
             ProductList= ProductDAO.GetProductData();
+            
+
+            if (ProductList.Count() == 0)
+            {
+                NothingToShowTextblock.Visibility = Visibility.Visible;
+                PageNavigationPanel.Visibility = Visibility.Hidden;
+                SearchZone.Visibility = Visibility.Hidden;
+                return;
+            }
+
             SearchList = Sorting.ProductSort(ProductList);
             Pagination.update(ProductList.Count());
             PageNavigationRefresh();
@@ -48,7 +58,7 @@ namespace _18120017_TripleNApp
 
         void PageNavigationRefresh()
         {
-            CurrentPageTextBox.Text = Pagination.CurrentPage.ToString();
+            CurrentPageTextBox.Text = $"{Pagination.CurrentPage} of {Pagination.TotalPage}";
             PreviousPageButton.IsEnabled = Pagination.CurrentPage != 1;
             NextPageButton.IsEnabled = Pagination.CurrentPage != Pagination.TotalPage;
         }
@@ -183,7 +193,14 @@ namespace _18120017_TripleNApp
             var selection = (sender as Button).DataContext as Product;
             ProductBUS.ProductDelete(selection);
             
-            ProductListview.ItemsSource = ProductDAO.GetProductData();
+            ProductList = ProductDAO.GetProductData();
+            SearchList = Sorting.ProductSort(ProductList);
+
+            Pagination.update(ProductList.Count());
+            Pagination.CurrentPage = Math.Min(Pagination.CurrentPage, Pagination.TotalPage);
+            PageNavigationRefresh();
+            ProductListview.ItemsSource = SearchList.Skip(Pagination.skip()).Take(Pagination.take());
+
             TypeTreeview.ItemsSource = ProductDAO.GetTypeData();
             MessageBox.Show("Đã xóa sản phẩm.");
         }

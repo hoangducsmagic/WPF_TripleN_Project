@@ -34,6 +34,8 @@ namespace _18120017_TripleNApp
             DragMove();
         }
 
+       
+
         private void OK_Click(object sender, RoutedEventArgs e)
         {
             this.Close();

@@ -35,6 +35,12 @@ namespace _18120017_TripleNApp
         {
             InitializeComponent();
             YearList = Statistic.GetYearList();
+            if (YearList.Count() == 0)
+            {
+                NothingToShowTextblock.Visibility = Visibility.Visible;
+                ContentPanel.Visibility = Visibility.Collapsed;
+                return;
+            }
            
             YearCombobox.ItemsSource = YearList;
             MonthCombobox.ItemsSource = monthlist;
@@ -43,6 +49,7 @@ namespace _18120017_TripleNApp
 
             ColumnAnalization();
             PieAnalization();
+            CustomerAnalization();
         }
 
         private void MonthCombobox_SelectionChanged(object sender, SelectionChangedEventArgs e)
@@ -102,6 +109,18 @@ namespace _18120017_TripleNApp
             ColumnChart.Series = new SeriesCollection();
             ColumnChart.Series.Add(new ColumnSeries { Values = columnvalue });
             ColumnChart.DataContext = this;
+        }
+
+        void CustomerAnalization()
+        {
+            CustomerDAO CustomerDAO = new CustomerDAO();
+            List<Tuple<int, Customer>> CustomerList = new List<Tuple<int, Customer>>();
+            var query = CustomerDAO.GetCustomerData().OrderByDescending(c => c.tongtien);
+            int index = 0;
+            foreach (var item in query) 
+                CustomerList.Add(Tuple.Create(++index,item));
+
+            CustomerListview.ItemsSource = CustomerList;
         }
     }
 }

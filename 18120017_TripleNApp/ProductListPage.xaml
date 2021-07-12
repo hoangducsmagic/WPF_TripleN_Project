@@ -68,13 +68,13 @@
                                 <ColumnDefinition Width="3*"/>
                             </Grid.ColumnDefinitions>
 
-                            <materialDesign:ColorZone Mode="Standard" Grid.Column="0" Width="400"
+                            <materialDesign:ColorZone Mode="Standard" Grid.Column="0" Width="400" Name="SearchZone"
                                            Padding="8 4 8 4"
                                            CornerRadius="2"
                                            Panel.ZIndex="1"
                                            Margin="16 0 0 0"
                                            materialDesign:ShadowAssist.ShadowDepth="Depth1">
-                                <Grid>
+                                <Grid >
                                     <Grid.ColumnDefinitions>
                                         <ColumnDefinition Width="Auto" />
                                         <ColumnDefinition Width="*" />
@@ -130,7 +130,12 @@
                         </Grid>
                     </StackPanel>
                 </materialDesign:ColorZone>
-                <TextBlock Text="Không tìm thấy sản phẩm nào!" Name="NotExistTextblock" Visibility="Collapsed"/>
+                <TextBlock Text="Không tìm thấy sản phẩm nào!" Name="NotExistTextblock" Visibility="Collapsed"
+                                                  FontFamily="Bree Serif" FontSize="30" HorizontalAlignment="Center" Margin="0 30 0 0"/>
+                <TextBlock Name="NothingToShowTextblock" 
+                       FontFamily="Bree Serif" FontSize="30" HorizontalAlignment="Center" Margin="0 30 0 0"
+                       Text="Không có sản phẩm nào để hiển thị!"
+                       Visibility="Collapsed"/>
                 <ListView Name="ProductListview" ScrollViewer.CanContentScroll="False" Margin="20"
                           ScrollViewer.HorizontalScrollBarVisibility="Disabled"
                           HorizontalAlignment="Center" 

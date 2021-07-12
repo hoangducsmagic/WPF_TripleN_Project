@@ -29,6 +29,15 @@ namespace _18120017_TripleNApp
         {
             InitializeComponent();
             SourceList = ImportDAO.GetSourceList();
+
+            if (SourceList.Count() == 0)
+            {
+                NothingToShowTextblock.Visibility = Visibility.Visible;
+                ContentPanel.Visibility = Visibility.Collapsed;
+                SearchZone.Visibility = Visibility.Hidden;
+                return;
+            }
+
             SearchList = Sorting.SourceSort(SourceList);
             SourceListview.ItemsSource = SearchList;
         }
@@ -36,6 +45,7 @@ namespace _18120017_TripleNApp
         private void SourceListview_MouseLeftButtonUp(object sender, MouseButtonEventArgs e)
         {
             var selection = (sender as ListView).SelectedItem as Import;
+            if (selection == null) return;
             this.NavigationService.Navigate(new SourceDetailPage(selection));
         }
 
@@ -50,7 +60,10 @@ namespace _18120017_TripleNApp
             else
             {
                 SourceList.Remove(selection);
-                SourceListview.Items.Refresh();
+                SearchList = Sorting.SourceSort(SourceList);
+               
+                
+                SourceListview.ItemsSource=SearchList;
                 MessageBox.Show("Đã xóa nguồn nhập hàng.");
             }            
         }
@@ -99,12 +112,24 @@ namespace _18120017_TripleNApp
                 NotExistTextblock.Visibility = Visibility.Collapsed;
                 ContentPanel.Visibility = Visibility.Visible;
                 SourceListview.ItemsSource = SearchList;
+                SourceListview.Items.Refresh();
             }
         }
 
         private void SourceAddButton_Click(object sender, RoutedEventArgs e)
         {
             this.NavigationService.Navigate(new SourceAddPage());
+        }
+
+      
+
+        private void FavoriteButton_Click(object sender, RoutedEventArgs e)
+        {
+            var selection = (sender as Button).DataContext as Import;
+            ImportBUS.ChangeFavoriteStatus(selection);
+            this.NavigationService.Navigate(new SourceListPage());
+            
+
         }
     }
 } 
